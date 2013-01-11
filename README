@@ -1,6 +1,6 @@
 My dotfiles :)
 
-    git clone git://github.com/octos/dots.git
+    git clone https://github.com/octos/dots.git
     cd ~/dots
     chmod +x dots.sh
     ./dots.sh
