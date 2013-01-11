@@ -3,7 +3,6 @@ alias df='df -h'
 
 # app
 alias a='ranger'
-alias b='ranger'
 alias A='sudo ranger'
 alias y='youtube-viewer --gcap=/usr/bin/gcap --get-captions'
 alias x='vim'
