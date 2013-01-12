@@ -9,8 +9,10 @@ alias x='vim'
 alias X='sudo vim'
 
 # pkg
+alias R='sudo pacman -R'
 alias S='sudo pacman -S'
 alias s='yaourt'
+alias U='sudo pacman -Syyu'
 
 # sys
 alias Q='systemctl hibernate'
