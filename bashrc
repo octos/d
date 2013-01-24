@@ -1,3 +1,6 @@
+# dupeless history
+export HISTCONTROL="ignoredups"
+
 # org
 alias df='df -h'
 
