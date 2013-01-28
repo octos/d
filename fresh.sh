@@ -14,9 +14,9 @@ atool bzip2 unzip p7zip unrar
 ncdu colordiff fbgrab
 profont ttf-freefont ttf-liberation ttf-dejavu" 
 e="antiword wyrd calcurse"
-m="flac abcde"
+m="abcde"
 o="irssi bitlbee mutt"
-p="fbv optipng imagemagick ghostscript librsvg jasper libpng"
+p="fbv optipng imagemagick ghostscript librsvg jasper"
 w="wget curl axel w3m links lynx elinks rtorrent newsbeuter
 vnstat aircrack-ng tcpdump nmap"
 v="dvdbackup"
@@ -119,7 +119,7 @@ if [[ $1 == -z ]]; then
   alsamixer
   echo -e "\nbeep disabled: done!" 
   echo -e "[archlinuxfr]\nServer = http://repo.archlinux.fr/\$arch" >> /etc/pacman.conf; pacman -Sy yaourt
-  echo -e "\yaourt installed: done!" 
+  echo -e "\nyaourt installed: done!" 
   echo "now exit, umount /mnt/, and reboot."
   exit; fi
 
