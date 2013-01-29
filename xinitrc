@@ -12,5 +12,5 @@ urxvtd &
 xset r rate 260 50
 setxkbmap us -variant altgr-intl
 
-exec dwm
-#z/startdwm  #refreshable dwm
+#exec dwm
+z/startdwm  #refreshable dwm
