@@ -1,5 +1,5 @@
 while true; do
-   z/xsetroot-set.sh
+   d/xsetroot-set.sh
    sleep 1m    # update every 1m
 done &
 
@@ -12,5 +12,5 @@ urxvtd &
 xset r rate 260 50
 setxkbmap us -variant altgr-intl
 
-#exec dwm
-z/startdwm  #refreshable dwm
+exec dwm
+#d/startdwm  #refreshable dwm
