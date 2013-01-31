@@ -33,8 +33,7 @@ V=""
 Z="screenfetch asciiquarium"
 
 # ===== pkgs (X) =====
-xa="xclip hsetroot gparted pcmanfm hardinfo
-cmospwd" 
+xa="xclip hsetroot gparted pcmanfm hardinfo" 
 xm="alsa-utils 
 xfburn
 audacity lmms ardour jack hydrogen gtkpod"
@@ -45,14 +44,14 @@ libreoffice gnumeric abiword"
 xo=""
 xw="dwb surf firefox wicd"
 xv="mplayer2 kdenlive"
-xz="wine"
+xz=""
 # ===== pkgs (X AUR) =====
-xA="xarchiver"
+xA="xarchiver cmospwd"
 xE="focuswriter"
 xM="rakarrack"
 xP="xoris meh"
 xV="slowmovideo-git"
-xZ="rejoystick"
+xZ="wine rejoystick"
 
 # ===== don't touch =====
 r='\e[0;31m' g='\e[0;32m' x='\e[0m'
