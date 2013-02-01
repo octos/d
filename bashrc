@@ -19,7 +19,7 @@ alias scgt='d/killifrunning.sh rejoystick; rejoystick -d; cd .wine/drive_c/Progr
 
 # pkg
 alias R='sudo pacman -R'
-alias S='sudo pacman -S'
+alias S='sudo pacman -S --needed --noconfirm'
 alias s='yaourt'
 alias U='sudo pacman -Syyu'
 
