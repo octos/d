@@ -3,6 +3,7 @@ ver="130125" #Installs my apps on fresh Arch
 # install arch + login as root + pacman -Syu + execute: wget www.tiny.cc/freshy; chmod +x; freshy
 # upload to www.paste.ee and get to VM using wget
 # TODO: detect if VM/USB > vone/uone
+# have to be installed before executing: wget, vim (but rm vim dependency)
 # ===== config =====
 user="kv"
 hostname="kone"
