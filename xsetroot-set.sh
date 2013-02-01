@@ -35,5 +35,5 @@ fi
 #else
 #    RED=""
 #fi
-xsetroot -name "$(echo "$kbd" "$MUTE" "$mem"; date +"%y%m%d-%u %R%-z")"
+xsetroot -name "$(echo "$kbd" "$MUTE" "$mem"; date +"%y%m%d-%u %R%")"
 exit
