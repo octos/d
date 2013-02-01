@@ -21,10 +21,10 @@ esac
 
 setxkbmap -print | grep -q colemak
 if [ $? -eq 0 ]; then
-    kbd="Cl"
+    kbd="C"
     #echo $kbd
 else
-    kbd="Qw"
+    kbd="Q"
     #echo $kbd
 fi
 
