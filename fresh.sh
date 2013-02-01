@@ -4,6 +4,7 @@ ver="130125" #Installs my apps on fresh Arch
 # upload to www.paste.ee and get to VM using wget
 # TODO: detect if VM/USB > vone/uone
 # have to be installed before executing: wget, vim (but rm vim dependency)
+# pacstrap -i for interactive. Default base + base-devel doesn't fit is > 900MB
 # ===== config =====
 user="kv"
 hostname="kone"
