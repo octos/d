@@ -8,7 +8,7 @@ ver="130125" #Installs my apps on fresh Arch.
 # ===== config =====
 user="kv"
 hostname="kone"
-
+me=$(basename $0)
 # ===== pkgs (cli) ===== #capitals are AUR
 a="vim bash-completion ranger htop tmux aspell e3 
 atool bzip2 unzip p7zip unrar
@@ -101,10 +101,10 @@ if [[ $1 == -z ]]; then
   echo FONT=Lat2-Terminus16 >> /etc/vconsole.conf
   ln -s /usr/share/zoneinfo/Canada/Eastern /etc/localtime
   hwclock --systohc --utc
-  echo kone > /etc/hostname
+  echo $hostname > /etc/hostname
   passwd
-  useradd -m -g users -G audio,lp,storage,video,games,wheel,power,scanner -s /bin/bash kv
-  passwd kv
+  useradd -m -g users -G audio,lp,storage,video,games,wheel,power,scanner -s /bin/bash $user
+  passwd $user
   pacman -S syslinux sudo bash-completion dialog wpa_supplicant vim
   syslinux-install_update -i -a -m
   vim /boot/syslinux/syslinux.cfg
@@ -112,9 +112,11 @@ if [[ $1 == -z ]]; then
   echo "blacklist pcspkr" > /etc/modprobe.d/nobeeep.conf
   pacman -S alsa-utils
   alsamixer
+  mv ${0} /home/$user/$me
   echo -e "\nbeep disabled: done!" 
   echo -e "[archlinuxfr]\nServer = http://repo.archlinux.fr/\$arch" >> /etc/pacman.conf; pacman -Sy yaourt
   echo -e "\nyaourt installed: done!" 
+  echo -e "script moved to /home/$user/$me !" 
   echo "now exit, umount /mnt/, and reboot."
   exit; fi
 
