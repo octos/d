@@ -9,6 +9,7 @@ ver="130125" #Installs my apps on fresh Arch.
 user="kv"
 hostname="kone"
 me=$(basename $0)
+
 # ===== pkgs (cli) ===== #capitals are AUR
 a="vim bash-completion ranger htop tmux aspell e3 
 atool bzip2 unzip p7zip unrar
@@ -58,21 +59,6 @@ all="$a $c $e $m $o $p $w $v $z"
 ALL="$A $C $E $M $O $P $W $V $Z"
 xall="$xa $xc $xe $xm $xo $xp $xw $xv $xz"
 xALL="$xA $xC $xE $xM $xO $xP $xW $xV $xZ"
-
-# ===== FUNCTIONS =====
-function print_line(){
-echo "--------------------------------------------------------------------------------"
-}
-
-function question_for_answer(){
-echo $1
-echo "y) yes"
-echo "n) no"
-echo -n "Selection > "
-read ANSWERE
-echo ""
-echo ""
-}
 
 # ===== 0 ===== # general if's
 #exit upon error: http://www.davidpashley.com/articles/writing-robust-shell-scripts.html
@@ -138,7 +124,7 @@ if [[ ! $EUID -ne 0 ]]; then 				#superuser?
 fi
 
 if [[ $1 == -x ]]; then
-if [[ ! $EUID -ne 0 ]]; then 				#superuser?
+if [[ ! $EUID -ne 0 ]]; then   			#superuser?
   echo "Don't run as root!" 1>&2; exit 1; fi
   sudo pacman -S xorg-server xorg-xinit xorg-utils xorg-server-utils
   sudo pacman -S xf86-video-intel
@@ -153,16 +139,13 @@ if [[ ! $EUID -ne 0 ]]; then 				#superuser?
   echo "if octos/d not set up, do:"
   echo "echo "exec dwm" >> ~/.xinitrc"
   echo -e "\n if in VirtualBox,"
-  echo -e "# pacman -s virtualbox-guest-utils"
+  echo -e "# pacman -S virtualbox-guest-utils"
   echo -e "# modprobe -a vboxguest vboxsf vboxvideo"
   exit
 fi
 
 
 # ===== 1 ===== # post-installation stuff
-
-
-
 # RANKMIRRORS (disabled)
 #pacman -Syyu curl
 #cd /etc/pacman.d
@@ -192,8 +175,6 @@ exit 1
 # ===== ASSUMPTIONS =====
 # - Arch Linux
 # - internet connection
-# ===== NOTES =====
-# -
 # ===== HELP =====
 # name of, and path to the script itself
 # http://stackoverflow.com/questions/192319/in-the-bash-script-how-do-i-know-the-script-file-name
