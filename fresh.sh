@@ -1,5 +1,5 @@
 #!/bin/bash
-ver="130125" #Installs my apps on fresh Arch
+ver="130125" #Installs my apps on fresh Arch. 
 # install arch + login as root + pacman -Syu + execute: wget www.tiny.cc/freshy; chmod +x; freshy
 # upload to www.paste.ee and get to VM using wget
 # TODO: detect if VM/USB > vone/uone
@@ -9,14 +9,16 @@ ver="130125" #Installs my apps on fresh Arch
 user="kv"
 hostname="kone"
 
-# ===== pkgs (cli) =====
+# ===== pkgs (cli) ===== #capitals are AUR
 a="vim bash-completion ranger htop tmux aspell e3 
-nmon iotop testdisk powertop
 atool bzip2 unzip p7zip unrar
-ncdu colordiff fbgrab
-profont ttf-freefont ttf-liberation ttf-dejavu" 
+profont ttf-freefont ttf-liberation ttf-dejavu"
+A="redshift-minimal google-translate ttf-dotsies"
+c="nmon iotop testdisk powertop ncdu colordiff fbgrab"
+C="cdu cmospwd"
 e="antiword wyrd calcurse"
-m="abcde"
+m="alsa-utils abcde"
+M="herrie podget"
 o="irssi bitlbee mutt"
 p="fbv optipng imagemagick ghostscript librsvg jasper"
 w="wget curl axel w3m links lynx elinks rtorrent newsbeuter
@@ -24,35 +26,26 @@ vnstat aircrack-ng tcpdump nmap"
 v="dvdbackup"
 z="cowsay cmatrix bsd-games fortune-mod
 libcaca aalib"
-# ===== pkgs (cli AUR) =====
-A="redshift-minimal cdu google-translate ttf-dotsies"
-E=""
-M="herrie podget"
-O=""
-P=""
-W=""
-V=""
 Z="screenfetch asciiquarium"
-
 # ===== pkgs (X) =====
-xa="xclip hsetroot gparted pcmanfm hardinfo" 
-xm="alsa-utils 
-xfburn
-audacity lmms ardour jack hydrogen gtkpod"
-xp="sxiv feh
-gimp darktable hugin inkscape mypaint"
+xa="xclip hsetroot gparted pcmanfm hardinfo"
+xA="xarchiver"
+xc=""
+xC=""
 xe="zathura zathura-djvu zathura-ps
 libreoffice gnumeric abiword"
+xE="focuswriter"
+xm="xfburn
+audacity lmms ardour jack hydrogen gtkpod"
+xM="rakarrack"
+xp="sxiv feh
+gimp darktable hugin inkscape mypaint"
+xP="xoris meh"
 xo=""
 xw="dwb surf firefox wicd"
 xv="mplayer2 kdenlive"
-xz=""
-# ===== pkgs (X AUR) =====
-xA="xarchiver cmospwd"
-xE="focuswriter"
-xM="rakarrack"
-xP="xoris meh"
 xV="slowmovideo-git"
+xz=""
 xZ="wine rejoystick"
 
 # ===== don't touch =====
@@ -60,10 +53,11 @@ r='\e[0;31m' g='\e[0;32m' x='\e[0m'
 R='\e[1;31m' G='\e[1;32m' 
 ok="\t${G}OK${x} "
 time=":: ${y}`date +%r`${x}" #shows time [:: ${y}`date +%r`${x}] => 12:59:59 PM
-all="$a $e $m $o $p $w $v $z"
-ALL="$A $E $M $O $P $W $V $Z"
-xall="$xa $xe $xm $xo $xp $xw $xv $xz"
-xALL="$xA $xE $xM $xO $xP $xW $xV $xZ"
+base="$a"
+all="$a $c $e $m $o $p $w $v $z"
+ALL="$A $C $E $M $O $P $W $V $Z"
+xall="$xa $xc $xe $xm $xo $xp $xw $xv $xz"
+xALL="$xA $xC $xE $xM $xO $xP $xW $xV $xZ"
 
 # ===== FUNCTIONS =====
 function print_line(){
@@ -137,7 +131,7 @@ if [[ $1 == -apps ]]; then
 if [[ ! $EUID -ne 0 ]]; then 				#superuser?
   echo "Don't run as root!" 1>&2; exit 1; fi
   echo "WHAT DO YOU WANT TO INSTALL?"
-  sudo pacman -S $all
+  sudo pacman -S --needed $all
   exit
 fi
 
