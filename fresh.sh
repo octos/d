@@ -70,10 +70,12 @@ if [[ $1 == -v ]]; then
   exit 1; fi
 
 if [[ $1 == -z ]]; then
-  echo -e "clearing!"
+ if [[ $EUID -ne 0 ]]; then   			#superuser?
+   echo "Must be root to delete user!" 1>&2; exit 1; fi
   userdel $user
   rm -rf /home/$user
   rm /etc/localtime
+  echo -e "$user deleted!"
   exit 1; fi
 
   if [[ $1 == -install ]]; then
