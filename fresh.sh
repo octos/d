@@ -93,7 +93,7 @@ if [[ $1 == -z ]]; then
   passwd
   useradd -m -g users -G audio,lp,storage,video,games,wheel,power,scanner -s /bin/bash $user
   passwd $user
-  pacman -S syslinux sudo bash-completion dialog wpa_supplicant vim
+  pacman -S --needed syslinux sudo bash-completion dialog wpa_supplicant vim
   syslinux-install_update -i -a -m
   vim /boot/syslinux/syslinux.cfg
   visudo
@@ -111,7 +111,7 @@ if [[ $1 == -z ]]; then
 if [[ $1 == -post ]]; then
 if [[ ! $EUID -ne 0 ]]; then 				#superuser?
   echo "Don't run as root!" 1>&2; exit 1; fi
-    sudo pacman -S git
+    sudo pacman -S --needed git
     echo -e "\ngetting dots!\n"
     git clone https://github.com/octos/d.git
     cd ~/d; chmod +x ~/d/dots.sh; ~/d/dots.sh
@@ -132,7 +132,7 @@ if [[ ! $EUID -ne 0 ]]; then   			#superuser?
   sudo pacman -S xf86-video-intel
 
   echo -e "\nnow time for dwm!\n"
-  sudo pacman -S abs dmenu dunst libnotify unclutter slock rxvt-unicode xterm
+  sudo pacman -S --needed abs dmenu dunst libnotify unclutter slock rxvt-unicode xterm
   sudo abs community/dwm
   mkdir ~/z/
   cp -r /var/abs/community/dwm ~/z/dwm
