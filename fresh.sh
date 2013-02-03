@@ -53,7 +53,7 @@ r='\e[0;31m' g='\e[0;32m' x='\e[0m'
 R='\e[1;31m' G='\e[1;32m' 
 ok="\t${G}OK${x} "
 time=":: ${y}`date +%r`${x}" #shows time [:: ${y}`date +%r`${x}] => 12:59:59 PM
-base="$a"
+base="$a $A $xa $xA"
 all="$a $c $e $m $o $p $w $v $z"
 ALL="$A $C $E $M $O $P $W $V $Z"
 xall="$xa $xc $xe $xm $xo $xp $xw $xv $xz"
