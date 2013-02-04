@@ -81,7 +81,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_F1,     spawn,        {.v = screensus } }, 
 	{ MODKEY,                       XK_F2,     spawn,        {.v = screenoff } }, 
 //	{ MODKEY,                       XK_F1,     spawn,          SHCMD("xset dpms force suspend") }, 
-	{ MODKEY|ShiftMask,             XK_F3,     spawn,          SHCMD("import -window root \"$(date +%y%m%d-%H%M%S)\"_fullkpng") },
+	{ MODKEY|ShiftMask,             XK_F3,     spawn,          SHCMD("import -window root \"$(date +%y%m%d-%H%M%S)\"_full.png") },
 	{ MODKEY|ShiftMask,             XK_F4,     spawn,          SHCMD("import \"$(date +%y%m%d-%H%M%S)\"_slct.png") },
 	{ MODKEY,                       XK_F5,     spawn,          {.v = toggle } },
 	{ MODKEY,                       XK_F5,     spawn,          {.v = xinit } },
