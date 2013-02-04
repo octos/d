@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # .make.sh
 # creates symlinks from ~ to dotfiles in ~/d
 
