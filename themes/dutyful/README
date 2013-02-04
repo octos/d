@@ -1,11 +1,4 @@
-dutyful
+=dutyful=
+tiny, dark engineless theme for GTK 2.0
 
-minimal, dark theme for GTK 2.0
-
-This theme pursues the following goals:
-- Small screen footprint
-- Dark colors:  black and shades of green
-- No theme engine required
-
-read:
 https://live.gnome.org/GnomeArt/Tutorials/GtkThemes
