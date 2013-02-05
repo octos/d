@@ -15,7 +15,7 @@ a="vim bash-completion ranger htop tmux aspell e3
 atool bzip2 unzip p7zip unrar
 profont ttf-freefont ttf-liberation ttf-dejavu"
 A="redshift-minimal google-translate ttf-dotsies"
-c="nmon iotop testdisk powertop ncdu colordiff fbgrab"
+c="nmon iotop testdisk powertop ncdu colordiff fbgrab arch-install-scripts"
 C="cdu cmospwd"
 e="antiword wyrd calcurse"
 m="alsa-utils abcde"
