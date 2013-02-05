@@ -3,7 +3,8 @@ ver="130202" #Installs my apps on fresh Arch.
 # install arch + login as root + pacman -Syu + execute: wget www.tiny.cc/freshy; chmod +x; freshy
 # upload to www.paste.ee and get to VM using wget
 # TODO: detect if VM/USB > vone/uone
-# have to be installed before executing: wget, vim (but rm vim dependency)
+# - have to be installed before executing: wget, vim (but rm vim dependency)
+# - remove `alsamixer`, raise volume in the background.
 # pacstrap -i for interactive. Default base + base-devel doesn't fit is > 900MB
 # ===== config =====
 user="kv"
