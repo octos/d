@@ -31,7 +31,7 @@ z="cowsay cmatrix bsd-games fortune-mod
 libcaca aalib"
 Z="screenfetch asciiquarium"
 # ===== pkgs (X) =====
-xa="xclip hsetroot gparted pcmanfm hardinfo"
+xa="xclip hsetroot gparted pcmanfm hardinfo cups cups-filters"
 xA="xarchiver"
 xc=""
 xC=""
