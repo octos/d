@@ -122,7 +122,7 @@ if [[ $1 == -apps ]]; then
 if [[ ! $EUID -ne 0 ]]; then 				#superuser?
   echo "Don't run as root!" 1>&2; exit 1; fi
   echo "WHAT DO YOU WANT TO INSTALL?"
-  sudo pacman -S --needed $all
+  sudo pacman -S --needed $All $xall $Xall
   exit
 fi
 
