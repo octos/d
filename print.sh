@@ -1,5 +1,5 @@
 #!/bin/sh
-ver="130205" #loads CUPS for printing. User must be allowed to passwordlessly execute systemctl (in visudo) for this to work.
+ver="130205" #toggles CUPS. To work, user must be allowed to passwordlessly execute systemctl (in visudo).
 r='\e[0;31m' g='\e[0;32m' x='\e[0m'
 
 cups=$(systemctl status cups cups-browsed | grep -c inactive)
