@@ -3,6 +3,7 @@ export HISTCONTROL="ignoredups"
 
 # org
 alias df='df -h'
+alias sudo='sudo '
 
 # app
 alias a='ranger'
