@@ -5,6 +5,7 @@ ver="130202" #Installs my apps on fresh Arch.
 # TODO: detect if VM/USB > vone/uone
 # - have to be installed before executing: wget, vim (but rm vim dependency)
 # - remove `alsamixer`, raise volume in the background.
+# - replace dwm's ~/z/ by custom ~/d/ from git.
 # pacstrap -i for interactive. Default base + base-devel doesn't fit is > 900MB
 # ===== config =====
 user="kv"
@@ -30,7 +31,7 @@ z="cowsay cmatrix bsd-games fortune-mod
 libcaca aalib"
 Z="screenfetch asciiquarium"
 # ===== pkgs (X) =====
-xa="xclip hsetroot gparted pcmanfm hardinfo"
+xa="xclip hsetroot gparted pcmanfm hardinfo cups cups-filters"
 xA="xarchiver"
 xc=""
 xC=""
