@@ -35,7 +35,7 @@ xa="xclip hsetroot gparted pcmanfm hardinfo cups cups-filters"
 xA="xarchiver"
 xc=""
 xC=""
-xe="zathura zathura-djvu zathura-ps
+xe="zathura zathura-pdf-poppler zathura-djvu zathura-ps
 libreoffice gnumeric abiword"
 xE="focuswriter"
 xm="xfburn
