@@ -1,6 +1,6 @@
 #!/bin/bash
 # updates xsetroot dwm when executed. is executed by ~/.xinitrc
-# used to use "stlarch" font by https://bbs.archlinux.org/viewtopic.php?pid=1096029#p1096029
+# once used "stlarch" font by https://bbs.archlinux.org/viewtopic.php?pid=1096029#p1096029
 mute=`amixer get Master | tail -1 | cut -d " " -f 8`
 red=`ps cax | grep redshift | grep -o '^[ ]*[0-9]*'`
 sound=`amixer get Master | tail -1 | sed 's/.*\[\([0-9]*%\)\].*/\1/'`
