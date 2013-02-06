@@ -51,6 +51,7 @@ static const Layout layouts[] = {
 /* I want to compile dwm from within itself */
 static const char *screensus[]  = { "xset", "dpms", "force", "suspend", NULL };
 static const char *screenoff[]  = { "xset", "dpms", "force", "off", NULL };
+static const char *print[] = { "/home/kv/d/print.sh",  NULL };
 static const char *redwm[] = { "/home/kv/d/redwm.sh",  NULL };
 static const char *gtrans[] = { "/home/kv/d/gtrans.sh",  NULL };
 static const char *colorgb[] = { "/home/kv/d/colorgb.sh",  NULL };
@@ -73,6 +74,7 @@ static const char *dmenucmd[] = { "dmenu_run", "-fn", font, "-nb", normbgcolor, 
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
+	{ MODKEY|ShiftMask,             XK_p,     spawn,          {.v = print }},
 	{ MODKEY|ShiftMask,             XK_r,     spawn,          {.v = redwm }},
 	{ MODKEY|ShiftMask,             XK_t,     spawn,          {.v = gtrans }},
 	{ MODKEY|ShiftMask,             XK_w,     spawn,          {.v = colorgb }},

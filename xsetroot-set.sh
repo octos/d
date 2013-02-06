@@ -5,8 +5,8 @@ mute=`amixer get Master | tail -1 | cut -d " " -f 8`
 red=`ps cax | grep redshift | grep -o '^[ ]*[0-9]*'`
 sound=`amixer get Master | tail -1 | sed 's/.*\[\([0-9]*%\)\].*/\1/'`
 mem=$(free -m |awk '/cache:/ { print $3"M" }')
-#MUTE="dunno"
-#echo $sound
+cups=$(systemctl status cups cups-browsed | grep -c inactive)
+
 case $sound in
     0%) sound=" 0%" ;;
     3%) sound=" 3%" ;;
@@ -17,6 +17,10 @@ esac
 case $mute in
     "[off]") MUTE="($sound)" ;;
     *) MUTE=" $sound " ;;
+esac
+case $cups in    #capital P: printing on, lower p: printing off
+    2) cups="p0";;
+    *) cups="P1";;
 esac
 
 setxkbmap -print | grep -q colemak
@@ -35,5 +39,5 @@ fi
 #else
 #    RED=""
 #fi
-xsetroot -name "$(echo "$kbd" "$MUTE" "$mem"; date +"%y%m%d-%u %R")"
+xsetroot -name "$(echo "$cups" "$kbd" "$MUTE" "$mem"; date +"%y%m%d-%u %R")"
 exit
