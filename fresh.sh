@@ -12,7 +12,7 @@ user="kv"
 hostname="kone"
 me=$(basename $0)
 
-# ===== pkgs (cli) ===== #capitals are AUR
+# ===== cli ===== #capitals are AUR
 a="vim bash-completion ranger htop tmux aspell e3 
 atool bzip2 unzip p7zip unrar
 profont ttf-freefont ttf-liberation ttf-dejavu"
@@ -30,26 +30,36 @@ v="dvdbackup"
 z="cowsay cmatrix bsd-games fortune-mod
 libcaca aalib"
 Z="screenfetch asciiquarium"
-# ===== pkgs (X) =====
-xa="xclip hsetroot gparted pcmanfm hardinfo cups cups-filters"
-xA="xarchiver"
-xc=""
-xC=""
-xe="zathura zathura-pdf-poppler zathura-djvu zathura-ps
-libreoffice gnumeric abiword"
-xE="focuswriter"
-xm="xfburn
-audacity lmms ardour jack hydrogen gtkpod"
-xM="rakarrack"
-xp="sxiv feh
-gimp darktable hugin inkscape mypaint"
-xP="xoris meh"
-xo=""
-xw="dwb surf firefox wicd"
-xv="mplayer2 kdenlive"
-xV="slowmovideo-git"
-xz=""
-xZ="wine rejoystick"
+# ===== X light =====
+la="xclip hsetroot gparted pcmanfm hardinfo cups cups-filters"
+lA="xarchiver"
+lc=""
+lC=""
+le="zathura zathura-pdf-poppler zathura-djvu zathura-ps"
+lE=""
+lm=""
+lM=""
+lp="sxiv feh"
+lP="xoris meh"
+lo=""
+lw="dwb surf wicd"
+lv="mplayer2 youtube-viewer"
+lV=""
+lz=""
+lZ=""
+# ===== X heavy =====
+he="libreoffice gnumeric abiword"
+hE="focuswriter"
+hm="audacity lmms ardour jack hydrogen gtkpod"
+hM="rakarrack"
+hp="gimp darktable hugin inkscape mypaint"
+hP=""
+ho=""
+hw="firefox"
+hv="kdenlive"
+hV="slowmovideo-git"
+hz=""
+hZ="wine rejoystick"
 
 # ===== don't touch =====
 r='\e[0;31m' g='\e[0;32m' x='\e[0m'
@@ -59,8 +69,10 @@ time=":: ${y}`date +%r`${x}" #shows time [:: ${y}`date +%r`${x}] => 12:59:59 PM
 base="$a $A $xa $xA"
 all="$a $c $e $m $o $p $w $v $z"
 ALL="$A $C $E $M $O $P $W $V $Z"
-xall="$xa $xc $xe $xm $xo $xp $xw $xv $xz"
-xALL="$xA $xC $xE $xM $xO $xP $xW $xV $xZ"
+lall="$la $lc $le $lm $lo $lp $lw $lv $lz"
+lALL="$lA $lC $lE $lM $lO $lP $lW $lV $lZ"
+hall="$ha $hc $he $hm $ho $hp $hw $hv $hz"
+hALL="$hA $hC $hE $hM $hO $hP $hW $hV $hZ"
 
 # ===== 0 ===== # general if's
 #exit upon error: http://www.davidpashley.com/articles/writing-robust-shell-scripts.html
@@ -123,8 +135,8 @@ if [[ $1 == -apps ]]; then
 if [[ ! $EUID -ne 0 ]]; then 				#superuser?
   echo "Don't run as root!" 1>&2; exit 1; fi
   echo "WHAT DO YOU WANT TO INSTALL?"
-  sudo pacman -S --needed $all $xall
-  yaourt -S $All $Xall
+  sudo pacman -S --needed $all $lall
+  yaourt -S $All $lAll
   exit
 fi
 
