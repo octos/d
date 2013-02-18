@@ -24,6 +24,7 @@ m="alsa-utils abcde"
 M="herrie podget"
 o="irssi bitlbee mutt"
 p="fbv optipng imagemagick ghostscript librsvg jasper"
+P="pngquant"
 w="wget curl axel w3m links lynx elinks rtorrent newsbeuter
 vnstat aircrack-ng tcpdump nmap"
 v="dvdbackup"
