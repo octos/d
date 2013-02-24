@@ -84,7 +84,8 @@ static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY|ShiftMask,             XK_p,     spawn,          {.v = print }},
 // layouts
-	{ MODKEY,                       XK_F9,    spawn,          {.v = us } }, //universal revert to latin
+	{ MODKEY,                       XK_F9,    spawn,          {.v = us } }, //universal revert to latn
+	{ MODKEY,                       XK_F9,    spawn,          {.v = xinit } },
 	{ MODKEY|ShiftMask,             XK_g,     spawn,          {.v = el }},
 	{ MODKEY|ShiftMask,             XK_g,     spawn,          {.v = xinit }},
 	{ MODKEY|ShiftMask,             XK_c,     spawn,          {.v = ru }},
