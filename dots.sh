@@ -4,7 +4,7 @@
 
 dir=~/d                    # dotfiles dir
 olddir=~/d_old             # old dotfiles backup dir
-files="bashrc bash_profile Xdefaults xinitrc mplayer themes"    # list of files/folders to symlink in homedir
+files="bashrc bash_profile Xdefaults xinitrc config mplayer themes"    # list of files/folders to symlink in homedir
 
 echo "mkdir: $olddir (for backup of existing dotfiles in ~)"
 mkdir -p $olddir
