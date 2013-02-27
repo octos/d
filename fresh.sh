@@ -138,9 +138,9 @@ if [[ ! $EUID -ne 0 ]]; then   			#superuser?
   echo -e "\nnow time for dwm!\n"
   sudo pacman -S --needed abs dmenu dunst libnotify unclutter slock rxvt-unicode xterm
   sudo abs community/dwm
-  mkdir ~/z/
-  cp -r /var/abs/community/dwm ~/z/dwm
-  cd ~/z/dwm  
+  mkdir -p ~/d/dwm
+  cp -r /var/abs/community/dwm ~/d/dwm
+  cd ~/d/dwm  
   makepkg -i
   echo "if octos/d not set up, do:"
   echo "echo "exec dwm" >> ~/.xinitrc"
