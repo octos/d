@@ -19,7 +19,7 @@ set encoding=utf-8
 
 " my own
 syntax on
-colorscheme mustang
+" colorscheme mustang
 
 " ab settings
 set tabstop=4
