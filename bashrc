@@ -1,6 +1,8 @@
 # dupeless history
 export HISTCONTROL="ignoredups"
 #export PATH=$PATH:/usr/sbin/:/usr/local/bin:/home/kv/.gem/ruby/1.9.1/bin
+export EDITOR=vim
+export PAGER=less
 
 # org
 alias df='df -h'
