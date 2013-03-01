@@ -15,7 +15,7 @@ me=$(basename $0)
 a="vim bash-completion ranger htop tmux aspell e3 
 atool bzip2 unzip p7zip unrar highlight
 profont ttf-freefont ttf-liberation ttf-dejavu"
-A="redshift-minimal google-translate ttf-dotsies"
+A="redshift-minimal google-translate ttf-dotsies otf-ipafont ttf-tibetan-machine"
 c="nmon iotop testdisk powertop ncdu colordiff fbgrab arch-install-scripts"
 C="cdu cmospwd"
 e="antiword wyrd calcurse"
@@ -50,6 +50,7 @@ hw="firefox"
 hv="kdenlive"
 hV="slowmovideo-git"
 hZ="wine rejoystick"
+ugly="flashplugin "
 
 # ===== don't touch =====
 r='\e[0;31m' g='\e[0;32m' x='\e[0m' R='\e[1;31m' G='\e[1;32m' ok="\t${G}OK${x} "
