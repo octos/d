@@ -15,7 +15,7 @@ me=$(basename $0)
 a="vim bash-completion ranger htop tmux aspell e3 
 atool bzip2 unzip p7zip unrar highlight
 profont ttf-freefont ttf-liberation ttf-dejavu"
-A="redshift-minimal google-translate ttf-dotsies otf-ipafont ttf-tibetan-machine"
+A="redshift-minimal google-translate ttf-dotsies otf-ipafont ttf-tibetan-machine xorg-xfontsel"
 c="nmon iotop testdisk powertop ncdu colordiff fbgrab arch-install-scripts"
 C="cdu cmospwd"
 e="antiword wyrd calcurse"
