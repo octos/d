@@ -84,7 +84,7 @@ if [[ $1 == -z ]]; then
   if [[ $1 == -install ]]; then
   if [[ $EUID -ne 0 ]]; then 				#superuser?
    echo "Run as root!" 1>&2; exit 1; fi
-  vim /etc/locale.gen
+  vim +154 /etc/locale.gen
   locale-gen
   echo LANG=en_US.UTF-8 > /etc/locale.conf
   export LANG=en_US.UTF-8
@@ -98,7 +98,7 @@ if [[ $1 == -z ]]; then
   passwd $user
   pacman -S --needed syslinux sudo bash-completion dialog wpa_supplicant vim
   syslinux-install_update -i -a -m
-  vim /boot/syslinux/syslinux.cfg
+  vim +53 /boot/syslinux/syslinux.cfg
   visudo
   echo "blacklist pcspkr" > /etc/modprobe.d/nobeeep.conf
   pacman -S alsa-utils
