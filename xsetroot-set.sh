@@ -19,13 +19,16 @@ case $cups in
 esac
 
 case $kbdsimple in
-    *colemak*) kbd="clmk" ;;
-    *+us*) kbd="latn" ;;
-    *+ru*) kbd="cyrl" ;;
-    *+gr*) kbd="grek" ;;
-    *+ge*) kbd="geor" ;;
+    *+am*) kbd="armn" ;;
+   *+ara*) kbd="arab" ;;
     *+ca*) kbd="cans" ;;
+    *chr*) kbd="cher" ;;
+    *+ru*) kbd="cyrl" ;;
+    *+ge*) kbd="geor" ;;
+    *+gr*) kbd="grek" ;;
+*colemak*) kbd="clmk" ;;
+    *+us*) kbd="latn" ;;
+        *) kbd="????" ;;
 esac
 
 xsetroot -name "$(echo "$cups""$kbd" "$MUTE" "$mem"; date +"%y%m%d-%u %R")"
-

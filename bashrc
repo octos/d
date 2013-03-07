@@ -25,13 +25,12 @@ alias scgt='d/killifrunning.sh rejoystick; rejoystick -d; cd .wine/drive_c/Progr
 alias R='sudo pacman -R'
 alias S='sudo pacman -S --needed --noconfirm'
 alias s='yaourt'
-alias U='sudo pacman -Syyu; exit'
+alias U='sudo pacman -Syyu'
 
 # sys
 alias Q='systemctl hibernate'
 alias W='systemctl suspend'
 alias Z='systemctl poweroff'
 alias ZZ='systemctl reboot'
-
 
 alias t='google-translate da en'

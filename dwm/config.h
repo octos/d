@@ -47,12 +47,17 @@ static const Layout layouts[] = {
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */ 
-static const char *clmk[]  = { "setxkbmap", "us", "-variant", "colemak", NULL };
-static const char *us[]  = { "setxkbmap", "us", "-variant", "altgr-intl", NULL };
-static const char *ru[]  = { "setxkbmap", "ru", "-variant", "phonetic", NULL };
+static const char *kbdlayout[]  = { "/home/kv/d/layout.sh", NULL };
+static const char *ar[]  = { "setxkbmap", "ara", "buckwalter", NULL };
+static const char *chr[] = { "setxkbmap", "us", "chr", NULL };
 static const char *el[]  = { "setxkbmap", "gr", NULL };
-static const char *ka[]  = { "setxkbmap", "ge", NULL };
+static const char *he[]  = { "setxkbmap", "am", "eastern", NULL };
+static const char *hy[]  = { "setxkbmap", "am", "eastern", NULL };
 static const char *iu[]  = { "setxkbmap", "iu", NULL };
+static const char *ka[]  = { "setxkbmap", "ge", NULL };
+static const char *ru[]  = { "setxkbmap", "ru", "phonetic", NULL };
+static const char *clmk[]= { "setxkbmap", "us", "colemak", NULL };
+static const char *us[]  = { "setxkbmap", "us", "altgr-intl", NULL };
 static const char *screensus[]  = { "xset", "dpms", "force", "suspend", NULL };
 static const char *screenoff[]  = { "xset", "dpms", "force", "off", NULL };
 static const char *suspend[]  = { "systemctl", "suspend", NULL };
@@ -83,6 +88,8 @@ static Key keys[] = {
 // layouts
 	{ MODKEY,                       XK_F9,    spawn,          {.v = us } }, //universal revert to latn
 	{ MODKEY,                       XK_F9,    spawn,          {.v = bar } },
+	{ MODKEY|ShiftMask,             XK_a,     spawn,          {.v = ar }},
+	{ MODKEY|ShiftMask,             XK_a,     spawn,          {.v = bar }},
 	{ MODKEY|ShiftMask,             XK_g,     spawn,          {.v = el }},
 	{ MODKEY|ShiftMask,             XK_g,     spawn,          {.v = bar }},
 	{ MODKEY|ShiftMask,             XK_c,     spawn,          {.v = ru }},
@@ -91,8 +98,12 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_k,     spawn,          {.v = bar }},
 	{ MODKEY|ShiftMask,             XK_m,     spawn,          {.v = ka }},
 	{ MODKEY|ShiftMask,             XK_m,     spawn,          {.v = bar }},
-	{ MODKEY|ShiftMask,             XK_u,     spawn,          {.v = iu }},
-	{ MODKEY|ShiftMask,             XK_u,     spawn,          {.v = bar }},
+	{ MODKEY|ShiftMask,             XK_q,     spawn,          {.v = chr }},
+	{ MODKEY|ShiftMask,             XK_q,     spawn,          {.v = bar }},
+	{ MODKEY|ShiftMask,             XK_s,     spawn,          {.v = iu }},
+	{ MODKEY|ShiftMask,             XK_s,     spawn,          {.v = bar }},
+	{ MODKEY|ShiftMask,             XK_y,     spawn,          {.v = hy }},
+	{ MODKEY|ShiftMask,             XK_y,     spawn,          {.v = bar }},
 	{ MODKEY|ShiftMask, /* clmk */  XK_i,     spawn,          {.v = us }},
 	{ MODKEY|ShiftMask,             XK_i,     spawn,          {.v = bar }},
 	{ MODKEY|ShiftMask, XK_Cyrillic_ka,       spawn,          {.v = clmk }},
@@ -111,12 +122,15 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask, XK_Georgian_las,      spawn,          {.v = bar }},
 	{ MODKEY|ShiftMask, XK_Georgian_can,      spawn,          {.v = ru }},
 	{ MODKEY|ShiftMask, XK_Georgian_can,      spawn,          {.v = bar }},
+	{ MODKEY|ShiftMask,             XK_z,     spawn,          {.v = kbdlayout }},
 	{ MODKEY|ShiftMask,             XK_r,     spawn,          {.v = redwm }},
 	{ MODKEY|ShiftMask,             XK_t,     spawn,          {.v = gtrans }},
 	{ MODKEY|ShiftMask,             XK_w,     spawn,          {.v = colorgb }},
 	{ MODKEY,          /* f-keys */ XK_Escape,spawn,          {.v = us } },
-	{ MODKEY,                       XK_Escape,spawn,          {.v = slock } },
 	{ MODKEY,                       XK_Escape,spawn,          {.v = suspend } },
+	{ MODKEY|ShiftMask,             XK_Escape,spawn,          {.v = us } },
+	{ MODKEY|ShiftMask,             XK_Escape,spawn,          {.v = slock } },
+	{ MODKEY|ShiftMask,             XK_Escape,spawn,          {.v = suspend } },
 	{ MODKEY,                       XK_F1,     spawn,        {.v = screensus } }, 
 	{ MODKEY,                       XK_F2,     spawn,        {.v = screenoff } }, 
 //	{ MODKEY,                       XK_F1,     spawn,          SHCMD("xset dpms force suspend") }, 
@@ -177,7 +191,7 @@ static Key keys[] = {
 	TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
-	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+	{ MODKEY|ShiftMask|ControlMask,             XK_q,      quit,           {0} },
 };
 
 /* button definitions */
