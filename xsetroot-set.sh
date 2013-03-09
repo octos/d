@@ -4,7 +4,6 @@
 #red=`ps cax | grep redshift | grep -o '^[ ]*[0-9]*'`
 mute=`amixer get Master | tail -1 | cut -d " " -f 8`
 sound=`amixer get Master | tail -1 | sed 's/.*\[\([0-9]*%\)\].*/\1/'`
-mem=$(free -m |awk '/cache:/ { print $3"M" }')
 cups=$(systemctl status cups cups-browsed | grep -c inactive)
 #kbd=$(setxkbmap -print | grep symbols | cut -d ' ' -f 6 | sed --n 's/([^()]*)//g' | sed 's/[^"]*+\([^"]*\)+[^"]*/\1 /g' | sed 's/ *\t.*//')
 kbdsimple=$(setxkbmap -print | grep symbols) 
