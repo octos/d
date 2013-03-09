@@ -11,7 +11,7 @@ kbdsimple=$(setxkbmap -print | grep symbols)
 
 case $mute in
     "[off]") MUTE="($sound)" ;;
-    *) MUTE=" $sound " ;;
+    *) MUTE="$sound" ;;
 esac
 case $cups in 
     2) cups="";;
@@ -19,16 +19,17 @@ case $cups in
 esac
 
 case $kbdsimple in
-    *+am*) kbd="armn" ;;
-   *+ara*) kbd="arab" ;;
-    *+ca*) kbd="cans" ;;
-    *chr*) kbd="cher" ;;
-    *+ru*) kbd="cyrl" ;;
-    *+ge*) kbd="geor" ;;
-    *+gr*) kbd="grek" ;;
-*colemak*) kbd="clmk" ;;
-    *+us*) kbd="latn" ;;
+    *+am*) kbd="Armn" ;;
+   *+ara*) kbd="Arab" ;;
+    *+ca*) kbd="Cans" ;;
+    *chr*) kbd="Cher" ;;
+    *+ru*) kbd="Cyrl" ;;
+    *+ge*) kbd="Geor" ;;
+    *+gr*) kbd="Grek" ;;
+    *+il*) kbd="Hebr" ;;
+*colemak*) kbd="Clmk" ;;
+    *+us*) kbd=""     ;;
         *) kbd="????" ;;
 esac
 
-xsetroot -name "$(echo "$cups""$kbd" "$MUTE" "$mem"; date +"%y%m%d-%u %R")"
+xsetroot -name "$(echo "$cups""$kbd" "$MUTE"; date +"%y%m%d %R")"
