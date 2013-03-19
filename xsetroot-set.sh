@@ -1,6 +1,6 @@
 #!/bin/bash
 # updates xsetroot, is executed by .xinitrc and dwm
-mute=`amixer get Master | tail -1 | cut -d " " -f 8`
+mute=`amixer get Master | tail -1 | awk '{print $NF}'`
 vol=`amixer get Master | tail -1 | sed 's/.*\[\([0-9]*%\)\].*/\1/' | sed 's/%//'`
 cups=$(systemctl status cups cups-browsed | grep -c inactive)
 kbd=$(setxkbmap -print | grep symbols) 
