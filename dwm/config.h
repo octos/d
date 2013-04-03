@@ -47,19 +47,22 @@ static const Layout layouts[] = {
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */ 
+static const char term[]  = "urxvtc";
 static const char *kbdlayout[]  = { "/home/kv/d/layout.sh", NULL };
 static const char *ar[]  = { "setxkbmap", "ara", "buckwalter", NULL };
 static const char *chr[] = { "setxkbmap", "us", "chr", NULL };
 static const char *el[]  = { "setxkbmap", "gr", NULL };
-static const char *he[]  = { "setxkbmap", "am", "eastern", NULL };
+static const char *he[]  = { "setxkbmap", "il", "phonetic", NULL };
 static const char *hy[]  = { "setxkbmap", "am", "eastern", NULL };
 static const char *iu[]  = { "setxkbmap", "iu", NULL };
 static const char *ka[]  = { "setxkbmap", "ge", NULL };
 static const char *ru[]  = { "setxkbmap", "ru", "phonetic", NULL };
 static const char *clmk[]= { "setxkbmap", "us", "colemak", NULL };
 static const char *us[]  = { "setxkbmap", "us", "altgr-intl", NULL };
+static const char *pomo[]  = { "/home/kv/d/pomi.sh", NULL };
 static const char *screensus[]  = { "xset", "dpms", "force", "suspend", NULL };
-static const char *screenoff[]  = { "xset", "dpms", "force", "off", NULL };
+//static const char *screenoff[]  = { "xset", "dpms", "force", "off", NULL };
+static const char *screenoff[]  = { "/home/kv/d/monoff.sh", NULL };
 static const char *suspend[]  = { "systemctl", "suspend", NULL };
 static const char *print[] = { "/home/kv/d/print.sh",  NULL };
 static const char *redwm[] = { "/home/kv/d/dwm/redwm.sh",  NULL };
@@ -67,33 +70,34 @@ static const char *gtrans[] = { "/home/kv/d/gtrans.sh",  NULL };
 static const char *colorgb[] = { "/home/kv/d/colorgb.sh",  NULL };
 static const char *slock[]  = { "slock", NULL };
 static const char *dwb[]  = { "dwb", NULL };
-static const char *yt[]  = { "urxvtc", "-e", "youtube-viewer", "-C", NULL };
-static const char *htop[]  = { "urxvtc", "-e", "htop", NULL };
-static const char *irssi[]  = { "urxvtc", "-e", "irssi", NULL };
-static const char *mutt[]  = { "urxvtc", "-e", "mutt", NULL };
-static const char *ranger[]  = { "urxvtc", "-e", "ranger", NULL };
-static const char *vim[]  = { "urxvtc", "-e", "vim", NULL };
+static const char *yt[]  = { term, "-e", "youtube-viewer", "-C", NULL };
+static const char *htop[]  = { term, "-e", "htop", NULL };
+static const char *irssi[]  = { term, "-e", "irssi", NULL };
+static const char *mutt[]  = { term, "-e", "mutt", NULL };
+static const char *ranger[]  = { term, "-e", "ranger", NULL };
+static const char *vim[]  = { term, "-e", "vim", NULL };
 static const char *vol0[]  = { "amixer", "-q", "set", "Master", "toggle",  NULL };
-static const char *vol1[] = { "amixer", "-q", "set", "Master", "2dB-",  NULL };
-static const char *vol2[]  = { "amixer", "-q", "set", "Master", "2dB+",  NULL };
+static const char *vol1[] = { "amixer", "-q", "set", "Master", "5dB-",  NULL };
+static const char *vol2[]  = { "amixer", "-q", "set", "Master", "5dB+",  NULL };
 static const char *dunst[] = { "/home/kv/d/dunst-set.sh",  NULL };
 static const char *toggle[] = { "/home/kv/d/toggle.sh", "redshift", "-l", "45.424807:-75.699234", NULL };
 static const char *bar[] = { "/home/kv/d/xsetroot-set.sh",  NULL };
-static const char *termcmd[]  = { "urxvtc", NULL };
+static const char *termcmd[]  = { term, NULL };
 static const char *dmenucmd[] = { "dmenu_run", "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
-
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY|ShiftMask,             XK_p,     spawn,          {.v = print }},
 // layouts
-	{ MODKEY,                       XK_F9,    spawn,          {.v = us } }, //universal revert to latn
-	{ MODKEY,                       XK_F9,    spawn,          {.v = bar } },
+	{ MODKEY|ShiftMask,             XK_F12,   spawn,          {.v = us } }, //universal revert to latn
+	{ MODKEY|ShiftMask,             XK_F12,   spawn,          {.v = bar } },
 	{ MODKEY|ShiftMask,             XK_a,     spawn,          {.v = ar }},
 	{ MODKEY|ShiftMask,             XK_a,     spawn,          {.v = bar }},
 	{ MODKEY|ShiftMask,             XK_g,     spawn,          {.v = el }},
 	{ MODKEY|ShiftMask,             XK_g,     spawn,          {.v = bar }},
 	{ MODKEY|ShiftMask,             XK_c,     spawn,          {.v = ru }},
 	{ MODKEY|ShiftMask,             XK_c,     spawn,          {.v = bar }},
+	{ MODKEY|ShiftMask,             XK_h,     spawn,          {.v = he }},
+	{ MODKEY|ShiftMask,             XK_h,     spawn,          {.v = bar }},
 	{ MODKEY|ShiftMask,             XK_k,     spawn,          {.v = clmk }},
 	{ MODKEY|ShiftMask,             XK_k,     spawn,          {.v = bar }},
 	{ MODKEY|ShiftMask,             XK_m,     spawn,          {.v = ka }},
@@ -131,9 +135,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_Escape,spawn,          {.v = us } },
 	{ MODKEY|ShiftMask,             XK_Escape,spawn,          {.v = slock } },
 	{ MODKEY|ShiftMask,             XK_Escape,spawn,          {.v = suspend } },
-	{ MODKEY,                       XK_F1,     spawn,        {.v = screensus } }, 
-	{ MODKEY,                       XK_F2,     spawn,        {.v = screenoff } }, 
-//	{ MODKEY,                       XK_F1,     spawn,          SHCMD("xset dpms force suspend") }, 
+	{ MODKEY|ShiftMask,             XK_F1,     spawn,         {.v = pomo } },
 	{ MODKEY|ShiftMask,             XK_F3,     spawn,          SHCMD("import -window root \"$(date +%y%m%d-%H%M%S)\"_full.png") },
 	{ MODKEY|ShiftMask,             XK_F4,     spawn,          SHCMD("import \"$(date +%y%m%d-%H%M%S)\"_slct.png") },
 	{ MODKEY,                       XK_F5,     spawn,          {.v = toggle } },
