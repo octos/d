@@ -6,7 +6,7 @@ cups=$(systemctl status cups cups-browsed | grep -c inactive)
 
 if [[ $cups == 2 ]]; then
   echo -e "${g}starting${x} cups cups-browsed.."
-  systemctl start cups cups-browsed
+  sudo systemctl start cups cups-browsed
   dwb localhost:631
 else
   echo -e "${r}stopping${x} cups cups-browsed.."

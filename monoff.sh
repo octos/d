@@ -1,2 +1,2 @@
-#!/bin/bash
-sleep 0.2; xset dpms force off
+#!/bin/sh
+sleep 0.5; xset dpms force off

@@ -1,11 +1,15 @@
 # dupeless history
 export HISTCONTROL="ignoredups"
-#export PATH=$PATH:/usr/sbin/:/usr/local/bin:/home/kv/.gem/ruby/1.9.1/bin
+export HISTSIZE=4000
+export PATH=$PATH:/usr/sbin/:/usr/local/bin:/home/kv/.gem/ruby/1.9.1/bin
 export EDITOR=vim
 export PAGER=less
+export FONT="-*-profont-*-*-*-*-11-*-*-*-*-*-*-*"
 
 # org
 alias df='df -h'
+alias ls='ls --color=always'
+alias grep='grep --color=always'
 alias sudo='sudo '
 
 # app
@@ -20,6 +24,7 @@ alias qqq='setxkbmap us -variant altgr-intl; d/xsetroot-set.sh'
 alias res='xrandr --output VGA1 --mode 1680x1050'
 alias redwm='cd ~/d/dwm; makepkg -g >> PKGBUILD; makepkg -efi --noconfirm; cd'
 alias scgt='d/killifrunning.sh rejoystick; rejoystick -d; cd .wine/drive_c/Program\ Files/SCGTmini/; wine Spcar.exe'
+alias sto='~/sto.sh'
 
 # pkg
 alias R='sudo pacman -R'

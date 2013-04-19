@@ -9,6 +9,7 @@ vo=xv           #fixes libvdpau_nvidia.so error
 ao=alsa 
 dvd-device=/dev/sr0   # use: mplayer dvd:// OR dvdnav:// -nocache --mouse-movement for menus
 cdrom-device=/dev/sr0 # use: mplayer cdda://
+nojoystick=1
 
 # NOTES
 # mplayer dvdnav:// -dvd-device ~/dvd.iso (play iso)

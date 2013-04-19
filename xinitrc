@@ -1,6 +1,6 @@
 while true; do
-   d/xsetroot-set.sh
-   sleep 1m    # update every 1m
+  d/xsetroot-set.sh
+  sleep 30s    # update every 30s
 done &
 
 xset +fp /usr/share/fonts/local
@@ -12,5 +12,5 @@ urxvtd &
 xset r rate 260 50
 setxkbmap us -variant altgr-intl
 
-exec dwm
-#d/startdwm  #refreshable dwm
+#exec dwm
+d/startdwm  #refreshable dwm

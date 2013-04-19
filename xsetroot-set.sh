@@ -16,17 +16,17 @@ case $cups in
 esac
 
 case $kbd in
-    *+am*) kbd="Armn" ;;
-   *+ara*) kbd="Arab" ;;
-    *+ca*) kbd="Cans" ;;
-    *chr*) kbd="Cher" ;;
-    *+ru*) kbd="Cyrl" ;;
-    *+ge*) kbd="Geor" ;;
-    *+gr*) kbd="Grek" ;;
-    *+il*) kbd="Hebr" ;;
-*colemak*) kbd="Clmk" ;;
-    *+us*) kbd=""     ;;
-        *) kbd="kbd?" ;;
+    *+am*) kbd="Armn " ;;
+   *+ara*) kbd="Arab " ;;
+    *+ca*) kbd="Cans " ;;
+    *chr*) kbd="Cher " ;;
+    *+ru*) kbd="Cyrl " ;;
+    *+ge*) kbd="Geor " ;;
+    *+gr*) kbd="Grek " ;;
+    *+il*) kbd="Hebr " ;;
+*colemak*) kbd="Clmk " ;;
+    *+us*) kbd=""      ;;
+        *) kbd="kbd? " ;;
 esac
 
-xsetroot -name "$(echo "$pomi""$cups""$kbd" "$sound"; date +"%y%m%d %R")"
+xsetroot -name "$(echo "$cups""$kbd""$pomi""$sound"; date +"%y%m%d %R")"
