@@ -1,3 +1,5 @@
+. ~/d/bash_private # source my private variables
+
 # dupeless history
 export HISTCONTROL="ignoredups"
 export HISTSIZE=4000
@@ -15,9 +17,12 @@ alias sudo='sudo '
 # app
 alias a='ranger'
 alias A='sudo ranger'
+alias m='mplayer'
+alias p='sxiv'
 alias y='youtube-viewer -C'
 alias v='vim'
 alias V='sudo vim'
+alias x='mutt'
 alias h='history | grep $@'
 alias ccc='setxkbmap us -variant colemak; d/xsetroot-set.sh'
 alias qqq='setxkbmap us -variant altgr-intl; d/xsetroot-set.sh'
@@ -28,14 +33,12 @@ alias sto='~/sto.sh'
 
 # pkg
 alias R='sudo pacman -R'
-alias S='sudo pacman -S --needed --noconfirm'
+alias S='sudo pacman -S --color=always --needed --noconfirm'
 alias s='yaourt'
-alias U='sudo pacman -Syyu'
+alias U='sudo pacman --color=always -Syyu'
 
 # sys
 alias Q='systemctl hibernate'
 alias W='systemctl suspend'
-alias Z='systemctl poweroff'
-alias ZZ='systemctl reboot'
-
-alias t='google-translate da en'
+alias Z='systemctl reboot'
+alias ZZ='systemctl poweroff'
