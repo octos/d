@@ -84,6 +84,7 @@ static const char *toggle[] = { "/home/kv/d/toggle.sh", "redshift", "-l", "45.42
 static const char *bar[] = { "/home/kv/d/xsetroot-set.sh",  NULL };
 static const char *termcmd[]  = { term, NULL };
 static const char *dmenucmd[] = { "dmenu_run", "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
+static const char *interrobang[] = { "interrobang", NULL };
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY|ShiftMask,             XK_p,     spawn,          {.v = print }},
@@ -135,6 +136,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_Escape,spawn,          {.v = us } },
 	{ MODKEY|ShiftMask,             XK_Escape,spawn,          {.v = slock } },
 	{ MODKEY|ShiftMask,             XK_Escape,spawn,          {.v = suspend } },
+	{ MODKEY,                       XK_F1,     spawn,         {.v = screenoff } },
 	{ MODKEY|ShiftMask,             XK_F1,     spawn,         {.v = pomo } },
 	{ MODKEY|ShiftMask,             XK_F3,     spawn,          SHCMD("import -window root \"$(date +%y%m%d-%H%M%S)\"_full.png") },
 	{ MODKEY|ShiftMask,             XK_F4,     spawn,          SHCMD("import \"$(date +%y%m%d-%H%M%S)\"_slct.png") },
@@ -151,10 +153,10 @@ static Key keys[] = {
 	{ MODKEY,                       XK_c,      spawn,          {.v = irssi } },
 	{ MODKEY,                       XK_v,      spawn,          {.v = vim } },
 	{ MODKEY,                       XK_w,      spawn,          {.v = dwb } },
-	{ MODKEY,                       XK_x,      spawn,          {.v = htop } },
+	{ MODKEY,                       XK_x,      spawn,          {.v = mutt } },
 	{ MODKEY,                       XK_y,      spawn,          {.v = yt } },
-	{ MODKEY,                       XK_z,      spawn,          {.v = mutt } },
-        { MODKEY,       /* colmk */ XK_semicolon,      spawn,  {.v = dmenucmd } },
+	{ MODKEY,                       XK_z,      spawn,          {.v = htop } },
+        { MODKEY,       /* colmk */ XK_semicolon,      spawn,  {.v = interrobang } },
     	{ MODKEY,                   XK_n,      focusstack,     {.i = +1 } },
 	    { MODKEY,                   XK_e,      focusstack,     {.i = -1 } },
 	    { MODKEY,                   XK_u,      incnmaster,     {.i = +1 } },
