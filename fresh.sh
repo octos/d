@@ -27,9 +27,9 @@ P="pngquant"
 w="wget curl axel w3m links lynx elinks rtorrent newsbeuter
 vnstat aircrack-ng tcpdump nmap"
 v="dvdbackup"
-z="cowsay cmatrix bsd-games fortune-mod
+z="cowsay cmatrix bsd-games fortune-mod screenfetch
 libcaca aalib"
-Z="screenfetch asciiquarium"
+Z="nyancat asciiquarium"
 # ===== X light =====
 la="xclip hsetroot gparted pcmanfm hardinfo cups cups-filters cups-pdf"
 lA="xarchiver"
