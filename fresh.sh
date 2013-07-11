@@ -4,7 +4,6 @@ ver="130202" #Installs my apps on fresh Arch.
 # upload to www.paste.ee and get to VM using wget
 # TODO: detect if VM/USB > vone/uone
 # - have to be installed before executing: wget, vim (but rm vim dependency)
-# - remove `alsamixer`, raise volume in the background.
 # pacstrap -i for interactive. Default base + base-devel doesn't fit is > 900MB
 # ===== config =====
 user="kv"
@@ -27,7 +26,7 @@ P="pngquant"
 w="wget curl axel w3m links lynx elinks rtorrent newsbeuter
 vnstat aircrack-ng tcpdump nmap"
 v="dvdbackup"
-z="cowsay cmatrix bsd-games fortune-mod screenfetch
+z="cowsay cmatrix bsd-games fortune-mod screenfetch tbclock typespeed
 libcaca aalib"
 Z="nyancat asciiquarium"
 # ===== X light =====
@@ -37,7 +36,7 @@ le="zathura zathura-pdf-poppler zathura-djvu zathura-ps"
 lp="sxiv feh"
 lP="xoris meh"
 lw="dwb surf wicd"
-lv="mplayer2 youtube-viewer"
+lv="mplayer2 mplayer-resumer youtube-viewer"
 lV="gcap"
 # ===== X heavy =====
 he="libreoffice gnumeric abiword"
@@ -102,7 +101,7 @@ if [[ $1 == -z ]]; then
   visudo
   echo "blacklist pcspkr" > /etc/modprobe.d/nobeeep.conf
   pacman -S alsa-utils
-  alsamixer
+  amixer sset Master unmute
   mv ${0} /home/$user/$me
   echo -e "\nbeep disabled: done!" 
   echo -e "[archlinuxfr]\nServer = http://repo.archlinux.fr/\$arch" >> /etc/pacman.conf; pacman -Sy yaourt
