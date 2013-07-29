@@ -15,9 +15,9 @@ a="vim bash-completion ranger htop tmux aspell e3
 atool bzip2 unzip p7zip unrar highlight
 profont ttf-freefont ttf-liberation ttf-dejavu"
 A="redshift-minimal google-translate ttf-dotsies otf-ipafont ttf-tibetan-machine xorg-xfontsel"
-c="nmon iotop testdisk powertop ncdu colordiff fbgrab arch-install-scripts"
+c="nmon iotop testdisk powertop ncdu colordiff fbgrab arch-install-scripts mdf2iso"
 C="cdu cmospwd photorecover"
-e="antiword pandoc wyrd calcurse"
+e="antiword pandoc unrtf wyrd calcurse"
 m="alsa-utils abcde mp3gain"
 M="herrie podget"
 o="irssi bitlbee mutt abook"
