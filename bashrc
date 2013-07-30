@@ -13,6 +13,7 @@ alias df='df -h'
 alias ls='ls --color=always'
 alias grep='grep --color=always'
 alias sudo='sudo '
+alias vless='vim -u /usr/share/vim/vim7*/macros/less.vim'
 
 # app
 alias a='ranger'
@@ -35,7 +36,7 @@ alias sto='~/sto.sh'
 # pkg
 alias R='sudo pacman -R'
 alias S='sudo pacman -S --color=always --needed --noconfirm'
-alias s='yaourt'
+alias s='yaourt --noconfirm'
 alias U='sudo pacman --color=always -Syyu'
 
 # sys
