@@ -4,7 +4,6 @@ ver="130202" #Installs my apps on fresh Arch.
 # upload to www.paste.ee and get to VM using wget
 # TODO: detect if VM/USB > vone/uone
 # - have to be installed before executing: wget, vim (but rm vim dependency)
-# - remove `alsamixer`, raise volume in the background.
 # pacstrap -i for interactive. Default base + base-devel doesn't fit is > 900MB
 # ===== config =====
 user="kv"
@@ -16,32 +15,32 @@ a="vim bash-completion ranger htop tmux aspell e3
 atool bzip2 unzip p7zip unrar highlight
 profont ttf-freefont ttf-liberation ttf-dejavu"
 A="redshift-minimal google-translate ttf-dotsies otf-ipafont ttf-tibetan-machine xorg-xfontsel"
-c="nmon iotop testdisk powertop ncdu colordiff fbgrab arch-install-scripts"
+c="nmon iotop testdisk powertop ncdu colordiff fbgrab arch-install-scripts mdf2iso"
 C="cdu cmospwd photorecover"
-e="antiword pandoc wyrd calcurse"
+e="txt2tags antiword pandoc catdoc wyrd calcurse"
 m="alsa-utils abcde mp3gain"
-M="herrie podget"
+#M="herrie podget"
 o="irssi bitlbee mutt abook"
 p="fbv optipng imagemagick ghostscript librsvg jasper"
 P="pngquant"
 w="wget curl axel w3m links lynx elinks rtorrent newsbeuter
 vnstat aircrack-ng tcpdump nmap"
+W="esniper"
 v="dvdbackup"
-z="cowsay cmatrix bsd-games fortune-mod
+z="cowsay cmatrix bsd-games fortune-mod screenfetch tbclock typespeed
 libcaca aalib"
-Z="screenfetch asciiquarium"
+Z="nyancat asciiquarium"
 # ===== X light =====
 la="xclip hsetroot gparted pcmanfm hardinfo cups cups-filters cups-pdf"
-lA="xarchiver"
+#lA="xarchiver"
 le="zathura zathura-pdf-poppler zathura-djvu zathura-ps"
 lp="sxiv feh"
-lP="xoris meh"
+#lP="xoris meh"
 lw="dwb surf wicd"
-lv="mplayer2 youtube-viewer"
+lv="mplayer2 mplayer-resumer youtube-viewer"
 lV="gcap"
 # ===== X heavy =====
 he="libreoffice gnumeric abiword"
-hE="focuswriter"
 hm="audacity lmms ardour jack hydrogen gtkpod"
 hM="rakarrack"
 ho="scantailor"
@@ -49,8 +48,8 @@ hp="gimp darktable hugin inkscape mypaint"
 hw="firefox"
 hv="kdenlive"
 hV="slowmovideo-git"
-hZ="wine rejoystick"
-ugly="flashplugin "
+hZ="win rejoystick"
+ugly="flashplugin"
 
 # ===== don't touch =====
 r='\e[0;31m' g='\e[0;32m' x='\e[0m' R='\e[1;31m' G='\e[1;32m' ok="\t${G}OK${x} "
@@ -102,7 +101,7 @@ if [[ $1 == -z ]]; then
   visudo
   echo "blacklist pcspkr" > /etc/modprobe.d/nobeeep.conf
   pacman -S alsa-utils
-  alsamixer
+  amixer sset Master unmute
   mv ${0} /home/$user/$me
   echo -e "\nbeep disabled: done!" 
   echo -e "[archlinuxfr]\nServer = http://repo.archlinux.fr/\$arch" >> /etc/pacman.conf; pacman -Sy yaourt

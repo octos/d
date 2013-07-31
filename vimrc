@@ -2,7 +2,7 @@
 "
 " To use it, copy it to
 "     for Unix and OS/2:  ~/.vimrc
-"	      for Amiga:  s:.vimrc
+"        for Amiga:  s:.vimrc
 "  for MS-DOS and Win32:  $VIM\_vimrc
 "	    for OpenVMS:  sys$login:.vimrc
 
@@ -22,7 +22,7 @@ set encoding=utf-8
 syntax on
 " colorscheme mustang
 
-" ab settings
+" tab settings
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
