@@ -1,0 +1,244 @@
+#TODO: change the title mutt adds to untitled mails ("Your mail")
+set folder     = imaps://imap.gmail.com/
+set imap_user  = $EMAIL #works typing mutt in term, not ^z
+set imap_pass  = $IMAP_PASS
+set smtp_url   = "smtp://$EMAIL@smtp.gmail.com:587"
+set smtp_pass  = $SMTP_PASS
+set spoolfile  = +INBOX
+mailboxes      = +INBOX =a =c
+set sleep_time = 0      # don't pause 1 sec when switching folders
+bind pager,index ZZ quit #I can't add browser,attach,etc.
+
+macro index / "<limit>" "show only msgs matching" # l (limit) is now a.
+bind index Y imap-fetch-mail
+unset user_agent        # don't tell it's from Mutt
+set quote_regexp = "^( {0,4}[>|:#%]| {0,4}[a-z0-9]+[>|]+)+"
+alternative_order text/plain text/enriched text/html
+bind attach <return> view-mailcap # View attachments properly.
+
+# Basic Options --------------------------------------
+set wait_key = no        # shut up, mutt
+set mbox_type = Maildir  # mailbox type
+set timeout = 3          # idle time before scanning
+#set mail_check = 1      # how often (in sec) to check new #kv scroll lag in folders if <1 def:5
+unset move               # gmail does that
+set delete               # don't ask, just do
+unset confirmappend      # don't ask, just do!
+set quit                 # don't ask, just do!!
+unset mark_old           # read/new is good enough for me
+set beep_new             # bell on new mails #TODO useful??
+set pipe_decode          # strip headers and eval mimes when piping set thorough_search      # strip headers and eval mimes before searching
+
+# Status Bar -----------------------------------------
+set status_chars  = " *%A"
+set status_format = "───[ Folder: %f ]───[%r%m messages%?n? (%n new)?%?d? (%d # to delete)?%?t? (%t tagged)? ]───%>─%?p?( %p postponed )?───"
+#unset help      # I don't need no help!
+
+# Header Options -------------------------------------
+ignore *                                # ignore all headers
+unignore from: to: cc: date: subject:   # show only these
+unhdr_order *                           # some distros order things by default
+hdr_order from: to: cc: date: subject:  # and in this order
+
+# Hooks ----------------------------------------------
+send-hook . 'my_hdr Message-ID:<`uuidgen -r`@unknownmsgid>' #hide my hostname
+#send-hook . 'my_hdr Date:<`date --date="-3 days" +%Y%m%d`>' #yesterday's date (work on it)
+#my_hdr Date: aaa #Thu, 27 Jun 2013 21:30:15 -0400" #doesn't work at all.
+folder-hook =* 'my_hdr To: ' #by default, set To: to no-one.
+folder-hook =a 'my_hdr To: $HMAIL' #if in folder a, write to h automatically
+#folder-hook =a 'set autoedit = yes' #skip initial send-menu.. but that skips subject too.
+#auto_view text/html #view mailcap for more
+#
+# inline attachment preview
+auto_view image/* #preview ASCII'd images in pager.
+auto_view application/* 
+#auto_view audio/* #a simple * didn't cut it.
+
+# Index View Options ---------------------------------
+set date_format = "%y%m%d"
+set index_format = "[%Z] %D %-20.20F  %s"
+set sort = threads                         # like gmail
+set sort_aux = reverse-last-date-received  # like gmail (thread sorting)
+set uncollapse_jump                        # don't collapse on an unread message
+set sort_re                                # thread based on regex
+set reply_regexp = "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
+bind index gg       first-entry
+bind index G        last-entry
+bind index R        group-reply
+bind index <tab>    sync-mailbox #same as $
+bind index <space>  collapse-thread
+macro index l "<enter>"
+macro index gi "<change-folder>=INBOX<enter>" "Go to inbox"
+macro index gh "<change-folder>=INBOX<enter>" "Go to inbox" #gh as in go home
+macro index ga "<change-folder>=a<enter>" "Go to a"
+macro index gb "<change-folder>=b<enter>" "Go to b"
+macro index gc "<change-folder>=c<enter>" "Go to c"
+macro index ge "<change-folder>=e<enter>" "Go to e"
+macro index gk "<change-folder>=k<enter>" "Go to k"
+macro index gz "<change-folder>=z<enter>" "Go to z"
+macro index gs "<change-folder>=[Gmail]/Sent Mail<enter>" "Go to Sent Mail"
+macro index gd "<change-folder>=[Gmail]/Drafts<enter>" "Go to drafts (Gmail)"
+bind index gp recall-message #Go to postproned messages (mutt)
+
+# Pager View Options ---------------------------------
+#set pager_index_lines = 4  # number of index lines to show #kv: was 10
+set pager_stop             # don't go to next message automatically
+set menu_scroll            # scroll in menus
+set tilde                  # show tildes like in vim
+unset markers              # no ugly plus signs
+bind pager G  bottom
+bind pager R  group-reply
+macro pager l <view-attachments>
+macro pager g "<change-folder>=INBOX<enter>" "Go to inbox"
+macro pager gi "<change-folder>=INBOX<enter>" "Go to inbox"
+macro pager gh "<change-folder>=INBOX<enter>" "Go to inbox" #gh as in go home
+macro pager ga "<change-folder>=a<enter>" "Go to a"
+macro pager gb "<change-folder>=b<enter>" "Go to b"
+macro pager gc "<change-folder>=c<enter>" "Go to c"
+macro pager ge "<change-folder>=e<enter>" "Go to e"
+macro pager gk "<change-folder>=k<enter>" "Go to k"
+macro pager gz "<change-folder>=z<enter>" "Go to z"
+macro pager gs "<change-folder>=[Gmail]/Sent Mail<enter>" "Go to Sent Mail"
+macro pager gd "<change-folder>=[Gmail]/Drafts<enter>" "Go to drafts (Gmail)"
+bind pager gp recall-message #Go to postproned messages (mutt)
+
+# Browser Key Bindings (folder-picking, etc) -----------
+macro browser l "<enter>" "enter"
+# THESE don't work well
+#macro browser gi "<change-dir>INBOX<enter><enter>" "Go to inbox" 
+#macro browser ga "<change-dir>a<enter><enter>" "Go to a"
+#macro browser gb "<change-dir>b<enter><enter>" "Go to b"
+#macro browser gc "<change-dir>c<enter><enter>" "Go to c"
+
+# Compose View Options -------------------------------
+set realname = $REALNAME          # who am i?
+set envelope_from                    # which from?
+set sig_dashes                       # dashes before sig
+set edit_headers= yes               # show headers when composing. kv: yes=editable
+set fast_reply                       # skip to compose when replying
+#set askcc                            # ask for CC:. #EDIT: don't.
+set fcc_attach                       # save attachments with the body
+unset mime_forward                   # forward attachments as part of body
+set forward_format = "Fwd: %s"       # format of subject when forwarding
+set forward_decode                   # decode when forwarding
+set attribution = "On %d, %n wrote:" # format of quoting header
+set reply_to                         # reply to Reply to: field
+set reverse_name                     # reply as whomever it was to
+set include                          # include message in replies
+set forward_quote                    # include message in forwards
+set editor = "vim -c 'startinsert' +8 -c 'set spell spelllang=fr,pl,en'" #start insert on line 8
+set postpone = yes                  # auto postpone unsent messages
+unset recall                       # don't offer to recall postponed
+#set editor='vim + -c "set textwidth=72" -c "set wrap" -c "set nocp" -c "?^$"'
+
+# Attach View Options ----------------------------------- 
+bind attach R  group-reply
+macro attach l "<enter>"
+# Postprone Options -------------------------------
+# PRINTING! kv
+set print_command="muttprint -P A4 -p TO_FILE:/tmp/$USER.ps && zathura /tmp/$USER.ps"
+# hacktux.com/mutt
+
+# store message headers locally to speed things up
+# if hcache is a folder, Mutt will create sub cache folders for each account which may speeds things even more up
+set header_cache = ~/.cache/mutt_cache/ 
+
+# store messages locally to speed things up, like searching message bodies 
+# can be the same folder as header_cache
+set message_cachedir = "~/.cache/mutt"
+
+# specify where to save and/or look for postponed messages
+set postponed = +[Gmail]/Drafts
+
+# allow Mutt to open new imap connection automatically
+unset imap_passive
+
+# keep imap connection alive by polling intermittently (time in seconds)
+set imap_keepalive = 300
+
+# Palette for use with the Linux console.  Black background.
+
+## Colours for items in the index (kv:black replaced by default)
+
+color index brightcyan black ~N   #new
+color index brightred default ~O    #old
+color index brightyellow default ~F #flagged
+color index black green ~T          #tagged (was black green)
+color index brightred default ~D    #
+color index default red '~s "(important|urgent)"'  #highlight important messages
+
+mono index bold ~N
+mono index bold ~F
+mono index bold ~T
+mono index bold ~D
+
+## Highlights inside the body of a message.  
+
+## URLs
+color body brightgreen black "(http|ftp|news|telnet|finger)://[^ \"\t\r\n]*"
+color body brightgreen black "mailto:[-a-z_0-9.]+@[-a-z_0-9.]+"
+mono body bold "(http|ftp|news|telnet|finger)://[^ \"\t\r\n]*"
+mono body bold "mailto:[-a-z_0-9.]+@[-a-z_0-9.]+"
+
+## Email addresses.
+color body brightgreen black "[-a-z_0-9.%$]+@[-a-z_0-9.]+\\.[-a-z][-a-z]+"
+
+## Header
+color header green black * #kv: 1st, color all green and black.
+color header green black "^from:" #was green black
+color header green black "^to:"   #was green black
+color header green black "^cc:"   #was green black
+color header green black "^date:" #was green black
+color header yellow black "^newsgroups:"
+color header yellow black "^reply-to:"
+color header brightcyan black "^subject:" #was brightcyan black
+color header red black "^x-spam-rule:"
+color header green black "^x-mailer:"
+color header yellow black "^message-id:"
+color header yellow black "^Organization:"
+color header yellow black "^Organisation:"
+color header yellow black "^User-Agent:"
+color header yellow black "^message-id: .*pine"
+color header yellow black "^X-Fnord:"
+color header yellow black "^X-WebTV-Stationery:"
+color header red black "^x-spam-rule:"
+color header yellow black "^X-Message-Flag:"
+color header yellow black "^X-Spam-Status:"
+color header yellow black "^X-SpamProbe:"
+color header red black "^X-SpamProbe: SPAM"
+
+## Coloring quoted text - coloring the first 4 levels: (kv: was 7)
+color quoted yellow black
+color quoted1 green black
+color quoted2 cyan black
+color quoted3 blue black
+color quoted4 magenta black
+
+## Default color definitions
+color hdrdefault white green
+color signature brightmagenta default #was brightmagenta black
+color indicator black cyan #was black cyan
+color attachment black green #was green
+color error red black
+color message white default #(notifications) was white black
+color search brightwhite magenta
+color status white default #was brightyellow blue 
+color tree brightblue default #was brightblue black
+color normal brightwhite default #was white black
+color tilde green black
+color bold brightyellow black
+color underline magenta black
+color markers brightcyan black
+
+## IP addresses
+#org color header red default "[0-9]{2,3}[.]([0-9]{1,3}[.]){2}[0-9]{1,3}"
+color header red default "[0-9]{1,3}[.]([0-9]{1,3}[.]){2}[0-9]{1,3}*"
+
+#MORE
+#color index green default "~X 1-" #color msgs with attachments. SLOW!
+#http://unix.stackexchange.com/questions/66638/mutt-color-mesages-with-attachments-differently
+
+## Colour definitions when on a mono screen
+mono bold bold
+mono underline underline
+mono indicator reverse

@@ -83,28 +83,27 @@ case "$extension" in
     xls)
         try xls2txt "$path" && \
             { dump | trim | fmt -s -w $width; exit 0; } || exit 1;;
-    csv|CSV) # csv better formatting
+    csv) # csv better formatting
         try column -s, -t < "$path" && \
             { dump | trim | fmt -s -w $width; exit 0; } || exit 1;;
-    rtf|RTF)
+    rtf)
         try catdoc "$path" && \
             { dump | trim | fmt -s -w $width; exit 0; } || exit 1;;
     dmp) #quickbms dump files
         #comtype_scan2.bat comtype_scan2.bms LLL.VRL ./comtypetest
         xxd "$path" && { dump | trim | fmt -s -w $width; exit 4; }
         exit 0;;
-    mdf|MDF)
+    mdf)
         try mdf2iso "$path"; exit 0;;
     # Media
     xcf)
         xcf2png "$path" > /tmp/w3mxcf; echo -e '2;3;\n0;1;0;0;0;0;0;0;0;0;/tmp/w3mxcf\n4;\n3;' | /usr/lib/w3m/w3mimgdisplay
         exit 0;;
-    mas|MAS)
+    mas)
         wine MASadelic.exe -V -m:`winepath -w "$path"` -f:* | column -c 20
         exit 0;;
-    svm|SVM)
-        wine /home/kv/scgted130721.sh "$path"
-        exit 0;;
+    svm)
+        wine /home/kv/scgted130721.sh "$path" || exit 0;;
        # Web
     torrent)
         try transmission-show "$path" && { dump | trim; exit 5; } || exit 1;;
