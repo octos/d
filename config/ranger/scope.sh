@@ -66,14 +66,15 @@ case "$extension" in
         try docx2txt.pl "$path" - && \
             { dump | trim | fmt -s -w $width; exit 0; }
         try docx2txt.sh "$path" - && \
-            { dump | trim | fmt -s -w $width; exit 0; }
-            exit 1;;
+            { dump | trim | fmt -s -w $width; exit 0; } || exit 1;;
     doc)
         try antiword "$path" && \
             { dump | trim | fmt -s -w $width; exit 0; }
         try catdoc "$path" && \
             { dump | trim | fmt -s -w $width; exit 0; } 
             exit 1;;
+    1)
+        man "$path" && { dump | trim | fmt -s -w $width; exit 5; } || exit 1;;
     xlsx)
         try ssconvert -T Gnumeric_stf:stf_csv "$path" fd://1 && \
             { dump | trim | fmt -s -w $width; exit 0; } 
@@ -82,15 +83,19 @@ case "$extension" in
     xls)
         try xls2txt "$path" && \
             { dump | trim | fmt -s -w $width; exit 0; } || exit 1;;
-    # csv better formatting
-    csv|CSV)
+    csv|CSV) # csv better formatting
         try column -s, -t < "$path" && \
             { dump | trim | fmt -s -w $width; exit 0; } || exit 1;;
     rtf|RTF)
         try catdoc "$path" && \
             { dump | trim | fmt -s -w $width; exit 0; } || exit 1;;
+    dmp) #quickbms dump files
+        #comtype_scan2.bat comtype_scan2.bms LLL.VRL ./comtypetest
+        xxd "$path" && { dump | trim | fmt -s -w $width; exit 4; }
+        exit 0;;
     mdf|MDF)
         try mdf2iso "$path"; exit 0;;
+    # Media
     xcf)
         xcf2png "$path" > /tmp/w3mxcf; echo -e '2;3;\n0;1;0;0;0;0;0;0;0;0;/tmp/w3mxcf\n4;\n3;' | /usr/lib/w3m/w3mimgdisplay
         exit 0;;
@@ -100,16 +105,9 @@ case "$extension" in
     svm|SVM)
         wine /home/kv/scgted130721.sh "$path"
         exit 0;;
-    dmp) #quickbms dump files
-        #comtype_scan2.bat comtype_scan2.bms LLL.VRL ./comtypetest
-        xxd "$path" && { dump | trim | fmt -s -w $width; exit 4; }
-        exit 0;;
-   # BitTorrent Files
-    1)
-        man "$path" && { dump | trim | fmt -s -w $width; exit 5; } || exit 1;;
+       # Web
     torrent)
         try transmission-show "$path" && { dump | trim; exit 5; } || exit 1;;
-    # HTML Pages:
     htm|html|xhtml)
         try w3m    -dump "$path" && { dump | trim | fmt -s -w $width; exit 4; }
         try lynx   -dump "$path" && { dump | trim | fmt -s -w $width; exit 4; }
