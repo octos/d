@@ -47,7 +47,8 @@
     #geometry = "0x3-140+0" # my dmenu-like version (low height breaks history stacking)
     #geometry = "130x3-0+0"
     # fits 21 characters per line. Inline comments mess up result.
-    geometry = "130x93-0+0" 
+    #geometry = "130x93-0+0" 
+    geometry = "130x93+0"
 
     # The transparency of the window. range: [0; 100]
     # This option will only work if a compositing windowmanager is present (e.g. xcompmgr, compiz, etc..)

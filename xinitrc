@@ -9,9 +9,9 @@ xset fp rehash
 redshift -l 45.427778:-75.710556 &
 unclutter -idle 2 -noevents &
 urxvtd &
-xset r rate 260 50
+xset r rate 250 50
 setxkbmap us -variant altgr-intl
-hsetroot -full wallpaper-379597.jpg
+hsetroot -full wall.jpg
 
 #exec dwm
 d/startdwm  #refreshable dwm

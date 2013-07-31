@@ -11,6 +11,9 @@ dvd-device=/dev/sr0   # use: mplayer dvd:// OR dvdnav:// -nocache --mouse-moveme
 cdrom-device=/dev/sr0 # use: mplayer cdda://
 nojoystick=1
 
+msgcolor=yes
+msgmodule=yes
+
 # NOTES
 # mplayer dvdnav:// -dvd-device ~/dvd.iso (play iso)
 # mplayer -ss 10 (start at 10s, skip TED intros)

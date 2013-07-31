@@ -44,3 +44,7 @@ alias Q='systemctl hibernate'
 alias W='systemctl suspend'
 alias Z='systemctl reboot'
 alias ZZ='systemctl poweroff'
+
+freq(){                                                                
+history | awk '{a[$2]++}END{for(i in a){print a[i] " " i}}' | sort -rn | head -20
+}
