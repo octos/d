@@ -6,6 +6,6 @@ if [ -z "$PIDS" ]; then
   exit 1
 else
   for PID in $PIDS; do
-    kill $PID
+      kill -s 3 $PID #SIGTERM (15) is the default and safest kill. SIGQUIT (3) is safer.
   done
 fi
