@@ -17,11 +17,11 @@ profont ttf-freefont ttf-liberation ttf-dejavu"
 A="redshift-minimal google-translate ttf-dotsies otf-ipafont ttf-tibetan-machine xorg-xfontsel"
 c="nmon iotop testdisk powertop ncdu colordiff fbgrab arch-install-scripts mdf2iso"
 C="cdu cmospwd photorecover"
-e="txt2tags antiword pandoc catdoc wyrd calcurse"
+e="txt2tags antiword pandoc catdoc libots wyrd calcurse"
 m="alsa-utils abcde mp3gain"
 #M="herrie podget"
 o="irssi bitlbee mutt abook"
-p="fbv optipng imagemagick ghostscript librsvg jasper"
+p="fbv optipng imagemagick ghostscript librsvg jasper perl-image-exiftool"
 P="pngquant"
 w="wget curl axel w3m links lynx elinks rtorrent newsbeuter
 vnstat aircrack-ng tcpdump nmap"
@@ -67,6 +67,9 @@ hALL="$hA $hC $hE $hM $hO $hP $hW $hV $hZ"
 set -o errexit 						
 trap 'echo -e "\n${r}Aborted${x}"; exit' INT	 	#so that CTRL-C kills
 
+if [[ $1 == ""]]; then
+  echo "see $0 -v"
+    exit; fi
 if [[ $1 == -v ]]; then
   echo -e "freshy $ver"
   exit 1; fi
