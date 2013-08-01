@@ -12,15 +12,24 @@ filetype off
 execute pathogen#infect()
 filetype plugin indent on
 
+" searching/moving (stevelosh)
+set ignorecase
+set smartcase
+set gdefault
+set incsearch
+set showmatch
+set hlsearch
+nnoremap <leader><space> :noh<cr>
+nnoremap <tab> %
+vnoremap <tab> %
+
 set nocompatible
-
 set modelines=0
-
 set encoding=utf-8
 
 " my own
 syntax on
-" colorscheme mustang
+colorscheme mustang
 
 " tab settings
 set tabstop=4

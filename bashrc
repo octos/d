@@ -32,6 +32,7 @@ alias res='xrandr --output VGA1 --mode 1680x1050'
 alias redwm='cd ~/d/dwm; makepkg -g >> PKGBUILD; makepkg -efi --noconfirm; cd'
 alias scgt='d/killifrunning.sh rejoystick; rejoystick -d; cd .wine/drive_c/Program\ Files/SCGTmini/; wine Spcar.exe'
 alias sto='~/sto.sh'
+alias va='vim ~/d/archsetup'
 
 # pkg
 alias R='sudo pacman -R'

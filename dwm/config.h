@@ -17,7 +17,7 @@ static const Bool topbar            = True;     /* False means bottom bar */
 /* tagging */
 static const char *tags[] = { "a", "b", "c", "d" };
 
-static const Rule rules[] = {
+static const Rule rules[] = { 
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Qjackctl", NULL,       NULL,       0,            True,        -1 },
 /*	{ "sxiv",     NULL,       NULL,       1 << 8,       True,        -1 },*/
@@ -137,7 +137,8 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_Escape,spawn,          {.v = slock } },
 	{ MODKEY|ShiftMask,             XK_Escape,spawn,          {.v = suspend } },
 	{ MODKEY,                       XK_F1,     spawn,         {.v = screenoff } },
-	{ MODKEY|ShiftMask,             XK_F1,     spawn,         {.v = pomo } },
+	{ MODKEY,                       XK_F1,     spawn,         {.v = slock } },
+	{ MODKEY|ShiftMask,             XK_F2,     spawn,         {.v = pomo } },
 	{ MODKEY|ShiftMask,             XK_F3,     spawn,          SHCMD("import -window root \"$(date +%y%m%d-%H%M%S)\"_full.png") },
 	{ MODKEY|ShiftMask,             XK_F4,     spawn,          SHCMD("import \"$(date +%y%m%d-%H%M%S)\"_slct.png") },
 	{ MODKEY,                       XK_F5,     spawn,          {.v = toggle } },
