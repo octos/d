@@ -67,9 +67,15 @@ hALL="$hA $hC $hE $hM $hO $hP $hW $hV $hZ"
 set -o errexit 						
 trap 'echo -e "\n${r}Aborted${x}"; exit' INT	 	#so that CTRL-C kills
 
-if [[ $1 == ""]]; then
-  echo "see $0 -v"
+if [[ $1 == "" ]]; then
+  echo "options:
+   -install
+   -post
+   -apps
+   -x
+  see $0 -v"
     exit; fi
+
 if [[ $1 == -v ]]; then
   echo -e "freshy $ver"
   exit 1; fi
