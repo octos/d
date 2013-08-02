@@ -11,10 +11,11 @@ hostname="kone"
 me=$(basename $0)
 
 # ===== cli ===== #capitals are AUR
+MEH="ttf-tibetan-machine otf-ipafont"
 a="vim bash-completion ranger htop tmux aspell e3 
 atool bzip2 unzip p7zip unrar highlight
-profont ttf-freefont ttf-liberation ttf-dejavu"
-A="redshift-minimal google-translate ttf-dotsies otf-ipafont ttf-tibetan-machine xorg-xfontsel"
+profont ttf-freefont ttf-liberation ttf-dejavu xorg-xfontsel"
+A="redshift-minimal google-translate ttf-dotsies"
 c="nmon iotop testdisk powertop ncdu colordiff fbgrab arch-install-scripts mdf2iso"
 C="cdu cmospwd photorecover"
 e="txt2tags antiword pandoc catdoc libots wyrd calcurse"
@@ -29,7 +30,7 @@ W="esniper"
 v="dvdbackup"
 z="cowsay cmatrix bsd-games fortune-mod screenfetch tbclock typespeed
 libcaca aalib"
-Z="nyancat asciiquarium"
+Z="nyancat-git asciiquarium"
 # ===== X light =====
 la="xclip hsetroot gparted pcmanfm hardinfo cups cups-filters cups-pdf"
 #lA="xarchiver"
@@ -37,8 +38,8 @@ le="zathura zathura-pdf-poppler zathura-djvu zathura-ps"
 lp="sxiv feh"
 #lP="xoris meh"
 lw="dwb surf wicd"
-lv="mplayer2 mplayer-resumer youtube-viewer"
-lV="gcap"
+lv="mplayer2 youtube-viewer"
+lV="gcap mplayer-resumer"
 # ===== X heavy =====
 he="libreoffice gnumeric abiword"
 hm="audacity lmms ardour jack hydrogen gtkpod"
@@ -68,10 +69,11 @@ trap 'echo -e "\n${r}Aborted${x}"; exit' INT	 	#so that CTRL-C kills
 
 if [[ $1 == "" ]]; then
   echo "options:
-   -install
-   -post
-   -apps
-   -x
+   -install basic install
+   -post    postinstallation stuff
+   -apps    install pacman apps
+   -aur     install aur apps
+   -x       install X
   see $0 -v"
     exit; fi
 
@@ -128,21 +130,29 @@ if [[ ! $EUID -ne 0 ]]; then 				#superuser?
     fi
 
 if [[ $1 == -apps ]]; then
-if [[ ! $EUID -ne 0 ]]; then 				#superuser?
+ if [[ ! $EUID -ne 0 ]]; then 				#superuser?
   echo "Don't run as root!" 1>&2; exit 1; fi
   echo "WHAT DO YOU WANT TO INSTALL? "
   echo -e "${g}all${x}  a,c,e,m,o,p,w,v,z\n    "${k}$all${x}""
-  echo -e "${g}ALL${x}  A,C,E,M,O,P,W,V,Z\n    "${k}$ALL${x}""
   echo -e "${y}lall${x} la,lc,le,lm,lo,lp,lw,lv,lz\n     "${k}$lall${x}""
-  echo -e "${y}lALL${x} lA,lC,lE,lM,lO,lP,lW,lV,lZ\n    "${k}$lALL${x}""
   echo -e "${u}hall${x} ha,hc,he,hm,ho,hp,hw,hv,hz\n    "${k}$hall${x}""
-  echo -e "${u}hALL${x} hA,hC,hE,hM,hO,hP,hW,hV,hZ\n    "${k}${k}$hALL${x}""
   echo -e "${u}ugly${x} $ugly"
+  echo -e "\nfor AUR apps, use the -aur option instead"
   read -a userinput
-  result=$(for x in ${userinput[@]}; do echo ${!x}; done)
-  echo $result
-#  sudo pacman -S --needed $result #$all $lall
-  #yaourt -S $All $lAll
+  result=$(for x in ${userinput[@]}; do echo ${!x}; done) #supports multiple-word input
+  sudo pacman -S --needed --noconfirm $result    #don't run as root. --needed is broken.
+  exit
+elif [[ $1 == -aur ]]; then
+  if [[ ! $EUID -ne 0 ]]; then 				#superuser?
+  echo "Don't run as root!" 1>&2; exit 1; fi
+  echo "WHAT DO YOU WANT TO INSTALL? "
+  echo -e "${g}ALL${x}  A,C,E,M,O,P,W,V,Z\n    "${k}$ALL${x}""
+  echo -e "${y}lALL${x} lA,lC,lE,lM,lO,lP,lW,lV,lZ\n    "${k}$lALL${x}""
+  echo -e "${u}hALL${x} hA,hC,hE,hM,hO,hP,hW,hV,hZ\n    "${k}${k}$hALL${x}""
+  echo -e "\nfor pacman apps, use the -apps option instead"
+  read -a userinput
+  result=$(for x in ${userinput[@]}; do echo ${!x}; done) #supports multiple-word input
+  yaourt -S --needed --noconfirm $result    #don't run as root. --needed is broken.
   exit
 fi
 
