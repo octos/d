@@ -11,6 +11,7 @@ dvd-device=/dev/sr0   # use: mplayer dvd:// OR dvdnav:// -nocache --mouse-moveme
 cdrom-device=/dev/sr0 # use: mplayer cdda://
 nojoystick=1
 
+slang=en,eng
 msgcolor=yes
 msgmodule=yes
 

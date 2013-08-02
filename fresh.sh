@@ -52,9 +52,8 @@ hZ="win rejoystick"
 ugly="flashplugin"
 
 # ===== don't touch =====
-r='\e[0;31m' g='\e[0;32m' x='\e[0m' R='\e[1;31m' G='\e[1;32m' ok="\t${G}OK${x} "
+k='\e[0;37m' r='\e[0;31m' g='\e[0;32m' y='\e[0;33m' b='\e[0;34m' u='\e[0;35m' x='\e[0m' R='\e[1;31m' G='\e[1;32m' ok="\t${G}OK${x} "
 time=":: ${y}`date +%r`${x}" #shows time [:: ${y}`date +%r`${x}] => 12:59:59 PM
-base="$a $A $xa $xA"
 all="$a $c $e $m $o $p $w $v $z"
 ALL="$A $C $E $M $O $P $W $V $Z"
 lall="$la $lc $le $lm $lo $lp $lw $lv $lz"
@@ -131,9 +130,19 @@ if [[ ! $EUID -ne 0 ]]; then 				#superuser?
 if [[ $1 == -apps ]]; then
 if [[ ! $EUID -ne 0 ]]; then 				#superuser?
   echo "Don't run as root!" 1>&2; exit 1; fi
-  echo "WHAT DO YOU WANT TO INSTALL?"
-  sudo pacman -S --needed $all $lall
-  yaourt -S $All $lAll
+  echo "WHAT DO YOU WANT TO INSTALL? "
+  echo -e "${g}all${x}  a,c,e,m,o,p,w,v,z\n    "${k}$all${x}""
+  echo -e "${g}ALL${x}  A,C,E,M,O,P,W,V,Z\n    "${k}$ALL${x}""
+  echo -e "${y}lall${x} la,lc,le,lm,lo,lp,lw,lv,lz\n     "${k}$lall${x}""
+  echo -e "${y}lALL${x} lA,lC,lE,lM,lO,lP,lW,lV,lZ\n    "${k}$lALL${x}""
+  echo -e "${u}hall${x} ha,hc,he,hm,ho,hp,hw,hv,hz\n    "${k}$hall${x}""
+  echo -e "${u}hALL${x} hA,hC,hE,hM,hO,hP,hW,hV,hZ\n    "${k}${k}$hALL${x}""
+  echo -e "${u}ugly${x} $ugly"
+  read -a userinput
+  result=$(for x in ${userinput[@]}; do echo ${!x}; done)
+  echo $result
+#  sudo pacman -S --needed $result #$all $lall
+  #yaourt -S $All $lAll
   exit
 fi
 
