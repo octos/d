@@ -5,6 +5,7 @@ ver="130202" #Installs my apps on fresh Arch.
 # TODO: detect if VM/USB > vone/uone
 # - have to be installed before executing: wget, vim (but rm vim dependency)
 # pacstrap -i for interactive. Default base + base-devel doesn't fit is > 900MB
+# TODO still breaks before installing yaourt. Replace archlinuxfr by makepkg
 # ===== config =====
 user="kv"
 hostname="kone"
@@ -112,11 +113,11 @@ if [[ $1 == -z ]]; then
   vim +53 /boot/syslinux/syslinux.cfg
   visudo
   echo "blacklist pcspkr" > /etc/modprobe.d/nobeeep.conf
-  pacman -S alsa-utils
+  pacman -S --noconfirm alsa-utils
   amixer sset Master unmute
   mv ${0} /home/$user/$me
   echo -e "\nbeep disabled: done!" 
-  echo -e "[archlinuxfr]\nSigLevel = Never\nServer = http://repo.archlinux.fr/\$arch" >> /etc/pacman.conf; pacman -Sy yaourt
+  echo -e "[archlinuxfr]\nSigLevel = Optional TrustAll\nServer = http://repo.archlinux.fr/\$arch" >> /etc/pacman.conf; pacman -Sy --noconfirm yaourt
   echo -e "\nyaourt installed: done!" 
   echo -e "script moved to /home/$user/$me !" 
   echo "now exit, umount /mnt/, and reboot."
