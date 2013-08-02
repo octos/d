@@ -74,6 +74,8 @@ if [[ $1 == "" ]]; then
    -apps    install pacman apps
    -aur     install aur apps
    -x       install X
+   -v       version
+   -z       cleanup, start over
   see $0 -v"
     exit; fi
 
@@ -105,7 +107,7 @@ if [[ $1 == -z ]]; then
   passwd
   useradd -m -g users -G audio,lp,storage,video,games,wheel,power,scanner -s /bin/bash $user
   passwd $user
-  pacman -S --needed syslinux sudo bash-completion dialog wpa_supplicant vim
+  pacman -S --needed --noconfirm syslinux sudo bash-completion dialog wpa_supplicant vim
   syslinux-install_update -i -a -m
   vim +53 /boot/syslinux/syslinux.cfg
   visudo
@@ -114,7 +116,7 @@ if [[ $1 == -z ]]; then
   amixer sset Master unmute
   mv ${0} /home/$user/$me
   echo -e "\nbeep disabled: done!" 
-  echo -e "[archlinuxfr]\nServer = http://repo.archlinux.fr/\$arch" >> /etc/pacman.conf; pacman -Sy yaourt
+  echo -e "[archlinuxfr]\nSigLevel = Never\nServer = http://repo.archlinux.fr/\$arch" >> /etc/pacman.conf; pacman -Sy yaourt
   echo -e "\nyaourt installed: done!" 
   echo -e "script moved to /home/$user/$me !" 
   echo "now exit, umount /mnt/, and reboot."
@@ -123,7 +125,7 @@ if [[ $1 == -z ]]; then
 if [[ $1 == -post ]]; then
 if [[ ! $EUID -ne 0 ]]; then 				#superuser?
   echo "Don't run as root!" 1>&2; exit 1; fi
-    sudo pacman -S --needed git
+    sudo pacman -S --needed --noconfirm git
     echo -e "\ngetting dots!\n"
     git clone https://github.com/octos/d.git
     cd ~/d; chmod +x ~/d/dots.sh; ~/d/dots.sh
