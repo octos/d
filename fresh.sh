@@ -13,7 +13,7 @@ me=$(basename $0)
 
 # ===== cli ===== #capitals are AUR
 MEH="ttf-tibetan-machine otf-ipafont"
-a="vim bash-completion ranger htop tmux aspell e3 
+a="vim urxvt-perls bash-completion ranger htop tmux aspell e3 
 atool bzip2 unzip p7zip unrar highlight
 profont ttf-freefont ttf-liberation ttf-dejavu xorg-xfontsel"
 A="redshift-minimal google-translate ttf-dotsies"
