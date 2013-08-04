@@ -24,7 +24,7 @@ m="alsa-utils abcde mp3gain"
 #M="herrie podget"
 o="irssi bitlbee mutt abook"
 p="fbv optipng imagemagick ghostscript librsvg jasper perl-image-exiftool"
-P="pngquant"
+P="fbida pngquant"
 w="wget curl axel w3m links lynx elinks rtorrent newsbeuter
 vnstat aircrack-ng tcpdump nmap"
 W="esniper"
@@ -50,7 +50,7 @@ hp="gimp darktable hugin inkscape mypaint"
 hw="firefox"
 hv="kdenlive"
 hV="slowmovideo-git"
-hZ="win rejoystick"
+hZ="wine rejoystick"
 ugly="flashplugin"
 
 # ===== don't touch =====
