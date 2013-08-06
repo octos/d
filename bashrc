@@ -6,7 +6,7 @@ export HISTSIZE=4000
 export PATH=$PATH:/usr/sbin/:/usr/local/bin:/home/kv/.gem/ruby/1.9.1/bin
 export EDITOR=vim
 export PAGER=less
-export FONT="-*-profont-*-*-*-*-11-*-*-*-*-*-*-*"
+export FONT="-*-profont-*-*-*-*-8-*-*-*-*-*-*-*"
 
 # org
 alias df='df -h'
@@ -45,6 +45,17 @@ alias Q='systemctl hibernate'
 alias W='systemctl suspend'
 alias Z='systemctl reboot'
 alias ZZ='systemctl poweroff'
+
+man() {                                                                                           
+env LESS_TERMCAP_mb=$'\e[1;32m' \
+LESS_TERMCAP_md=$'\e[1;34m' \
+LESS_TERMCAP_me=$'\e[0m' \
+LESS_TERMCAP_se=$'\e[0m' \
+LESS_TERMCAP_so=$'\e[1;44;33m' \
+LESS_TERMCAP_ue=$'\e[0m' \
+LESS_TERMCAP_us=$'\e[4;31m' \
+man "$@"                                                                                      
+} 
 
 freq(){                                                                
 history | awk '{a[$2]++}END{for(i in a){print a[i] " " i}}' | sort -rn | head -20
