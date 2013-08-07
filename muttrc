@@ -126,7 +126,7 @@ set reply_to                         # reply to Reply to: field
 set reverse_name                     # reply as whomever it was to
 set include                          # include message in replies
 set forward_quote                    # include message in forwards
-set editor = "vim -c 'startinsert' +8 -c 'set spell spelllang=fr,pl,en'" #start insert on line 8
+set editor = "vim -c 'startinsert' +9 -c 'set spell spelllang=fr,pl,en'" #start insert on line 9
 set postpone = yes                  # auto postpone unsent messages
 unset recall                       # don't offer to recall postponed
 #set editor='vim + -c "set textwidth=72" -c "set wrap" -c "set nocp" -c "?^$"'
