@@ -11,7 +11,7 @@ filetype off
 " call pathogen#runtime_append_all_bundles()
 execute pathogen#infect()
 filetype plugin indent on
-
+set pastetoggle=<F12> "http://simon.xn--schnbeck-p4a.dk/vim-paste-indent-problems/ 
 " searching/moving (stevelosh)
 set ignorecase
 set smartcase
@@ -29,7 +29,9 @@ set encoding=utf-8
 
 " my own
 syntax on
-colorscheme mustang
+"colorscheme mustang
+" make html with txt2tags. the CR gets rid of 'press ENTER to continue'
+map <F5> :wall!<CR>:!txt2tags --toc -t html %<CR><CR>
 
 " tab settings
 set tabstop=4
