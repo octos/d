@@ -4,7 +4,7 @@
 
 dir=~/d                    # dotfiles dir
 olddir=~/d_old             # old dotfiles backup dir
-files="bashrc bash_profile muttrc tmux.conf Xdefaults xinitrc vimrc config mplayer themes"    # list of files/folders to symlink in homedir
+files="bashrc bash_profile muttrc sxiv tmux.conf Xdefaults xinitrc vimrc config mplayer themes"    # list of files/folders to symlink in homedir
 
 killall chromium #because it makes .config/ busy
 echo "mkdir: $olddir (for backup of existing dotfiles in ~)"
