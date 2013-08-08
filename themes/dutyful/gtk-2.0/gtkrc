@@ -41,7 +41,7 @@ style "default"
     xthickness = 1
     ythickness = 1
 #    font_name = "DejaVu Sans 8"
-    font_name = "profont 8"
+    font_name = "profont 7"
 
     fg[NORMAL]          = @fg_color               # Most text, except in an edit field or web page
     fg[PRELIGHT]        = @selected_fg_color      # Text when mouseover
