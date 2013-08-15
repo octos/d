@@ -11,7 +11,7 @@ export FONT="-*-profont-*-*-*-*-8-*-*-*-*-*-*-*"
 # org
 alias df='df -h'
 alias ls='ls --color=always'
-alias grep='grep --color=always'
+#alias grep='grep --color=always'
 alias sudo='sudo '
 alias vless='vim -u /usr/share/vim/vim7*/macros/less.vim'
 
@@ -39,6 +39,7 @@ alias R='sudo pacman -R'
 alias S='sudo pacman -S --color=always --needed --noconfirm'
 alias s='yaourt --noconfirm'
 alias U='sudo pacman --color=always -Syyu'
+alias UU='sudo reflector --verbose -l 12 -p http --sort rate  --save /etc/pacman.d/mirrorlist; U'
 
 # sys
 alias Q='systemctl hibernate'
