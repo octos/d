@@ -37,7 +37,7 @@ la="xclip hsetroot gparted pcmanfm hardinfo cups cups-filters cups-pdf"
 #lA="xarchiver"
 le="zathura zathura-pdf-poppler zathura-djvu zathura-ps"
 lp="sxiv feh"
-#lP="xoris meh"
+lP="xoris imageenlarger" #imageenlarger=SmillaEnlarger
 lw="dwb surf wicd"
 lv="mplayer2 youtube-viewer"
 lV="gcap mplayer-resumer"
