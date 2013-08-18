@@ -63,7 +63,9 @@ man "$@"
 freq(){                                                                
 history | awk '{a[$2]++}END{for(i in a){print a[i] " " i}}' | sort -rn | head -20
 }
-
 drop(){
 echo 3 | sudo tee /proc/sys/vm/drop_caches
+}
+mem(){
+sudo python2 ~/d/ps_mem.py
 }
