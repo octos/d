@@ -2,14 +2,14 @@
 
 /* appearance */
 //static const char font[]            = "-*-stlarch-medium-r-*-*-10-*-*-*-*-*-*-*" "," "-*-profont-*-*-*-*-11-*-*-*-*-*-*-*";
-static const char font[]            = "-*-profont-*-*-*-*-11-*-*-*-*-*-*-*"; 
+static const char font[]            = "-*-profont-*-*-*-*-10-*-*-*-*-*-*-*"; 
 static const char normbordercolor[] = "#444";
 static const char normbgcolor[]     = "#000";
 static const char normfgcolor[]     = "#999";
 static const char selbordercolor[]  = "#9c0";
 static const char selbgcolor[]      = "#222";
 static const char selfgcolor[]      = "#ccc";
-static const unsigned int borderpx  = 1;        /* border pixel of windows */
+static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const Bool showbar           = True;     /* False means no bar */
 static const Bool topbar            = True;     /* False means bottom bar */
