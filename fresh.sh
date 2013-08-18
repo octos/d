@@ -19,7 +19,7 @@ profont ttf-freefont ttf-liberation ttf-dejavu xorg-xfontsel"
 A="redshift-minimal pacnanny google-translate ttf-dotsies"
 c="nmon iotop testdisk powertop ncdu colordiff fbgrab arch-install-scripts mdf2iso"
 C="cdu cmospwd photorecover"
-e="txt2tags antiword pandoc catdoc libots wyrd calcurse"
+e="txt2tags antiword pandoc catdoc libots justtext wyrd calcurse"
 m="alsa-utils abcde mp3gain"
 #M="herrie podget"
 o="irssi bitlbee mutt abook"
@@ -182,6 +182,8 @@ fi
 
 
 # ===== 1 ===== # post-installation stuff
+# BETTER mirror ranking
+# reflector --verbose -l 20 -p http --sort rate  --save /etc/pacman.d/mirrorlist
 # RANKMIRRORS (disabled)
 #pacman -Syyu curl
 #cd /etc/pacman.d
