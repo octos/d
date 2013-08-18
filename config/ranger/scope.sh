@@ -107,6 +107,9 @@ case "$extension" in
        # Web
     torrent)
         try transmission-show "$path" && { dump | trim; exit 5; } || exit 1;;
+       # Regular text files that aren't recognized as such.
+    inf)
+        less "$path" && { dump | trim; exit 5; } || exit 2;;
     htm|html|xhtml)
         try w3m    -dump "$path" && { dump | trim | fmt -s -w $width; exit 4; }
         try lynx   -dump "$path" && { dump | trim | fmt -s -w $width; exit 4; }
