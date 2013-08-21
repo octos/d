@@ -1,13 +1,21 @@
 #TODO: change the title mutt adds to untitled mails ("Your mail")
+source `FILE=$HOME/.muttaliases; if [ ! -s "$FILE" ]; then FILE=/dev/null;fi;echo "$FILE"`
 set folder     = imaps://imap.gmail.com/
 set imap_user  = $EMAIL #works typing mutt in term, not ^z
 set imap_pass  = $IMAP_PASS
 set smtp_url   = "smtp://$EMAIL@smtp.gmail.com:587"
 set smtp_pass  = $SMTP_PASS
 set spoolfile  = +INBOX
-mailboxes      = +INBOX =a =c
+mailboxes      = "=a"
+mailboxes      = "=b"
+mailboxes      = "=c"
+mailboxes      = "=e"
+mailboxes      = "=k"
+mailboxes      = "=y"
+mailboxes      = "=z" #automatic notification of new mail
 set sleep_time = 0      # don't pause 1 sec when switching folders
 bind pager,index ZZ quit #I can't add browser,attach,etc.
+
 
 macro index / "<limit>" "show only msgs matching" # l (limit) is now a.
 bind index Y imap-fetch-mail
@@ -62,6 +70,8 @@ set sort_aux = reverse-last-date-received  # like gmail (thread sorting)
 set uncollapse_jump                        # don't collapse on an unread message
 set sort_re                                # thread based on regex
 set reply_regexp = "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
+bind index j next-new-then-unread
+bind index k previous-new-then-unread
 bind index gg       first-entry
 bind index G        last-entry
 bind index R        group-reply
@@ -86,6 +96,8 @@ set pager_stop             # don't go to next message automatically
 set menu_scroll            # scroll in menus
 set tilde                  # show tildes like in vim
 unset markers              # no ugly plus signs
+bind pager j next-new-then-unread
+bind pager k previous-new-then-unread
 bind pager G  bottom
 bind pager R  group-reply
 macro pager l <view-attachments>
@@ -104,6 +116,8 @@ bind pager gp recall-message #Go to postproned messages (mutt)
 
 # Browser Key Bindings (folder-picking, etc) -----------
 macro browser l "<enter>" "enter"
+bind browser G  last-entry
+bind browser gg first-entry
 # THESE don't work well
 #macro browser gi "<change-dir>INBOX<enter><enter>" "Go to inbox" 
 #macro browser ga "<change-dir>a<enter><enter>" "Go to a"
