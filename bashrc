@@ -14,7 +14,6 @@ alias ls='ls --color=always'
 alias grep='grep --color=auto' #'always' broke some scripts
 alias sudo='sudo '
 alias vless='vim -u /usr/share/vim/vim7*/macros/less.vim'
-alias kvizza='k/pizza_scripts/kvizza.sh'
 
 # app
 alias a='ranger'
@@ -31,8 +30,7 @@ alias ccc='setxkbmap us -variant colemak; d/xsetroot-set.sh'
 alias qqq='setxkbmap us -variant altgr-intl; d/xsetroot-set.sh'
 alias res='xrandr --output VGA1 --mode 1680x1050'
 alias redwm='cd ~/d/dwm; makepkg -g >> PKGBUILD; makepkg -efi --noconfirm; cd'
-alias scgt='d/killifrunning.sh rejoystick; rejoystick -d; cd .wine/drive_c/Program\ Files/SCGTmini/; wine Spcar.exe'
-alias sto='~/sto.sh'
+alias scgt='~/d/killifrunning.sh rejoystick; rejoystick -d; cd .wine/drive_c/Program\ Files/SCGTmini/; wine Spcar.exe'
 alias va='vim ~/d/archsetup'
 
 # pkg
@@ -49,8 +47,7 @@ alias W='systemctl suspend'
 alias Z='systemctl reboot'
 alias ZZ='systemctl poweroff'
 
-man() {                                                                                           
-env LESS_TERMCAP_mb=$'\e[1;32m' \
+man() {                                                                                        env LESS_TERMCAP_mb=$'\e[1;32m' \
 LESS_TERMCAP_md=$'\e[1;34m' \
 LESS_TERMCAP_me=$'\e[0m' \
 LESS_TERMCAP_se=$'\e[0m' \
@@ -59,7 +56,6 @@ LESS_TERMCAP_ue=$'\e[0m' \
 LESS_TERMCAP_us=$'\e[4;31m' \
 man "$@"                                                                                      
 } 
-
 freq(){                                                                
 history | awk '{a[$2]++}END{for(i in a){print a[i] " " i}}' | sort -rn | head -20
 }
