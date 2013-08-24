@@ -15,6 +15,13 @@ URxvt.keysym.C-i:           perl:url-select:select_next
 URxvt.keysym.C-Escape:      perl:keyboard-select:activate
 URxvt.keysym.C-s:           perl:keyboard-select:search
 
+#URxvt.clipboard.autocopy: true
+URxvt.keysym.C-y:   perl:clipboard:copy
+URxvt.keysym.C-v:   perl:clipboard:paste 
+# ^^ doesnt work
+URxvt.keysym.C-P: perl:clipboard:paste_escaped
+# ^^ nonprimary clipboard (dwb's yy)
+
 *background:   #222
 *foreground:   #ccc
 !BLK
