@@ -32,6 +32,13 @@ syntax on
 "colorscheme mustang
 " make html with txt2tags. the CR gets rid of 'press ENTER to continue'
 map <F5> :wall!<CR>:!txt2tags --toc -t html %<CR><CR>
+map <c-f> :call JsBeautify()<cr>
+  " or
+  autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
+  " for html
+  autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
+  " for css or scss
+  autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
 
 " tab settings
 set tabstop=4
