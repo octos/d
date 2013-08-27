@@ -5,8 +5,9 @@ export HISTCONTROL="ignoredups"
 export HISTSIZE=4000
 export PATH=$PATH:/usr/sbin/:/usr/local/bin:/home/kv/.gem/ruby/1.9.1/bin
 export EDITOR=vim
+export BROWSER=dwb
 export PAGER=less
-export FONT="-*-profont-*-*-*-*-8-*-*-*-*-*-*-*"
+export FONT="-*-profont-*-*-*-*-10-*-*-*-*-*-*-*"
 
 # org
 alias df='df -h'
@@ -39,15 +40,16 @@ alias S='sudo pacman -S --color=always --needed --noconfirm'
 alias s='yaourt --noconfirm'
 alias U='sudo pacman --color=always -Syyu'
 #alias UU='sudo reflector --verbose -l 12 -p http --sort rate  --save /etc/pacman.d/mirrorlist; U'
-alias UU='sudo reflector --verbose -l 12 -p http -f 5 --connection-timeout 3 --save /etc/pacman.d/mirrorlist; U'
+alias UU='sudo reflector --verbose -l 8 -p http -f 5 --connection-timeout 3 --save /etc/pacman.d/mirrorlist; U'
 
 # sys
-alias Q='systemctl hibernate'
-alias W='systemctl suspend'
-alias Z='systemctl reboot'
-alias ZZ='systemctl poweroff'
+alias Q='sed -i '/Q/d' .bash_history; systemctl hibernate'
+alias W='sed -i '/W/d' .bash_history; systemctl suspend'
+alias Z='sed -i '/Z/d' .bash_history; systemctl reboot'
+alias ZZ='sed -i '/ZZ/d' .bash_history; systemctl poweroff'
 
-man() {                                                                                        env LESS_TERMCAP_mb=$'\e[1;32m' \
+man() {
+env LESS_TERMCAP_mb=$'\e[1;32m' \
 LESS_TERMCAP_md=$'\e[1;34m' \
 LESS_TERMCAP_me=$'\e[0m' \
 LESS_TERMCAP_se=$'\e[0m' \
