@@ -21,7 +21,7 @@ function zzz {
   mplayer --really-quiet gui.wav
   sleep 6  #give time to save
   echo -e "zzz"
-  systemctl suspend
+#  systemctl suspend
 }
 
 
@@ -55,7 +55,8 @@ fi
         while [ $wrk -gt 0 ]; do
 	        for w in {1..$wrk} ; do
                 echo -e "$wrk\r"
-                echo "$wrk " > $log
+                echo -e -n "`for (( x = 1; x <= $wrk; x += 1)); do echo -n "#";done` $wrk " > $log
+#                echo "$wrk " > $log          #replacement is above (with progress testing)
                 wrk=$((wrk-1)) 
 	        	sleep 1m
              done
