@@ -4,7 +4,7 @@ mute=`amixer get Master | tail -1 | awk '{print $NF}'`
 vol=`amixer get Master | tail -1 | sed 's/.*\[\([0-9]*%\)\].*/\1/' | sed 's/%//'`
 cups=$(systemctl status cups cups-browsed | grep -c inactive)
 kbd=$(setxkbmap -print | grep symbols) 
-pomi=$(cat ~/.pomodoro) 
+pomi=$(cat ~/.pomodoro > /dev/null 2>&1 ) 
 
 case $mute in
     "[off]") sound="$vol""M" ;;
@@ -29,4 +29,4 @@ case $kbd in
         *) kbd="kbd? " ;;
 esac
 
-xsetroot -name "$(echo "$cups""$kbd""$pomi""$sound"; date +"%y%m%d %R")"
+xsetroot -name "$(echo "$cups""$kbd""$pomi""$sound"; date +"%y%m%d %R")" #; date -u +"(%H)")"
