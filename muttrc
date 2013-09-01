@@ -1,11 +1,13 @@
 #TODO: change the title mutt adds to untitled mails ("Your mail")
-source `FILE=$HOME/.muttaliases; if [ ! -s "$FILE" ]; then FILE=/dev/null;fi;echo "$FILE"`
+source `FILE=$HOME/.muttrc_aliases; if [ ! -s "$FILE" ]; then FILE=/dev/null;fi;echo "$FILE"`
 set folder     = imaps://imap.gmail.com/
-set imap_user  = $EMAIL #works typing mutt in term, not ^z
+set imap_user  = $EMAIL
 set imap_pass  = $IMAP_PASS
 set smtp_url   = "smtp://$EMAIL@smtp.gmail.com:587"
 set smtp_pass  = $SMTP_PASS
 set spoolfile  = +INBOX
+
+mailboxes      = "=[Gmail]/Spam"
 mailboxes      = "=a"
 mailboxes      = "=b"
 mailboxes      = "=c"
@@ -55,11 +57,11 @@ send-hook . 'my_hdr Message-ID:<`uuidgen -r`@unknownmsgid>' #hide my hostname
 folder-hook =* 'my_hdr To: ' #by default, set To: to no-one.
 folder-hook =a 'my_hdr To: $HMAIL' #if in folder a, write to h automatically
 #folder-hook =a 'set autoedit = yes' #skip initial send-menu.. but that skips subject too.
-#auto_view text/html #view mailcap for more
+auto_view text/html #view mailcap for more
 #
 # inline attachment preview
 auto_view image/* #preview ASCII'd images in pager.
-auto_view application/* 
+#auto_view application/* 
 #auto_view audio/* #a simple * didn't cut it.
 
 # Index View Options ---------------------------------
@@ -70,14 +72,17 @@ set sort_aux = reverse-last-date-received  # like gmail (thread sorting)
 set uncollapse_jump                        # don't collapse on an unread message
 set sort_re                                # thread based on regex
 set reply_regexp = "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
-bind index j next-new-then-unread
-bind index k previous-new-then-unread
+bind index J next-new-then-unread
+bind index K previous-new-then-unread
+bind index H display-toggle-weed
 bind index gg       first-entry
 bind index G        last-entry
 bind index R        group-reply
 bind index <tab>    sync-mailbox #same as $
 bind index <space>  collapse-thread
+macro index,pager d "<delete-message><next-unread>"
 macro index l "<enter>"
+macro index h "<change-folder>?<toggle-mailboxes>" "Show incoming mailboxes list"
 macro index gi "<change-folder>=INBOX<enter>" "Go to inbox"
 macro index gh "<change-folder>=INBOX<enter>" "Go to inbox" #gh as in go home
 macro index ga "<change-folder>=a<enter>" "Go to a"
@@ -88,7 +93,7 @@ macro index gk "<change-folder>=k<enter>" "Go to k"
 macro index gz "<change-folder>=z<enter>" "Go to z"
 macro index gs "<change-folder>=[Gmail]/Sent Mail<enter>" "Go to Sent Mail"
 macro index gd "<change-folder>=[Gmail]/Drafts<enter>" "Go to drafts (Gmail)"
-bind index gp recall-message #Go to postproned messages (mutt)
+bind index gp recall-message #Go to postponed messages (mutt)
 
 # Pager View Options ---------------------------------
 #set pager_index_lines = 4  # number of index lines to show #kv: was 10
@@ -96,8 +101,10 @@ set pager_stop             # don't go to next message automatically
 set menu_scroll            # scroll in menus
 set tilde                  # show tildes like in vim
 unset markers              # no ugly plus signs
-bind pager j next-new-then-unread
-bind pager k previous-new-then-unread
+bind pager J next-new-then-unread
+bind pager K previous-new-then-unread
+bind pager h exit
+bind pager H display-toggle-weed #toggle headers
 bind pager G  bottom
 bind pager R  group-reply
 macro pager l <view-attachments>
@@ -112,7 +119,7 @@ macro pager gk "<change-folder>=k<enter>" "Go to k"
 macro pager gz "<change-folder>=z<enter>" "Go to z"
 macro pager gs "<change-folder>=[Gmail]/Sent Mail<enter>" "Go to Sent Mail"
 macro pager gd "<change-folder>=[Gmail]/Drafts<enter>" "Go to drafts (Gmail)"
-bind pager gp recall-message #Go to postproned messages (mutt)
+bind pager gp recall-message #Go to postponed messages (mutt)
 
 # Browser Key Bindings (folder-picking, etc) -----------
 macro browser l "<enter>" "enter"
@@ -145,10 +152,12 @@ set postpone = yes                  # auto postpone unsent messages
 unset recall                       # don't offer to recall postponed
 #set editor='vim + -c "set textwidth=72" -c "set wrap" -c "set nocp" -c "?^$"'
 
-# Attach View Options ----------------------------------- 
+# Attach View Op tions ----------------------------------- 
+bind attach h exit
+bind attach H display-toggle-weed #toggle headers
 bind attach R  group-reply
 macro attach l "<enter>"
-# Postprone Options -------------------------------
+# Postpone Options -------------------------------
 # PRINTING! kv
 set print_command="muttprint -P A4 -p TO_FILE:/tmp/$USER.ps && zathura /tmp/$USER.ps"
 # hacktux.com/mutt
@@ -178,8 +187,8 @@ color index brightcyan black ~N   #new
 color index brightred default ~O    #old
 color index brightyellow default ~F #flagged
 color index black green ~T          #tagged (was black green)
-color index brightred default ~D    #
-color index default red '~s "(important|urgent)"'  #highlight important messages
+color index default red ~D    #
+color index brightred default '~s "(important|urgent)"'  #highlight important messages
 
 mono index bold ~N
 mono index bold ~F
