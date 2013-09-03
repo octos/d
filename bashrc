@@ -1,5 +1,6 @@
 . ~/d/bash_private # source my private variables
 
+#set -o vi #not yet
 # dupeless history
 export HISTCONTROL="ignoredups"
 export HISTSIZE=4000
@@ -46,7 +47,7 @@ alias UU='sudo reflector --verbose -l 8 -p http -f 5 --connection-timeout 3 --sa
 alias Q='sed -i '/Q/d' .bash_history; systemctl hibernate'
 alias W='sed -i '/W/d' .bash_history; systemctl suspend'
 alias Z='sed -i '/Z/d' .bash_history; systemctl reboot'
-alias ZZ='sed -i '/ZZ/d' .bash_history; systemctl poweroff'
+alias ZZ='systemctl poweroff; sed -i '/ZZ/d' .bash_history'
 
 man() {
 env LESS_TERMCAP_mb=$'\e[1;32m' \
@@ -66,4 +67,16 @@ echo 3 | sudo tee /proc/sys/vm/drop_caches
 }
 mem(){
 sudo python2 ~/d/ps_mem.py
+}
+g(){
+#python2 /usr/share/groove-dl/groove.py "$@"
+python2 ~/d/groove.py "$@"
+}
+#https://bbs.archlinux.org/viewtopic.php?pid=927323#p927323
+shellram(){
+local shell=$1;
+ps -C $shell -o rss= -o vsize= -o cmd= | awk '{rss+=$1;virt+=$2}END {
+  print "COUNT: " NR;
+  print "RESIDENT: " int(rss/1024) " MB";
+  print "VIRTUAL: " int(virt/1024) " MB"}'
 }
