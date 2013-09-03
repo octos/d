@@ -1,0 +1,21 @@
+fs=yes	        #always fullscreen
+af=scaletempo	#pitch correction on !=1x playback.
+softvol=no      #same as dwm
+
+vo=xv,x11           #x11 to work under VM
+ao=alsa 
+dvd-device=/dev/sr0   # use: mplayer dvd:// OR dvdnav:// -nocache --mouse-movement for menus
+cdrom-device=/dev/sr0 # use: mplayer cdda://
+joystick=no
+
+slang=en,eng
+msgcolor=yes
+msgmodule=yes
+
+# NOTES
+# mplayer dvdnav:// -dvd-device ~/dvd.iso (play iso)
+# mplayer -ss 10 (start at 10s, skip TED intros)
+
+#start=1            #always start at Nsec
+#endpos=13          #end Nsec after start
+#loop=0             #loop to infinity (0)
