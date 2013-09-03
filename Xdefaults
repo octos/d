@@ -19,8 +19,11 @@ URxvt.keysym.C-s:           perl:keyboard-select:search
 URxvt.keysym.C-y:   perl:clipboard:copy
 URxvt.keysym.C-v:   perl:clipboard:paste 
 # ^^ doesnt work
-URxvt.keysym.C-P: perl:clipboard:paste_escaped
+#URxvt.keysym.C-P: perl:clipboard:paste_escaped
+URxvt.keysym.C-P: perl:clipboard:paste
 # ^^ nonprimary clipboard (dwb's yy)
+
+#URxvt.perl-ext-common: default,tabbed
 
 *background:   #222
 *foreground:   #ccc
