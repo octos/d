@@ -4,7 +4,7 @@ mute=`amixer get Master | tail -1 | awk '{print $NF}'`
 vol=`amixer get Master | tail -1 | sed 's/.*\[\([0-9]*%\)\].*/\1/' | sed 's/%//'`
 cups=$(systemctl status cups cups-browsed | grep -c inactive)
 kbd=$(setxkbmap -print | grep symbols) 
-pomi=$(cat ~/.pomodoro > /dev/null 2>&1 ) 
+pomi=$(cat ~/.pomodoro) # > /dev/null 2>&1 ) #cat doesn't show anything. How to pipe only err output to /dev/null?
 
 case $mute in
     "[off]") sound="$vol""M" ;;
