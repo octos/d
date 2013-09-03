@@ -80,7 +80,8 @@ bind index G        last-entry
 bind index R        group-reply
 bind index <tab>    sync-mailbox #same as $
 bind index <space>  collapse-thread
-macro index,pager d "<delete-message><next-unread>"
+#macro index d "<delete-message>" 
+#<next-unread>"
 macro index l "<enter>"
 macro index h "<change-folder>?<toggle-mailboxes>" "Show incoming mailboxes list"
 macro index gi "<change-folder>=INBOX<enter>" "Go to inbox"
@@ -107,6 +108,8 @@ bind pager h exit
 bind pager H display-toggle-weed #toggle headers
 bind pager G  bottom
 bind pager R  group-reply
+#macro pager d "<delete-message><exit>"
+macro pager d ":set noresolve<enter><delete-message><next-unread> \ :set resolve<enter>"
 macro pager l <view-attachments>
 macro pager g "<change-folder>=INBOX<enter>" "Go to inbox"
 macro pager gi "<change-folder>=INBOX<enter>" "Go to inbox"
