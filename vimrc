@@ -40,6 +40,9 @@ map <c-f> :call JsBeautify()<cr>
   " for css or scss
   autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
 
+" mutt 
+au BufRead /tmp/mutt-* set tw=72
+
 " tab settings
 set tabstop=4
 set shiftwidth=4
