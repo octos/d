@@ -43,15 +43,15 @@ trim() { head -n "$maxln"; }
 highlight() { command highlight "$@"; test $? = 0 -o $? = 141; }
 
 case "$extension" in
-    # Archive extensions:
-    7z|a|ace|alz|arc|arj|bz|bz2|cab|cpio|deb|gz|jar|lha|lz|lzh|lzma|lzo|\
-    rpm|rz|t7z|tar|tbz|tbz2|tgz|tlz|txz|tZ|tzo|war|xpi|xz|Z|zip)
-        try als "$path" && { dump | trim; exit 0; }
-        try acat "$path" && { dump | trim; exit 3; }
-        try bsdtar -lf "$path" && { dump | trim; exit 0; }
-        exit 1;;
-    rar)
-        try unrar -p- lt "$path" && { dump | trim; exit 0; } || exit 1;;
+    # Archive extensions: disabled, because lagged with large ones.
+#    7z|a|ace|alz|arc|arj|bz|bz2|cab|cpio|deb|gz|jar|lha|lz|lzh|lzma|lzo|\
+#    rpm|rz|t7z|tar|tbz|tbz2|tgz|tlz|txz|tZ|tzo|war|xpi|xz|Z|zip)
+#        try als "$path" && { dump | trim; exit 0; }
+#        try acat "$path" && { dump | trim; exit 3; }
+#        try bsdtar -lf "$path" && { dump | trim; exit 0; }
+#        exit 1;;
+#    rar)
+#        try unrar -p- lt "$path" && { dump | trim; exit 0; } || exit 1;;
     # Documents:
     pdf)
         try pdftotext -l 10 -nopgbrk -q "$path" - && \
@@ -96,9 +96,13 @@ case "$extension" in
     mdf)
         try mdf2iso "$path"; exit 0;;
     # Media
-    xcf)
-        xcf2png "$path" > /tmp/w3mxcf; echo -e '2;3;\n0;1;0;0;0;0;0;0;0;0;/tmp/w3mxcf\n4;\n3;' | /usr/lib/w3m/w3mimgdisplay
+    xcf) #not perfect, but works.
+    #width=$(( 200+$COLUMNS )); height=$(( 200+$LINES )); xoffset=300; yoffset=15 #additions don't work. def. col. ratio: 1, 3, 4
+    #width=200; height=200; xoffset=$(( `tput cols`*5,060240 )); yoffset=10 #works, but small decalage because decimals are not possible. Only scale=0 works.
+    width=200; height=200; xoffset=$(echo "scale=0; $(tput cols)*3.06024096/1" | bc); yoffset=10 #works, but 4 instead of 5 is more accurate on smaller widths.Try calling script with case) different widths for optimal decalage.
+        xcf2png "$path" -o /tmp/w3mxcf ; convert -size "$width"x"$height" /tmp/w3mxcf -scale "$width"x"$height" "/tmp/w3mxcf2"; echo -e "2;3;\n0;1;"$xoffset";"$yoffset";;;;;;;"/tmp/w3mxcf2"\n4;\n3;" | /usr/lib/w3m/w3mimgdisplay
         exit 0;;
+      #  xcf2png "$path" | convert -size "$width"x"$height" - -scale "$width"x"$height" "/tmp/w3mxcf$$"  && echo -e "2;3;\n0;1;"$xoffset";"$yoffset";;;;;;;"/tmp/w3mxcf$$"\n4;\n3;" | /usr/lib/w3m/w3mimgdisplay exit 0;;
     mas)
         wine MASadelic.exe -V -m:`winepath -w "$path"` -f:* | column -c 20
         exit 0;;
@@ -110,6 +114,8 @@ case "$extension" in
        # Regular text files that aren't recognized as such.
     inf)
         less "$path" && { dump | trim; exit 5; } || exit 2;;
+    swf)
+        try mediainfo "$path" && { dump | trim | sed 's/  \+:/: /;';  exit 5; } || exit 1;;
     htm|html|xhtml)
         try w3m    -dump "$path" && { dump | trim | fmt -s -w $width; exit 4; }
         try lynx   -dump "$path" && { dump | trim | fmt -s -w $width; exit 4; }
