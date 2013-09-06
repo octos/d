@@ -15,11 +15,12 @@ me=$(basename $0)
 MEH="ttf-tibetan-machine otf-ipafont"
 a="vim urxvt-perls bash-completion ranger htop tmux aspell e3 
 atool bzip2 unzip p7zip unrar highlight
-profont ttf-freefont ttf-liberation ttf-dejavu xorg-xfontsel"
-A="redshift-minimal pacnanny google-translate ttf-dotsies"
+reflector profont ttf-freefont ttf-liberation ttf-dejavu xorg-xfontsel"
+A="redshift-minimal pacnanny google-translate ponysay ttf-dotsies"
 c="nmon iotop testdisk powertop ncdu colordiff fbgrab arch-install-scripts mdf2iso"
 C="cdu cmospwd photorecover"
-e="txt2tags antiword pandoc catdoc libots justtext wyrd calcurse"
+e="txt2tags antiword pandoc catdoc libots wyrd calcurse python2-rst2pdf"
+E="justext"
 m="alsa-utils abcde mp3gain"
 #M="herrie podget"
 o="irssi bitlbee mutt abook"
@@ -31,7 +32,7 @@ W="esniper"
 v="dvdbackup"
 z="cowsay cmatrix bsd-games fortune-mod screenfetch tbclock typespeed
 libcaca aalib"
-Z="nyancat-git asciiquarium"
+Z="nyancat-git asciiquarium tbclock"
 # ===== X light =====
 la="xclip hsetroot gparted pcmanfm hardinfo cups cups-filters cups-pdf"
 #lA="xarchiver"
@@ -39,7 +40,7 @@ le="zathura zathura-pdf-poppler zathura-djvu zathura-ps"
 lp="sxiv feh"
 lP="xoris imageenlarger" #imageenlarger=SmillaEnlarger
 lw="dwb surf wicd"
-lv="mplayer2 youtube-viewer"
+lv="mpv mplayer2 youtube-viewer"
 lV="gcap mplayer-resumer"
 # ===== X heavy =====
 he="libreoffice gnumeric abiword"
