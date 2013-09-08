@@ -1,5 +1,5 @@
 #!/bin/bash
-ver="130202" #Installs my apps on fresh Arch. 
+ver="130907" #Installs my apps on fresh Arch. 
 # install arch + login as root + pacman -Syu + execute: wget www.tiny.cc/freshy; chmod +x; freshy
 # upload to www.paste.ee and get to VM using wget
 # TODO: detect if VM/USB > vone/uone
@@ -19,7 +19,7 @@ reflector profont ttf-freefont ttf-liberation ttf-dejavu xorg-xfontsel"
 A="redshift-minimal pacnanny google-translate ponysay ttf-dotsies"
 c="nmon iotop testdisk powertop ncdu colordiff fbgrab arch-install-scripts mdf2iso"
 C="cdu cmospwd photorecover"
-e="txt2tags antiword pandoc catdoc libots wyrd calcurse python2-rst2pdf"
+e="txt2tags antiword pandoc catdoc libots wyrd calcurse python2-rst2pdf jfbpdf"
 E="justext"
 m="alsa-utils abcde mp3gain"
 #M="herrie podget"
@@ -30,7 +30,7 @@ w="wget curl axel w3m links lynx elinks rtorrent newsbeuter
 vnstat aircrack-ng tcpdump nmap"
 W="esniper"
 v="dvdbackup"
-z="cowsay cmatrix bsd-games fortune-mod screenfetch tbclock typespeed
+z="cowsay cmatrix bsd-games fortune-mod screenfetch typespeed
 libcaca aalib"
 Z="nyancat-git asciiquarium tbclock"
 # ===== X light =====
@@ -41,7 +41,7 @@ lp="sxiv feh"
 lP="xoris imageenlarger" #imageenlarger=SmillaEnlarger
 lw="dwb surf wicd"
 lv="mpv mplayer2 youtube-viewer"
-lV="gcap mplayer-resumer"
+lV="gcap"
 # ===== X heavy =====
 he="libreoffice gnumeric abiword"
 hm="audacity lmms ardour jack hydrogen gtkpod"
