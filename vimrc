@@ -8,6 +8,7 @@
 
 " Important .vimrc lines
 filetype off
+set background=dark "for base16 colorscheme"
 " call pathogen#runtime_append_all_bundles()
 execute pathogen#infect()
 filetype plugin indent on
