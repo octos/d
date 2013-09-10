@@ -2,9 +2,9 @@
 ver="130907" #Installs my apps on fresh Arch. 
 # install arch + login as root + pacman -Syu + execute: wget www.tiny.cc/freshy; chmod +x; freshy
 # upload to www.paste.ee and get to VM using wget
+# pacstrap -i for interactive. Default base + base-devel doesn't fit is > 900MB
 # TODO: detect if VM/USB > vone/uone
 # - have to be installed before executing: wget, vim (but rm vim dependency)
-# pacstrap -i for interactive. Default base + base-devel doesn't fit is > 900MB
 # TODO still breaks before installing yaourt. Replace archlinuxfr by makepkg
 # ===== config =====
 user="kv"
@@ -17,12 +17,12 @@ a="vim urxvt-perls bash-completion ranger htop tmux aspell e3
 atool bzip2 unzip p7zip unrar highlight
 reflector profont ttf-freefont ttf-liberation ttf-dejavu xorg-xfontsel"
 A="redshift-minimal pacnanny google-translate ponysay ttf-dotsies"
-c="nmon iotop testdisk powertop ncdu colordiff fbgrab arch-install-scripts mdf2iso"
+c="nmon iotop testdisk powertop ncdu colordiff fbgrab arch-install-scripts mdf2iso xdotoosss"
 C="cdu cmospwd photorecover"
 e="txt2tags antiword pandoc catdoc libots wyrd calcurse python2-rst2pdf jfbpdf"
 E="justext"
 m="alsa-utils abcde mp3gain"
-#M="herrie podget"
+M="podget" #herrie
 o="irssi bitlbee mutt abook"
 p="fbv optipng imagemagick ghostscript librsvg jasper perl-image-exiftool"
 P="fbida pngquant"
@@ -97,7 +97,8 @@ if [[ $1 == -z ]]; then
   if [[ $1 == -install ]]; then
   if [[ $EUID -ne 0 ]]; then 				#superuser?
    echo "Run as root!" 1>&2; exit 1; fi
-  vim +154 /etc/locale.gen
+  #vim +154 /etc/locale.gen #old, manual way.
+  sed -i '/^#en_US.UTF-8/s/^ *#*//' /etc/locale.gen
   locale-gen
   echo LANG=en_US.UTF-8 > /etc/locale.conf
   export LANG=en_US.UTF-8
