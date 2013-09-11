@@ -102,8 +102,8 @@ set pager_stop             # don't go to next message automatically
 set menu_scroll            # scroll in menus
 set tilde                  # show tildes like in vim
 unset markers              # no ugly plus signs
-bind pager J next-new-then-unread
-bind pager K previous-new-then-unread
+bind pager j next-new-then-unread
+bind pager k previous-new-then-unread
 bind pager h exit
 bind pager H display-toggle-weed #toggle headers
 bind pager G  bottom
