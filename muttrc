@@ -110,6 +110,7 @@ bind pager G  bottom
 bind pager R  group-reply
 #macro pager d "<delete-message><exit>"
 macro pager d ":set noresolve<enter><delete-message><next-unread> \ :set resolve<enter>"
+macro pager D ":set noresolve<enter><delete-message><previous-unread> \ :set resolve<enter>"
 macro pager l <view-attachments>
 macro pager g "<change-folder>=INBOX<enter>" "Go to inbox"
 macro pager gi "<change-folder>=INBOX<enter>" "Go to inbox"
