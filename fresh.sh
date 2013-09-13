@@ -14,9 +14,9 @@ me=$(basename $0)
 # ===== cli ===== #capitals are AUR
 MEH="ttf-tibetan-machine otf-ipafont"
 a="vim urxvt-perls bash-completion ranger htop tmux aspell e3 
-atool bzip2 unzip p7zip unrar highlight
+atool bzip2 unzip p7zip unrar highlight mediainfo odt2txt
 reflector profont ttf-freefont ttf-liberation ttf-dejavu xorg-xfontsel"
-A="redshift-minimal pacnanny google-translate ponysay ttf-dotsies docx2txt iocane"
+A="redshift-minimal iocane pacnanny google-translate ponysay ttf-dotsies docx2txt xls2txt xlsx2cvs pdftotext"
 c="nmon iotop testdisk powertop ncdu colordiff fbgrab arch-install-scripts mdf2iso xdotoosss"
 C="cdu cmospwd photorecover"
 e="txt2tags antiword pandoc catdoc libots wyrd calcurse python2-rst2pdf jfbpdf"
@@ -26,7 +26,7 @@ M="podget" #herrie
 o="irssi bitlbee mutt abook"
 p="fbv optipng imagemagick ghostscript librsvg jasper perl-image-exiftool"
 P="fbida pngquant"
-w="wget curl axel w3m links lynx elinks rtorrent newsbeuter
+w="wget curl axel w3m links lynx elinks rtorrent transmission-cli newsbeuter
 vnstat aircrack-ng tcpdump nmap"
 W="esniper surfraw-git"
 v="dvdbackup"
@@ -72,7 +72,7 @@ trap 'echo -e "\n${r}Aborted${x}"; exit' INT	 	#so that CTRL-C kills
 if [[ $1 == "" ]]; then
   echo "options:
    -install basic install
-   -post    postinstallation stuff
+   -dots    dotfiles
    -apps    install pacman apps
    -aur     install aur apps
    -x       install X
@@ -125,7 +125,7 @@ if [[ $1 == -z ]]; then
   echo "now exit, umount /mnt/, and reboot."
   exit; fi
 
-if [[ $1 == -post ]]; then
+if [[ $1 == -dots ]]; then
 if [[ ! $EUID -ne 0 ]]; then 				#superuser?
   echo "Don't run as root!" 1>&2; exit 1; fi
     sudo pacman -S --needed --noconfirm git
@@ -181,9 +181,13 @@ if [[ ! $EUID -ne 0 ]]; then   			#superuser?
   echo -e "# modprobe -a vboxguest vboxsf vboxvideo"
   exit
 fi
+exit 1
 
 
-# ===== 1 ===== # post-installation stuff
+# See also: InstallingArch-2012
+# LnF 2011 https://bbs.archlinux.org/viewtopic.php?id=111878
+
+# ========== # post-installation stuff
 # BETTER mirror ranking
 # reflector --verbose -l 20 -p http --sort rate  --save /etc/pacman.d/mirrorlist
 # RANKMIRRORS (disabled)
@@ -194,15 +198,6 @@ fi
 #rankmirrors -n 6 mirrorlist.backup > mirrorlist
 #pacman -Syy
 
-
-# ===== 2 =====
-#echo -e "\n${G}Installing nn programs${x}"
-#sudo $pkgman $do $all
-#echo ${arr[$rand]}
-exit 1
-
-# See also: InstallingArch-2012
-# LnF 2011 https://bbs.archlinux.org/viewtopic.php?id=111878
 
 # ===== TODO =====
 #My suggestion is to add:
@@ -215,6 +210,7 @@ exit 1
 # ===== ASSUMPTIONS =====
 # - Arch Linux
 # - internet connection
+# - yaourt
 # ===== HELP =====
 # name of, and path to the script itself
 # http://stackoverflow.com/questions/192319/in-the-bash-script-how-do-i-know-the-script-file-name
