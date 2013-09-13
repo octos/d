@@ -8,7 +8,7 @@ ver="130907" #Installs my apps on fresh Arch.
 # TODO still breaks before installing yaourt. Replace archlinuxfr by makepkg
 # ===== config =====
 user="kv"
-hostname="kone"
+hostname="klex"
 me=$(basename $0)
 
 # ===== cli ===== #capitals are AUR
@@ -183,32 +183,10 @@ if [[ ! $EUID -ne 0 ]]; then   			#superuser?
 fi
 exit 1
 
-
-# See also: InstallingArch-2012
 # LnF 2011 https://bbs.archlinux.org/viewtopic.php?id=111878
 
-# ========== # post-installation stuff
-# BETTER mirror ranking
-# reflector --verbose -l 20 -p http --sort rate  --save /etc/pacman.d/mirrorlist
-# RANKMIRRORS (disabled)
-#pacman -Syyu curl
-#cd /etc/pacman.d
-#cp mirrorlist mirrorlist.backup
-#nano mirrorlist.backup
-#rankmirrors -n 6 mirrorlist.backup > mirrorlist
-#pacman -Syy
-
-
-# ===== TODO =====
-#My suggestion is to add:
-#Dexter  simple address book
-#Postler lightweight mail application 
-#DeaDBeeF for music player it is lightweight
-
-# === Dependencies ===
-# pacman
-# ===== ASSUMPTIONS =====
-# - Arch Linux
+# ===== Dependencies =====
+# - Arch Linux (pacman)
 # - internet connection
 # - yaourt
 # ===== HELP =====
