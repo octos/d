@@ -16,7 +16,7 @@ MEH="ttf-tibetan-machine otf-ipafont"
 a="vim urxvt-perls bash-completion ranger htop tmux aspell e3 
 atool bzip2 unzip p7zip unrar highlight
 reflector profont ttf-freefont ttf-liberation ttf-dejavu xorg-xfontsel"
-A="redshift-minimal pacnanny google-translate ponysay ttf-dotsies"
+A="redshift-minimal pacnanny google-translate ponysay ttf-dotsies docx2txt iocane"
 c="nmon iotop testdisk powertop ncdu colordiff fbgrab arch-install-scripts mdf2iso xdotoosss"
 C="cdu cmospwd photorecover"
 e="txt2tags antiword pandoc catdoc libots wyrd calcurse python2-rst2pdf jfbpdf"
@@ -28,7 +28,7 @@ p="fbv optipng imagemagick ghostscript librsvg jasper perl-image-exiftool"
 P="fbida pngquant"
 w="wget curl axel w3m links lynx elinks rtorrent newsbeuter
 vnstat aircrack-ng tcpdump nmap"
-W="esniper"
+W="esniper surfraw-git"
 v="dvdbackup"
 z="cowsay cmatrix bsd-games fortune-mod screenfetch typespeed
 libcaca aalib"
