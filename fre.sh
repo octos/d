@@ -72,9 +72,9 @@ trap 'echo -e "\n${r}Aborted${x}"; exit' INT	 	#so that CTRL-C kills
 if [[ $1 == "" ]]; then
   echo "options:
    -install basic install
-   -dots    dotfiles
    -apps    install pacman apps
    -aur     install aur apps
+   -dots    dotfiles
    -x       install X
    -v       version
    -z       clean up, start over
@@ -166,22 +166,29 @@ fi
 
 if [[ $1 == -x ]]; then
 if [[ ! $EUID -ne 0 ]]; then   			#superuser?
-  echo "Don't run as root!" 1>&2; exit 1; fi
-  sudo pacman -S xorg-server xorg-xinit xorg-utils xorg-server-utils
-  sudo pacman -S xf86-video-intel
-
-  echo -e "\nnow time for dwm!\n"
-  sudo pacman -S --needed abs dmenu dunst libnotify unclutter slock rxvt-unicode xterm
-  sudo abs community/dwm
-  mkdir -p ~/d/dwm
-  cp -r /var/abs/community/dwm ~/d/dwm
-  cd ~/d/dwm  
-  makepkg -i
-  echo "if octos/d not set up, do:"
-  echo "echo "exec dwm" >> ~/.xinitrc"
-  echo -e "\n if in VirtualBox,"
-  echo -e "# pacman -S virtualbox-guest-utils"
-  echo -e "# modprobe -a vboxguest vboxsf vboxvideo"
+ echo "Don't run as root!" 1>&2; exit 1; fi
+ echo -e "Installing X server.."
+   sudo pacman -S --needed xorg-server xorg-xinit xorg-utils xorg-server-utils
+ echo -e "Installing vesa+mesa+Intel+ATI+Nvidia drivers.."
+   sudo pacman -S --needed xf86-video-vesa mesa xf86-video-intel xf86-video-ati xf86-video-nouveau xf86-video-nv
+ echo -e "\nnow time for dwm!\n"
+#  sudo pacman -S --needed abs dmenu dunst libnotify unclutter slock rxvt-unicode xterm
+#  sudo abs community/dwm
+#  mkdir -p ~/d/dwm
+#  cp -r /var/abs/community/dwm ~/d/dwm
+#  cd ~/d/dwm  
+#  makepkg -i
+echo -e "\n Make X work in VirtualBox? (Y/n)"
+  read -a userinput
+  case $userinput in
+  n*|N*) echo -e "skipped.\n";;
+  *) echo "sudo pacman -S virtualbox-guest-utils"
+           sudo pacman -S --needed virtualbox-guest-utils
+     echo -e "\nfor VBox, type:\n# modprobe -a vboxguest vboxsf vboxvideo\n"
+           #sudo modprobe -a vboxguest vboxsf vboxvideo #"No such device" on kone
+           ;;
+  esac
+  echo -e "if octos/d not set up, do:\n echo \"exec dwm\" >> ~/.xinitrc\n"
   exit
 fi
 exit 1
