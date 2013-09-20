@@ -1,5 +1,5 @@
 #!/bin/bash
-ver="130907" #Installs my apps on fresh Arch. 
+ver="130919" # Installs fresh Arch
 # install arch + login as root + pacman -Syu + execute: wget www.tiny.cc/freshy; chmod +x; freshy
 # upload to www.paste.ee and get to VM using wget
 # pacstrap -i for interactive. Default base + base-devel doesn't fit is > 900MB
@@ -12,35 +12,33 @@ hostname="klex"
 me=$(basename $0)
 
 # ===== cli ===== #capitals are AUR
-MEH="ttf-tibetan-machine otf-ipafont"
 a="vim urxvt-perls bash-completion ranger htop tmux aspell e3 
 atool bzip2 unzip p7zip unrar highlight mediainfo odt2txt
 reflector profont ttf-freefont ttf-liberation ttf-dejavu xorg-xfontsel"
-A="redshift-minimal iocane pacnanny google-translate ponysay ttf-dotsies docx2txt xls2txt xlsx2cvs pdftotext"
-c="nmon iotop testdisk powertop ncdu colordiff fbgrab arch-install-scripts mdf2iso xdotoosss"
+A="redshift-minimal iocane pacnanny google-translate ttf-dotsies docx2txt xls2txt xlsx2csv"
+c="nmon iotop testdisk powertop ncdu colordiff fbgrab arch-install-scripts mdf2iso xdotool"
 C="cdu cmospwd photorecover"
-e="txt2tags antiword pandoc catdoc libots wyrd calcurse python2-rst2pdf jfbpdf"
-E="justext"
+e="txt2tags antiword pandoc catdoc libots wyrd calcurse python2-rst2pdf"
+E="justext jfbpdf"
 m="alsa-utils abcde mp3gain"
-M="podget" #herrie
+M="podget"
 o="irssi bitlbee mutt abook"
-p="fbv optipng imagemagick ghostscript librsvg jasper perl-image-exiftool"
-P="fbida pngquant"
+p="fbida fbv optipng imagemagick ghostscript librsvg jasper perl-image-exiftool"
+P="pngquant"
 w="wget curl axel w3m links lynx elinks rtorrent transmission-cli newsbeuter
 vnstat aircrack-ng tcpdump nmap"
 W="esniper surfraw-git"
 v="dvdbackup"
-z="cowsay cmatrix bsd-games fortune-mod screenfetch typespeed
+z="cowsay ponysay cmatrix bsd-games fortune-mod screenfetch typespeed
 libcaca aalib"
 Z="nyancat-git asciiquarium tbclock"
 # ===== X light =====
 la="xclip hsetroot gparted pcmanfm hardinfo cups cups-filters cups-pdf"
-#lA="xarchiver"
 le="zathura zathura-pdf-poppler zathura-djvu zathura-ps"
-lp="sxiv feh"
+lp="sxiv"
 lP="xoris imageenlarger" #imageenlarger=SmillaEnlarger
 lw="dwb surf wicd"
-lv="mpv mplayer2 youtube-viewer"
+lv="mpv youtube-viewer"
 lV="gcap"
 # ===== X heavy =====
 he="libreoffice gnumeric abiword"
@@ -51,8 +49,13 @@ hp="gimp darktable hugin inkscape mypaint"
 hw="firefox"
 hv="kdenlive"
 hV="slowmovideo-git"
-hZ="wine rejoystick"
+hz="wine"
+hZ="rejoystick"
+# ===== special =====
+font="ttf-tibetan-machine otf-ipafont"
 ugly="flashplugin"
+comp="mplayer2 feh"
+COMP="xarchiver"
 
 # ===== don't touch =====
 k='\e[0;37m' r='\e[0;31m' g='\e[0;32m' y='\e[0;33m' b='\e[0;34m' u='\e[0;35m' x='\e[0m' R='\e[1;31m' G='\e[1;32m' ok="\t${G}OK${x} "
@@ -137,11 +140,13 @@ if [[ ! $EUID -ne 0 ]]; then 				#superuser?
 if [[ $1 == -apps ]]; then
  if [[ ! $EUID -ne 0 ]]; then 				#superuser?
   echo "Don't run as root!" 1>&2; exit 1; fi
-  echo "WHAT DO YOU WANT TO INSTALL? "
+  echo "What do you want to install? "
   echo -e "${g}all${x}  a,c,e,m,o,p,w,v,z\n    "${k}$all${x}""
   echo -e "${y}lall${x} la,lc,le,lm,lo,lp,lw,lv,lz\n     "${k}$lall${x}""
   echo -e "${u}hall${x} ha,hc,he,hm,ho,hp,hw,hv,hz\n    "${k}$hall${x}""
+  echo -e "${u}font${x} $font"
   echo -e "${u}ugly${x} $ugly"
+  echo -e "${u}comp${x} $comp"
   echo -e "\nfor AUR apps, use the -aur option instead"
   read -a userinput
   result=$(for x in ${userinput[@]}; do echo ${!x}; done) #supports multiple-word input
@@ -150,10 +155,11 @@ if [[ $1 == -apps ]]; then
 elif [[ $1 == -aur ]]; then
   if [[ ! $EUID -ne 0 ]]; then 				#superuser?
   echo "Don't run as root!" 1>&2; exit 1; fi
-  echo "WHAT DO YOU WANT TO INSTALL? "
+  echo "What do you want to install? "
   echo -e "${g}ALL${x}  A,C,E,M,O,P,W,V,Z\n    "${k}$ALL${x}""
   echo -e "${y}lALL${x} lA,lC,lE,lM,lO,lP,lW,lV,lZ\n    "${k}$lALL${x}""
   echo -e "${u}hALL${x} hA,hC,hE,hM,hO,hP,hW,hV,hZ\n    "${k}${k}$hALL${x}""
+  echo -e "${u}COMP${x} $COMP"
   echo -e "\nfor pacman apps, use the -apps option instead"
   read -a userinput
   result=$(for x in ${userinput[@]}; do echo ${!x}; done) #supports multiple-word input
