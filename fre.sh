@@ -1,11 +1,8 @@
 #!/bin/bash
-ver="130919" # Installs fresh Arch
-# install arch + login as root + pacman -Syu + execute: wget www.tiny.cc/freshy; chmod +x; freshy
-# upload to www.paste.ee and get to VM using wget
-# pacstrap -i for interactive. Default base + base-devel doesn't fit is > 900MB
-# TODO: detect if VM/USB > vone/uone
-# - have to be installed before executing: wget, vim (but rm vim dependency)
-# TODO still breaks before installing yaourt. Replace archlinuxfr by makepkg
+ver="130919" # Automates Arch setup after partitioning,pacstrap,genfstab,arch-chroot
+# simply: login + wget www.tiny.cc/freshy; chmod +x; freshy
+# pacstrap -i for interactive. base + base-devel > 900MB
+
 # ===== config =====
 user="kv"
 hostname="klex"
@@ -20,14 +17,14 @@ c="nmon iotop testdisk powertop ncdu colordiff fbgrab arch-install-scripts mdf2i
 C="cdu cmospwd photorecover"
 e="txt2tags antiword pandoc catdoc libots wyrd calcurse python2-rst2pdf"
 E="justext jfbpdf"
-m="alsa-utils abcde mp3gain"
+m="alsa-utils mpd ncmpcpp abcde mp3gain"
 M="podget"
 o="irssi bitlbee mutt abook"
 p="fbida fbv optipng imagemagick ghostscript librsvg jasper perl-image-exiftool"
 P="pngquant"
-w="wget curl axel w3m links lynx elinks rtorrent transmission-cli newsbeuter
+w="wget curl axel w3m links lynx elinks surfraw rtorrent transmission-cli newsbeuter
 vnstat aircrack-ng tcpdump nmap"
-W="esniper surfraw-git"
+W="esniper"
 v="dvdbackup"
 z="cowsay ponysay cmatrix bsd-games fortune-mod screenfetch typespeed
 libcaca aalib"
@@ -80,7 +77,7 @@ if [[ $1 == "" ]]; then
    -aur     install aur apps
    -x       install X
    -v       version
-   -z       cleanup, start over
+   -z       clean up, start over
   see $0 -v"
     exit; fi
 
@@ -189,8 +186,8 @@ if [[ ! $EUID -ne 0 ]]; then   			#superuser?
 fi
 exit 1
 
+# TODO Replace archlinuxfr by makepkg
 # LnF 2011 https://bbs.archlinux.org/viewtopic.php?id=111878
-
 # ===== Dependencies =====
 # - Arch Linux (pacman)
 # - internet connection
