@@ -15,7 +15,7 @@ reflector profont ttf-freefont ttf-liberation ttf-dejavu xorg-xfontsel"
 A="redshift-minimal iocane pacnanny google-translate ttf-dotsies docx2txt xls2txt xlsx2csv"
 c="nmon iotop testdisk powertop ncdu colordiff fbgrab arch-install-scripts mdf2iso xdotool"
 C="cdu cmospwd photorecover"
-e="txt2tags antiword pandoc catdoc libots wyrd calcurse python2-rst2pdf"
+e="txt2tags antiword catdoc libots wyrd calcurse python2-rst2pdf"
 E="justext jfbpdf"
 m="alsa-utils mpd ncmpcpp abcde mp3gain"
 M="podget"
@@ -51,7 +51,7 @@ hZ="rejoystick"
 # ===== special =====
 font="ttf-tibetan-machine otf-ipafont"
 ugly="flashplugin"
-comp="mplayer2 feh"
+comp="mplayer2 feh pandoc"
 COMP="xarchiver"
 
 # ===== don't touch =====
