@@ -8,7 +8,6 @@
 
 " Important .vimrc lines
 filetype off
-set background=dark "for base16 colorscheme"
 " call pathogen#runtime_append_all_bundles()
 execute pathogen#infect()
 filetype plugin indent on
@@ -30,7 +29,8 @@ set encoding=utf-8
 
 " my own
 syntax on
-"colorscheme mustang
+set background=dark "for base16 colorscheme"
+"colorscheme base16-default
 " make html with txt2tags. the CR gets rid of 'press ENTER to continue'
 map <F5> :wall!<CR>:!txt2tags --toc -t html %<CR><CR>
 map <c-f> :call JsBeautify()<cr>
