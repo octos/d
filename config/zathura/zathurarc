@@ -1,6 +1,7 @@
 set font "Profont normal 7"
+set recolor true
 set recolor-lightcolor "#222"
-set recolor-darkcolor "#aaa"
+set recolor-darkcolor "#ccc"
 set recolor-keephue true
 set statusbar-fg "#ccc"
 set default-bg "#222"

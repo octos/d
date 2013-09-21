@@ -22,7 +22,7 @@ alias a='ranger'
 alias A='sudo ranger'
 alias m='mplayer'
 alias p='sxiv' #needs X
-alias y='youtube-viewer -C'
+alias y='youtube-viewer'
 alias v='vim'
 alias V='sudo vim'
 alias x='mutt'
@@ -40,7 +40,7 @@ alias R='sudo pacman -R'
 alias S='sudo pacman -S --color=always --needed --noconfirm'
 alias s='yaourt --noconfirm'
 alias U='sudo pacman --color=always -Syyu'
-#alias UU='sudo reflector --verbose -l 12 -p http --sort rate  --save /etc/pacman.d/mirrorlist; U'
+alias u='yaourt --sucre --needed'
 alias UU='sudo reflector --verbose -l 8 -p http -f 5 --connection-timeout 3 --save /etc/pacman.d/mirrorlist; U'
 
 # sys
@@ -71,12 +71,4 @@ sudo python2 ~/d/ps_mem.py
 g(){
 #python2 /usr/share/groove-dl/groove.py "$@"
 python2 ~/d/groove.py "$@"
-}
-#https://bbs.archlinux.org/viewtopic.php?pid=927323#p927323
-shellram(){
-local shell=$1;
-ps -C $shell -o rss= -o vsize= -o cmd= | awk '{rss+=$1;virt+=$2}END {
-  print "COUNT: " NR;
-  print "RESIDENT: " int(rss/1024) " MB";
-  print "VIRTUAL: " int(virt/1024) " MB"}'
 }

@@ -79,7 +79,7 @@ static const char *vol0[]  = { "amixer", "-q", "set", "Master", "toggle",  NULL 
 static const char *vol1[] = { "amixer", "-M", "-q", "set", "Master", "5dB-",  NULL };
 static const char *vol2[]  = { "amixer", "-M", "-q", "set", "Master", "5dB+", "unmute", NULL };
 static const char *dunst[] = { "/home/kv/d/dunst-set.sh",  NULL };
-static const char *pomo[] = { "/home/kv/d/toggle.sh", "pomi.sh", NULL };
+static const char *pomi[] = { "/home/kv/d/toggle.sh", "pomi.sh", NULL };
 static const char *redshift[] = { "/home/kv/d/toggle.sh", "redshift",  NULL };
 static const char *bar[] = { "/home/kv/d/xsetroot-set.sh",  NULL };
 static const char *termcmd[]  = { term, NULL };
@@ -137,7 +137,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_Escape,spawn,          {.v = slock } },
 	{ MODKEY|ShiftMask,             XK_Escape,spawn,          {.v = suspend } },
 	{ MODKEY,                       XK_F1,     spawn,         {.v = slock } },
-	{ MODKEY,                       XK_F2,     spawn,         {.v = pomo } },
+	{ MODKEY,                       XK_F2,     spawn,         {.v = pomi } },
 	{ MODKEY|ShiftMask,             XK_F3,     spawn,          SHCMD("import -window root \"$(date +%y%m%d-%H%M%S)\"_full.png") },
 	{ MODKEY|ShiftMask,             XK_F4,     spawn,          SHCMD("import \"$(date +%y%m%d-%H%M%S)\"_slct.png") },
 	{ MODKEY,                       XK_F5,     spawn,          {.v = dunst } },
