@@ -29,4 +29,4 @@ case $kbd in
         *) kbd="kbd? " ;;
 esac
 
-xsetroot -name "$(echo "$cups""$kbd""$pomi""$sound"; date +"%y%m%d %R")" #; date -u +"(%H)")"
+xsetroot -name "$(echo "$cups""$pomi""$kbd""$sound"; date +"%y%m%d %R")" #; date -u +"(%H)")"
