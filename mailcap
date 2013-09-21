@@ -1,0 +1,12 @@
+#for mediawiki external editor
+application/x-external-editor;/home/kv/ee.pl %s
+text/html; w3m -I %{charset} -T text/html; copiousoutput;
+application/pdf;  pdftotext %s - ; copiousoutput
+image/*; sxiv %s; test=test -n "$DISPLAY"
+#move ths to the .mailcap used for X-less OS.
+image/*; fbi %s ; 
+
+#image/*;  img2txt %s ; copiousoutput #for ascii preview (sucks)
+audio/*;  mpv %s ;
+video/*;  mpv %s ; test=test -n "$DISPLAY"
+video/*;  mpv -vo caca %s ;
