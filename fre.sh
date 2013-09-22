@@ -1,5 +1,5 @@
 #!/bin/bash
-ver="130919" # Automates Arch setup after partitioning,pacstrap,genfstab,arch-chroot
+ver="130921" # Automates Arch setup after partitioning,pacstrap,genfstab,arch-chroot
 # simply: login + wget www.tiny.cc/freshy; chmod +x; freshy
 # pacstrap -i for interactive. base + base-devel > 900MB
 
@@ -98,6 +98,16 @@ if [[ $1 == -z ]]; then
   if [[ $EUID -ne 0 ]]; then 				#superuser?
    echo "Run as root!" 1>&2; exit 1; fi
   #vim +154 /etc/locale.gen #old, manual way.
+  echo -e "\n Create 512M swap file?"
+  read -a userinput
+  case $userinput in
+  n*|N*) echo -e "skipped.\n";;
+  *)  fallocate -l 512M /swapfile
+      chmod 600 /swapfile
+      mkswap /swapfile
+      swapon /swapfile ;;
+  esac
+
   sed -i '/^#en_US.UTF-8/s/^ *#*//' /etc/locale.gen
   locale-gen
   echo LANG=en_US.UTF-8 > /etc/locale.conf
@@ -118,6 +128,7 @@ if [[ $1 == -z ]]; then
   pacman -S --noconfirm alsa-utils
   amixer sset Master unmute
   mv ${0} /home/$user/$me
+  echo -e "\nswap should work; if not, add this to /etc/fstab:\n "/swapfile none swap defaults 0 0"
   echo -e "\nbeep disabled: done!" 
   echo -e "[archlinuxfr]\nSigLevel = Optional TrustAll\nServer = http://repo.archlinux.fr/\$arch" >> /etc/pacman.conf; pacman -Sy --noconfirm yaourt
   echo -e "\nyaourt installed: done!" 
@@ -178,17 +189,35 @@ if [[ ! $EUID -ne 0 ]]; then   			#superuser?
 #  cp -r /var/abs/community/dwm ~/d/dwm
 #  cd ~/d/dwm  
 #  makepkg -i
+echo -e "if octos/d not set up, do:\n echo \"exec dwm\" >> ~/.xinitrc\n"
 echo -e "\n Make X work in VirtualBox? (Y/n)"
   read -a userinput
   case $userinput in
   n*|N*) echo -e "skipped.\n";;
-  *) echo "sudo pacman -S virtualbox-guest-utils"
+  *) echo "sudo pacman -S --needed virtualbox-guest-utils"
            sudo pacman -S --needed virtualbox-guest-utils
-     echo -e "\nfor VBox, type:\n# modprobe -a vboxguest vboxsf vboxvideo\n"
+     echo -e "\nin case of VBox error, type:\n# modprobe -a vboxguest vboxsf vboxvideo\n"
            #sudo modprobe -a vboxguest vboxsf vboxvideo #"No such device" on kone
            ;;
+   esac
+
+echo -e "\n Setup vnStat daemon, for network stats? (Y/n)"
+  read -a userinput
+  case $userinput in
+  n*|N*) echo -e "skipped.\n";;
+  *) echo "sudo pacman -S --needed vnstat"
+           sudo pacman -S --needed vnstat
+           ;;
   esac
-  echo -e "if octos/d not set up, do:\n echo \"exec dwm\" >> ~/.xinitrc\n"
+           echo -e "\npick network interface to log: (or ENTER to ignore)\n `ls /sys/class/net`"
+               read -a userinput
+               case $userinput in
+               "") echo -e "skipped.\n";;
+               *) echo "done: sudo vnstat -u -i $userinput"
+                  echo "info: http://ddg.gg/?q=!arch%20vnStat"
+                  sudo vnstat -u -i $userinput 
+                  ;;
+               esac
   exit
 fi
 exit 1
