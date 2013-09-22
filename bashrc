@@ -39,9 +39,8 @@ alias va='vim ~/d/archsetup'
 alias R='sudo pacman -R'
 alias S='sudo pacman -S --color=always --needed --noconfirm'
 alias s='yaourt --noconfirm'
-alias U='sudo pacman --color=always -Syyu'
+alias U='sudo reflector -l 8 -p http -f 5 --connection-timeout 3 --save /etc/pacman.d/mirrorlist; sudo pacman --color=always --noconfirm -Syyu'
 alias u='yaourt --sucre --needed'
-alias UU='sudo reflector --verbose -l 8 -p http -f 5 --connection-timeout 3 --save /etc/pacman.d/mirrorlist; U'
 
 # sys
 alias Q='sed -i '/Q/d' .bash_history; systemctl hibernate'
