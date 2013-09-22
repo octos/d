@@ -12,7 +12,7 @@ me=$(basename $0)
 a="vim urxvt-perls bash-completion ranger htop tmux aspell e3 
 atool bzip2 unzip p7zip unrar highlight mediainfo odt2txt
 reflector profont ttf-freefont ttf-liberation ttf-dejavu xorg-xfontsel"
-A="redshift-minimal iocane pacnanny google-translate ttf-dotsies docx2txt xls2txt xlsx2csv"
+A="redshift-minimal interrobang-git iocane pacnanny google-translate ttf-dotsies docx2txt xls2txt xlsx2csv"
 c="nmon iotop testdisk powertop ncdu colordiff fbgrab arch-install-scripts mdf2iso xdotool"
 C="cdu cmospwd photorecover"
 e="txt2tags antiword catdoc libots wyrd calcurse python2-rst2pdf"
