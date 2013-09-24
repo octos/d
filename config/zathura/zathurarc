@@ -6,3 +6,20 @@ set recolor-keephue true
 set statusbar-fg "#ccc"
 set default-bg "#222"
 set render-loading false
+
+#more consistent with other apps
+map [normal] <F11> toggle_fullscreen
+map [normal] f toggle_fullscreen
+map [normal] F follow
+map [fullscreen] <F11> toggle_fullscreen
+map [fullscreen] f toggle_fullscreen
+map [fullscreen] F follow
+
+#fullscreen lacks keybindings
+map [fullscreen] j scroll down
+map [fullscreen] k scroll up
+map [fullscreen] h scroll left
+map [fullscreen] l scroll right
+map [fullscreen] n search next
+map [fullscreen] N search previous
+map [fullscreen] <C-r> recolor
