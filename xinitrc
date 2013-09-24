@@ -6,15 +6,14 @@ done &
 xset +fp /usr/share/fonts/local
 xset fp rehash
 
-redshift -l 45.427778:-75.710556 &
+redshift -l 45.425:-75.70 &
 unclutter -idle 2 -noevents -root &
 urxvtd &
 xset r rate 250 50
 setxkbmap us -variant altgr-intl
-setxkbmap -option 'compose:rwin' #win_R is compose key (',a,á)
-setxkbmap -option caps:escape
-#display -window root "$(find ~/d/wall -type f | shuf -n1)" #had problems with compton
-#hsetroot -full d/wall.jpg
-hsetroot -full "$(find ~/d/wall -type f | shuf -n1)"
+setxkbmap -option caps:escape -option compose:rwin #win_R is compose key (',a,á)
+hsetroot -full "$(find d/wall -type f | shuf -n1)"
+#display -window root "$(find d/wall -type f | shuf -n1)" #had problems with compton
+
 #exec dwm
 d/startdwm  #refreshable dwm
