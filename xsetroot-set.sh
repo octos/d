@@ -18,7 +18,7 @@ esac
 case $kbd in
     *+am*) kbd="Armn " ;;
    *+ara*) kbd="Arab " ;;
-    *+ca*) kbd="Cans " ;;
+  *+ca\(*) kbd="Cans " ;;
     *chr*) kbd="Cher " ;;
     *+ru*) kbd="Cyrl " ;;
     *+ge*) kbd="Geor " ;;

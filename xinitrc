@@ -12,10 +12,9 @@ urxvtd &
 xset r rate 250 50
 setxkbmap us -variant altgr-intl
 setxkbmap -option 'compose:rwin' #win_R is compose key (',a,á)
-xmodmap -e "clear lock" #disable caps_lock
-xmodmap -e "keycode 0x42 = Escape" #caps_lock is now escape
-#hsetroot -full d/wall.jpg
+setxkbmap -option caps:escape
 #display -window root "$(find ~/d/wall -type f | shuf -n1)" #had problems with compton
+#hsetroot -full d/wall.jpg
 hsetroot -full "$(find ~/d/wall -type f | shuf -n1)"
 #exec dwm
 d/startdwm  #refreshable dwm
