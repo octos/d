@@ -1,6 +1,3 @@
-. ~/d/bash_private # source my private variables
-
-#set -o vi #not yet
 # dupeless history
 export HISTCONTROL="ignoredups"
 export HISTSIZE=4000

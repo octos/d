@@ -1,20 +1,8 @@
 #TODO: change the title mutt adds to untitled mails ("Your mail")
 source `FILE=$HOME/.muttrc_aliases; if [ ! -s "$FILE" ]; then FILE=/dev/null;fi;echo "$FILE"`
-set folder     = imaps://imap.gmail.com/
-set imap_user  = $EMAIL
-set imap_pass  = $IMAP_PASS
-set smtp_url   = "smtp://$EMAIL@smtp.gmail.com:587"
-set smtp_pass  = $SMTP_PASS
-set spoolfile  = +INBOX
+source $HOME/d/muttrc_private
 
-mailboxes      = "=[Gmail]/Spam"
-mailboxes      = "=a"
-mailboxes      = "=b"
-mailboxes      = "=c"
-mailboxes      = "=e"
-mailboxes      = "=k"
-mailboxes      = "=y"
-mailboxes      = "=z" #automatic notification of new mail
+
 set sleep_time = 0      # don't pause 1 sec when switching folders
 bind pager,index ZZ quit #I can't add browser,attach,etc.
 
