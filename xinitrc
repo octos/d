@@ -6,6 +6,7 @@ done &
 xset +fp /usr/share/fonts/local
 xset fp rehash
 
+rm ~/.pomodoro
 redshift -l 45.425:-75.70 &
 unclutter -idle 2 -noevents -root &
 urxvtd &
