@@ -1,5 +1,5 @@
 #!/bin/bash
-ver="130921" # Automates Arch setup after partitioning,pacstrap,genfstab,arch-chroot
+ver="130925" # Automates Arch setup after partitioning,pacstrap,genfstab,arch-chroot
 # simply: login + wget www.tiny.cc/freshy; chmod +x; freshy
 # pacstrap -i for interactive. base + base-devel > 900MB
 
@@ -26,7 +26,7 @@ w="wget curl axel w3m links lynx elinks surfraw rtorrent transmission-cli newsbe
 vnstat aircrack-ng tcpdump nmap"
 W="esniper"
 v="dvdbackup ffcast"
-z="cowsay ponysay cmatrix bsd-games fortune-mod screenfetch typespeed
+z="cowsay ponysay cmatrix bsd-games fortune-mod screenfetch typespeed gtypist
 libcaca aalib"
 Z="nyancat-git asciiquarium tbclock"
 # ===== X light =====
