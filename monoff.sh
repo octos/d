@@ -1,2 +1,3 @@
 #!/bin/sh
+# executed by dwm hotkey
 sleep 0.5; xset dpms force off
