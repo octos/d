@@ -1,25 +1,25 @@
 #!/bin/sh
-# .make.sh
-# creates symlinks from ~ to dotfiles in ~/d
+ver=130926 # creates symlinks from ~ to dotfiles in ~/d
 
 dir=~/d                    # dotfiles dir
 olddir=~/d_old             # old dotfiles backup dir
-files="bashrc bash_profile iocanerc mailcap muttrc muttrc_aliases sxiv tmux.conf Xdefaults xinitrc vimrc config mplayer mpv themes vim"    # list of files/folders to symlink in homedir
+files="bashrc bash_profile iocanerc mailcap muttrc muttrc_aliases sxiv tmux.conf Xdefaults xinitrc vimrc
+config mplayer mpv themes vim"    # list of files/folders to symlink in homedir
 
-killall chromium #because it makes .config/ busy
-echo "mkdir: $olddir (for backup of existing dotfiles in ~)"
-mkdir -p $olddir
-echo "..done"
+if [[ $1 == "-i" ]]; then cd $dir
+    for f in `ls *.sh`; do echo -e "$f # `sed -n '2p' $f`"; done | column -t -s '#'; exit
+fi
 
-echo "cd: $dir" 
-cd $dir
-echo "..done"
+killall -q chromium #because it makes .config/ busy
+echo "mkdir: $olddir (old dotfiles will go there)"; mkdir -p $olddir
+echo "   cd: $dir"; cd $dir
 
 # move old dots from ~ to $olddir, 
-# then create symlinks from the ~ to all $files in $dir
+# then create symlinks from ~ to all $files in $dir
+    echo "   mv: old dotfiles from ~ to $olddir"
 for file in $files; do
-    echo "mv: existing dotfiles from ~ to $olddir"
     mv ~/.$file ~/d_old/
-    echo "ln -s: creating symlink to $file in ~."
+    echo "ln -s: symlinking ~/d/$file"
     ln -s $dir/$file ~/.$file
 done
+    echo -e "done.\ndotfile info: $0 -i\n"
