@@ -9,8 +9,8 @@ export FONT="-*-profont-*-*-*-*-10-*-*-*-*-*-*-*"
 
 # org
 alias df='df -h'
-alias ls='ls --color=always'
-alias grep='grep --color=auto' #'always' broke some scripts
+alias ls='ls --color=auto' #'always' broke scripts
+alias grep='grep --color=auto' 
 alias sudo='sudo '
 alias vless='vim -u /usr/share/vim/vim7*/macros/less.vim'
 
