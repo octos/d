@@ -18,7 +18,7 @@ else
  for PID in $PIDS; do
    echo "killing $1"
    case $1 in #pomi.sh needs to be killed with sig 9
-     pomi.sh) kill -s 9 $PID; rm ~/.pomodoro; notify-send -u low -t 100 "pomi stopped"; ~/d/xsetroot-set.sh;;
+     pomi.sh) kill -s 6 $PID; notify-send -u low -t 100 "pomi stopped"; ~/d/xsetroot-set.sh;; # SIGABRT (6) to rm .pomodoro
      *) kill -s $sig $PID;;
    esac
  done

@@ -1,5 +1,5 @@
 #!/bin/bash
-#TODO: after ZZ, .pomi not cleared
+ver=130927 # cli pomodoro technique for dwm
 # X to refresh xset after stopping, .bar in dwm works; but replace it.
 # pomi will unlock manually-locked screen once "work" is reached.
 #
@@ -40,8 +40,7 @@ function zzz {
 
 log=~/.pomodoro
 dt=`date +%H%M`
-#rm -f $log #clear old log first (not needed; removed on exit)
-trap 'rm ~/.pomodoro' EXIT TERM
+trap 'rm ~/.pomodoro; d/xsetroot-set.sh' EXIT TERM
 
 
 if [[ $2 == "" ]]; then
