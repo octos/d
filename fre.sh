@@ -11,7 +11,7 @@ me=$(basename $0)
 # ===== cli ===== #capitals are AUR
 a="vim urxvt-perls bash-completion ranger htop tmux aspell e3 
 atool bzip2 unzip p7zip unrar highlight mediainfo odt2txt
-reflector profont ttf-freefont ttf-liberation ttf-dejavu xorg-xfontsel"
+reflector profont ttf-freefont ttf-liberation ttf-dejavu xorg-xfontsel wmname"
 A="redshift-minimal interrobang-git iocane pacnanny google-translate ttf-dotsies docx2txt xls2txt xlsx2csv"
 c="nmon iotop testdisk powertop ncdu colordiff fbgrab arch-install-scripts mdf2iso xdotool"
 C="cdu cmospwd photorecover"
