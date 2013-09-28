@@ -1,5 +1,5 @@
 #!/bin/bash
-ver=130927 # Automates Arch setup after partitioning,pacstrap,genfstab,arch-chroot
+ver=130928 # automates Arch setup after partitioning,pacstrap,genfstab,arch-chroot
 # simply: login + wget www.tiny.cc/freshy; chmod +x; freshy
 # pacstrap -i for interactive. base + base-devel > 900MB
 
@@ -16,7 +16,7 @@ A="redshift-minimal interrobang-git iocane pacnanny google-translate ttf-dotsies
 c="nmon iotop testdisk powertop ncdu colordiff fbgrab arch-install-scripts mdf2iso xdotool"
 C="cdu cmospwd photorecover"
 e="txt2tags antiword catdoc libots wyrd calcurse python2-rst2pdf dos2unix"
-E="justext jfbpdf"
+E="justext jfbpdf" #pdfsizeopt-cvs
 m="alsa-utils mpd ncmpcpp abcde mp3gain"
 M="podget"
 o="irssi bitlbee mutt abook"
