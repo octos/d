@@ -1,96 +1,96 @@
-#!/bin/bash
-ver=130927 # cli pomodoro technique for dwm
-# X to refresh xset after stopping, .bar in dwm works; but replace it.
-# pomi will unlock manually-locked screen once "work" is reached.
-#
-function brek {
-  notify-send "Brk! $1"
-  mplayer --really-quiet gui.wav
-  sleep 5  #give time to store keyboard
-  killall dunst #to prevent flickering
-  echo -e "off"
-  d/lock.sh &
-  #xset dpms force off
-}
+#!/bin/sh
+ver=130928 # cli pomodoro technique for dwm. needs toggle.sh, lock.sh, xsetroot-set.sh
+# [25,5,25,5,25,5,25,15]
 
-function soon {
-  notify-send -u low "Brk in 1"
-  echo -e "break soon"; }
+function brek {
+  notify-send "$1 $2m"
+  mpv --really-quiet gui.wav
+  sleep 5  #give time to store keyboard
+  echo -e "off"
+# xset dpms force off
+  ~/d/lock.sh & }
+
+soon() {
+  notify-send -u low "$1 in 1m"
+  echo -e "$1 in 1m"; }
 
 function work {
-  killall slock
-  #xset dpms force on
-  notify-send -u low -t 100 "Wrk! $1"
-#  sleep 6  #give monitor time to load
-  mplayer --really-quiet gui.wav
-  echo -e "on"
-}
+  killall -q slock #unlocks even if locked manually
+# xset dpms force on
+# sleep 6  #give monitor time to load
+  notify-send -u low "Wrk! $1m"
+  mpv --really-quiet gui.wav
+  echo -e "on"; }
 
 function zzz {
   notify-send -u low "SLEEP!"
-  mplayer --really-quiet gui.wav
-#  sleep 6  #give time to save
-  echo -e "zzz"
-#  systemctl suspend
-}
+  mpv --really-quiet gui.wav
+  sleep 1m  #give time to save
+# systemctl suspend
+  echo -e "zzz"; }
 
-
- #[25,5,25,5,25,5,25,15]
-
-
+trap 'rm ~/.pomodoro; ~/d/xsetroot-set.sh' EXIT TERM
 log=~/.pomodoro
 dt=`date +%H%M`
-trap 'rm ~/.pomodoro; d/xsetroot-set.sh' EXIT TERM
-
-
-if [[ $2 == "" ]]; then
-  wrk=25
-  brk=-5
-else
-  wrk=$1
-  brk=-$2
-fi
-
-echo "wrk $wrk, brk $brk" #temp
 
 while true; do
-#if [[ $dt > "2200" ]]; then
-  #  zzz
-#fi
-	for a in {1..2} ; do
-	  	
+#if [[ $dt > "2200" ]]; then zzz; fi #works until 00:00
+
+	for a in {1..3} ; do #1..3 bcause 4th pomo is followed by long break
+	
+        if [[ $2 == "" ]]; then wrk=25; brk=5  #reset wrk and brk value
+        else wrk=$1; brk=$2
+        fi
+      	
         work "$wrk" 
         while [ $wrk -gt 0 ]; do
 	        for w in {1..$wrk} ; do
-            if [[ $wrk = "1" ]]; then soon; fi #notify when 1 minute remaining
-                echo -e "$wrk\r"
-                echo -e -n "$wrk`for (( x = 1; x <= $wrk; x += 1)); do echo -n "\\\\";done` " > $log #"\\\\" elegantly shows half of what it should =)
-#                echo -e -n "`for (( x = 1; x <= $wrk; x += 1)); do echo -n "+";done` $wrk " > $log #original
-#                echo "$wrk " > $log          #replacement is above (with progress testing)
-                /home/kv/d/xsetroot-set.sh
+            if [[ $wrk = "1" ]]; then soon "Brk"; fi #notify 1m before brk
+                echo -ne "$wrk\r"
+                echo -ne "$a-$wrk`for (( x = 1; x <= $wrk; x += 1)); do echo -n "\\\\";done` " > $log #"\\\\" each '\' is elegantly 2m
+                ~/d/xsetroot-set.sh
                 wrk=$((wrk-1)) 
 	        	sleep 1m
              done
         done
-        brek " $((-$brk))" 
 
-        while [ $brk -lt 0 ]; do
+        brek "Brk" "$brk" 
+        while [ $brk -gt 0 ]; do
 	        for b in {1..$brk} ; do
-                echo -e "$brk\r"
-                echo "$brk " > $log
-                brk=$((brk+1)) 
+                echo -ne "$brk\r"
+                echo -ne "$a-$brk`for (( x = 1; x <= $brk; x += 1)); do echo -n "z";done` " > $log
+                ~/d/xsetroot-set.sh
+                brk=$((brk-1)) 
 	    	    sleep 1m
             done
         done
 
-        wrk=25 #resets counter to def 25 or $1 (not var yet)
-        brk=-5 #resets counter to def 05 or $2 (not var yet)
+	done #completed 25,5 x3
+        
+        if [[ $2 == "" ]]; then wrk=25; brk=$((5*3))  #brk set to x3 for long break
+        else wrk=$1; brk=$((brk*3))
+        fi
+       
+        work "$wrk"
+        while [ $wrk -gt 0 ]; do #same as wrk above, only $a+1 (cycle), because a new loop started. Also soon gets diff 'soon' arg.
+	        for w in {1..$wrk} ; do
+            if [[ $wrk = "1" ]]; then soon "LongBrk"; fi #notify 1m before brk
+                echo -ne "$wrk\r"
+                echo -ne "$(($a+1))-$wrk`for (( x = 1; x <= $wrk; x += 1)); do echo -n "\\\\";done` " > $log
+                ~/d/xsetroot-set.sh
+                wrk=$((wrk-1)) 
+	        	sleep 1m
+             done
+        done
 
-	done
-
-    brek "long break" 
-    echo -e "long $((-$brk*3))-min break" #temp
-                echo "longbreakk " > $log #TEST write long break in .pomodoro
-    sleep $((-$brk*3))m
+        brek "LongBrk" "$brk"
+        while [ $brk -gt 0 ]; do
+            for g in {1..$brk} ; do
+                echo -ne "$brk\r"
+                echo -ne "l`for (( x = 1; x <= $brk; x += 1)); do echo -n "o";done`ng " > $log
+                ~/d/xsetroot-set.sh
+                brk=$((brk-1)) 
+	    	    sleep 1m
+            done
+        done
 done
-
