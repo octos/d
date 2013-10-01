@@ -1,5 +1,5 @@
 #!/bin/bash
-ver=130928 # automates Arch setup after partitioning,pacstrap,genfstab,arch-chroot
+ver=130929 # automates Arch setup after partitioning,pacstrap,genfstab,arch-chroot
 # simply: login + wget www.tiny.cc/freshy; chmod +x; freshy
 # pacstrap -i for interactive. base + base-devel > 900MB
 
@@ -12,7 +12,7 @@ me=$(basename $0)
 a="vim urxvt-perls bash-completion ranger htop tmux aspell e3 
 atool bzip2 unzip p7zip unrar highlight mediainfo odt2txt
 reflector profont ttf-freefont ttf-liberation ttf-dejavu xorg-xfontsel wmname"
-A="redshift-minimal interrobang-git iocane pacnanny google-translate ttf-dotsies docx2txt xls2txt xlsx2csv"
+A="redshift-minimal interrobang-git iocane pacnanny google-translate ttf-dotsies docx2txt xls2txt xlsx2csv xcftools"
 c="nmon iotop testdisk powertop ncdu colordiff fbgrab arch-install-scripts mdf2iso xdotool"
 C="cdu cmospwd photorecover"
 e="txt2tags antiword catdoc libots wyrd calcurse python2-rst2pdf dos2unix"
@@ -28,7 +28,7 @@ W="esniper"
 v="dvdbackup ffcast"
 z="cowsay ponysay cmatrix bsd-games fortune-mod screenfetch typespeed gtypist
 libcaca aalib"
-Z="nyancat-git asciiquarium tbclock"
+Z="nyancat-git asciiquarium tbclock bb"
 # ===== X light =====
 la="xclip hsetroot gparted pcmanfm hardinfo cups cups-filters cups-pdf"
 le="zathura zathura-pdf-poppler zathura-djvu zathura-ps"
