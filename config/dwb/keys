@@ -172,3 +172,4 @@ mark= `
 repeat= .
 tabgrep= 
 visual_mode= v
+dwb_custom_keys_submit=save custom

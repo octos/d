@@ -1,0 +1,4 @@
+@space@ :scroll_page_down
+Shift @space@ :scroll_page_up
+@Page_Down@ :scroll_page_down
+@Page_Up@ :scroll_page_up
