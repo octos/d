@@ -2,10 +2,8 @@
 source `FILE=$HOME/.muttrc_aliases; if [ ! -s "$FILE" ]; then FILE=/dev/null;fi;echo "$FILE"`
 source $HOME/d/muttrc_private
 
-
 set sleep_time = 0      # don't pause 1 sec when switching folders
 bind pager,index ZZ quit #I can't add browser,attach,etc.
-
 
 macro index / "<limit>" "show only msgs matching" # l (limit) is now a.
 bind index Y imap-fetch-mail
@@ -43,8 +41,6 @@ send-hook . 'my_hdr Message-ID:<`uuidgen -r`@unknownmsgid>' #hide my hostname
 #send-hook . 'my_hdr Date:<`date --date="-3 days" +%Y%m%d`>' #yesterday's date (work on it)
 #my_hdr Date: aaa #Thu, 27 Jun 2013 21:30:15 -0400" #doesn't work at all.
 folder-hook =* 'my_hdr To: ' #by default, set To: to no-one.
-folder-hook =a 'my_hdr To: $HMAIL' #if in folder a, write to h automatically
-#folder-hook =a 'set autoedit = yes' #skip initial send-menu.. but that skips subject too.
 auto_view text/html #view mailcap for more
 #
 # inline attachment preview
@@ -124,7 +120,6 @@ bind browser gg first-entry
 #macro browser gc "<change-dir>c<enter><enter>" "Go to c"
 
 # Compose View Options -------------------------------
-set realname = $REALNAME          # who am i?
 set envelope_from                    # which from?
 set sig_dashes                       # dashes before sig
 set edit_headers= yes               # show headers when composing. kv: yes=editable
