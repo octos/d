@@ -1,6 +1,6 @@
 # dupeless history
-export HISTCONTROL="ignoredups"
-export HISTSIZE=4000
+export HISTCONTROL="erasedups"
+export HISTSIZE=2048
 export PATH=$PATH:/usr/sbin/:/usr/local/bin:/home/kv/.gem/ruby/1.9.1/bin
 export EDITOR=vim
 export BROWSER=dwb
