@@ -69,7 +69,8 @@ hALL="$hA $hC $hE $hM $hO $hP $hW $hV $hZ"
 set -o errexit 						
 trap 'echo -e "\n${r}Aborted${x}"; exit' INT	 	#so that CTRL-C kills
 
-if [[ $1 == "" ]]; then
+if [[ $1 == ""  ]]; then
+  echo -e "freshy $ver"
   echo "options:
    -install basic install
    -apps    install pacman apps
@@ -77,13 +78,8 @@ if [[ $1 == "" ]]; then
    -dots    dotfiles
    -x       install X
    -v       version
-   -z       clean up, start over
-  see $0 -v"
+   -z       clean up, start over"
     exit; fi
-
-if [[ $1 == -v ]]; then
-  echo -e "freshy $ver"
-  exit 1; fi
 
 if [[ $1 == -z ]]; then
  if [[ $EUID -ne 0 ]]; then   			#superuser?
@@ -128,7 +124,7 @@ if [[ $1 == -z ]]; then
   pacman -S --noconfirm alsa-utils
   amixer sset Master unmute
   mv ${0} /home/$user/$me
-  echo -e "\nswap should work; if not, add this to /etc/fstab:\n "/swapfile none swap defaults 0 0"
+  echo -e "\nswap should work; if not, add this to /etc/fstab:\n "/swapfile none swap defaults 0 0""
   echo -e "\nbeep disabled: done!" 
   echo -e "[archlinuxfr]\nSigLevel = Optional TrustAll\nServer = http://repo.archlinux.fr/\$arch" >> /etc/pacman.conf; pacman -Sy --noconfirm yaourt
   echo -e "\nyaourt installed: done!" 
