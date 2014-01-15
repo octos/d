@@ -13,6 +13,9 @@ alias ls='ls --color=auto' #'always' broke scripts
 alias grep='grep --color=auto' 
 alias sudo='sudo '
 alias vless='vim -u /usr/share/vim/vim7*/macros/less.vim'
+alias xidel='./xidel --user-agent="Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:25.0) Gecko/20100101 Firefox/25.0"'
+alias curl='curl -A "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:25.0) Gecko/20100101 Firefox/25.0"'
+alias ejects='eject /dev/sr0; eject /dev/sr1'
 
 # app
 alias a='ranger'
@@ -31,6 +34,9 @@ alias res='xrandr --output VGA1 --mode 1680x1050'
 alias redwm='cd ~/d/dwm; makepkg -g >> PKGBUILD; makepkg -efi --noconfirm; cd'
 alias scgt='~/d/killifrunning.sh rejoystick; rejoystick -d; cd .wine/drive_c/Program\ Files/SCGTmini/; wine Spcar.exe'
 alias va='vim ~/d/archsetup'
+alias en='./jjj.sh -en' #$@ | fmt -t -w $(($(tput cols)+0)) --goal=$(($(tput cols)+0)) | sed "s/   /  /g" | less -RFXE #very nice output for long articles
+alias fr='./jjj.sh -fr' #$@ | fmt -t -w $(($(tput cols)+0)) --goal=$(($(tput cols)+0)) | sed "s/   /  /g" | less -RFXE
+alias anti='~/d/killifrunning.sh antidote; sudo iptables -A OUTPUT -m owner --gid-owner ni -j DROP; cd .wine/drive_c/Program\ Files/Druide/Antidote\ 7/Programmes32/; sg ni "wine antido32.exe" & sleep 5; exit'
 
 # pkg
 alias R='sudo pacman -R'
