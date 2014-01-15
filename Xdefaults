@@ -3,6 +3,14 @@ URxvt*boldFont:  -*-profont-*-*-*-*-10-*-*-*-*-*-iso8859-1
 URxvt.scrollBar: false
 URxvt*saveLines: 10000
 
+! font size changing
+ URxvt.keysym.C-Up:     perl:font-size:increase
+ URxvt.keysym.C-Down:   perl:font-size:decrease
+ URxvt.keysym.C-S-Up:   perl:font-size:incglobal
+ URxvt.keysym.C-S-Down: perl:font-size:decglobal
+   URxvt.iso14755: false
+   URxvt.iso14755_52: false
+
 ! do not scroll with output (compiler msgs)
 URxvt*scrollTtyOutput: false
 ! scroll back to the bottom on keypress

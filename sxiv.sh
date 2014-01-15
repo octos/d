@@ -35,7 +35,7 @@ abspath () {
 
 listfiles () {
     find -L "$(dirname "$target")" -maxdepth 1 -type f -iregex \
-      '.*\(jpe?g\|bmp\|png\|gif\)$' -print0 | sort -z
+      '.*\(jpe?g\|tif\|tiff\|bmp\|png\|gif\)$' -print0 | sort -n -z
 }
 
 target="$(abspath "$1")"

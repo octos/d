@@ -9,6 +9,8 @@ if [ -z "$PIDS" ]; then
  echo "running $1"
   case $1 in
     pomi.sh) ~/d/pomi.sh;;
+    #play) play -n synth pinknoise band -n 1200 200 2>/dev/null &;;
+    play) ~/d/noise.sh &;;
     redshift) redshift -l 45.425:-75.70 &;;
     unclutter) unclutter -noevents -idle 1 &;;
     *) $1;;

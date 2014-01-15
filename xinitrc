@@ -16,6 +16,7 @@ setxkbmap us -variant altgr-intl
 setxkbmap -option caps:escape -option compose:rwin #win_R is compose key (',a,á)
 hsetroot -full "$(find d/wall -type f | shuf -n1)"
 #display -window root "$(find d/wall -type f | shuf -n1)" #had problems with compton
+wmname LG3D #for java
 mpd
 
 #exec dwm
