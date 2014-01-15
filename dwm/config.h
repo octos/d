@@ -69,6 +69,8 @@ static const char *redwm[] = { "/home/kv/d/dwm/redwm.sh",  NULL };
 static const char *gtrans[] = { "/home/kv/d/gtrans.sh",  NULL };
 static const char *colorgb[] = { "/home/kv/d/colorgb.sh",  NULL };
 static const char *slock[]  = { "/home/kv/d/lock.sh", NULL };
+static const char *khan[]  = { "/home/kv/d/config/dwb/userscripts/khan.sh", NULL };
+static const char *work[]  = { "/home/kv/d/work.sh", "news", NULL };
 static const char *dwb[]  = { "dwb", NULL };
 static const char *htop[]  = { term, "-e", "htop", NULL };
 static const char *irc[]  = { term, "-e", "weechat-curses", NULL };
@@ -80,6 +82,8 @@ static const char *vol1[] = { "amixer", "-M", "-q", "set", "Master", "5dB-",  NU
 static const char *vol2[]  = { "amixer", "-M", "-q", "set", "Master", "5dB+", "unmute", NULL };
 static const char *dunst[] = { "/home/kv/d/dunst-set.sh",  NULL };
 static const char *pomi[] = { "/home/kv/d/toggle.sh", "pomi.sh", NULL };
+static const char *pomi[] = { "/home/kv/d/scrnshot.sh", NULL };
+static const char *noise[] = { "/home/kv/d/toggle.sh", "play", NULL };
 static const char *redshift[] = { "/home/kv/d/toggle.sh", "redshift",  NULL };
 static const char *bar[] = { "/home/kv/d/xsetroot-set.sh",  NULL };
 static const char *termcmd[]  = { term, NULL };
@@ -135,12 +139,15 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_Escape,spawn,          {.v = slock } },
 	{ MODKEY|ShiftMask,             XK_Escape,spawn,          {.v = suspend } },
 	{ MODKEY,                       XK_F1,     spawn,         {.v = pomi } },
-	{ MODKEY,                       XK_F2,     spawn,         {.v = dunst } },
+	{ MODKEYShiftMask,              XK_F1,     spawn,         {.v = scrnshot } },
+	{ MODKEY,                       XK_F2,     spawn,         {.v = noise } },
 	{ MODKEY|ShiftMask,             XK_F3,     spawn,          SHCMD("import -window root \"$(date +%y%m%d-%H%M%S)\"f.png") },
 	{ MODKEY|ShiftMask,             XK_F4,     spawn,          SHCMD("import -window \"$(xdotool getwindowfocus -f)\" -frame \"$(date +%y%m%d-%H%M%S)\"a.png") },
 //	{ MODKEY|ShiftMask,             XK_F4,     spawn,          SHCMD("import \"$(date +%y%m%d-%H%M%S)\"_slct.png") },
 	{ MODKEY,                       XK_F5,     spawn,          {.v = redshift } },
 	{ MODKEY|ShiftMask,             XK_F5,     spawn,          {.v = dunst } },
+	{ MODKEY,                       XK_F6,     spawn,          {.v = khan } },
+	{ MODKEY,                       XK_F8,     spawn,          {.v = work } },
 	{ MODKEY,                       XK_F10,    spawn,          {.v = vol0 } },
     { MODKEY,                       XK_F10,    spawn,          {.v = bar } },
 	{ MODKEY,                       XK_F11,    spawn,          {.v = vol1 } },

@@ -1,5 +1,5 @@
 #!/bin/bash
-ver=130929 # automates Arch setup after partitioning,pacstrap,genfstab,arch-chroot
+ver=140115 # automates Arch setup after partitioning,pacstrap,genfstab,arch-chroot
 # simply: login + wget www.tiny.cc/freshy; chmod +x; freshy
 # pacstrap -i for interactive. base + base-devel > 900MB
 
@@ -9,29 +9,31 @@ hostname="klex"
 me=$(basename $0)
 
 # ===== cli ===== #capitals are AUR
-a="vim urxvt-perls bash-completion ranger htop tmux aspell e3 
+a="vim urxvt-perls bash-completion ranger libnotify htop tmux aspell e3 
 atool bzip2 unzip p7zip unrar highlight mediainfo odt2txt
 reflector profont ttf-freefont ttf-liberation ttf-dejavu xorg-xfontsel wmname"
-A="redshift-minimal interrobang-git iocane pacnanny google-translate ttf-dotsies docx2txt xls2txt xlsx2csv xcftools"
+A="redshift-minimal interrobang-git keynav iocane pacnanny google-translate ttf-dotsies docx2txt xls2txt xlsx2csv xcftools"
 c="nmon iotop testdisk powertop ncdu colordiff fbgrab arch-install-scripts mdf2iso xdotool"
 C="cdu cmospwd photorecover"
-e="txt2tags antiword catdoc libots wyrd calcurse python2-rst2pdf dos2unix"
+e="sane txt2tags antiword catdoc libots wyrd calcurse python2-rst2pdf dos2unix"
 E="justext jfbpdf" #pdfsizeopt-cvs
 m="alsa-utils mpd ncmpcpp abcde mp3gain"
 M="podget"
 o="irssi bitlbee mutt abook"
 p="fbida fbv optipng imagemagick ghostscript librsvg jasper perl-image-exiftool"
-P="pngquant"
+P="pngquant img2pdf-git"
 w="wget curl axel w3m links lynx elinks surfraw rtorrent transmission-cli newsbeuter
 vnstat aircrack-ng tcpdump nmap"
 W="esniper"
-v="dvdbackup ffcast"
+v="dvdbackup"
+V="ffcast"
 z="cowsay ponysay cmatrix bsd-games fortune-mod screenfetch typespeed gtypist
 libcaca aalib"
 Z="nyancat-git asciiquarium tbclock bb"
 # ===== X light =====
 la="xclip hsetroot gparted pcmanfm hardinfo cups cups-filters cups-pdf"
-le="zathura zathura-pdf-poppler zathura-djvu zathura-ps"
+le="zathura zathura-pdf-poppler zathura-djvu zathura-ps typecatcher"
+lm="easytag"
 lp="sxiv"
 lP="xoris imageenlarger" #imageenlarger=SmillaEnlarger
 lw="dwb surf wicd"
@@ -45,7 +47,7 @@ ho="scantailor"
 hp="gimp darktable hugin inkscape mypaint"
 hw="firefox emerillon"
 hv="kdenlive"
-hV="slowmovideo-git tunesviewer"
+hV="slowmovideo-git makemkv tunesviewer"
 hz="wine"
 hZ="rejoystick"
 # ===== special =====
@@ -57,12 +59,12 @@ COMP="xarchiver"
 # ===== don't touch =====
 k='\e[0;37m' r='\e[0;31m' g='\e[0;32m' y='\e[0;33m' b='\e[0;34m' u='\e[0;35m' x='\e[0m' R='\e[1;31m' G='\e[1;32m' ok="\t${G}OK${x} "
 time=":: ${y}`date +%r`${x}" #shows time [:: ${y}`date +%r`${x}] => 12:59:59 PM
-all="$a $c $e $m $o $p $w $v $z"
-ALL="$A $C $E $M $O $P $W $V $Z"
-lall="$la $lc $le $lm $lo $lp $lw $lv $lz"
-lALL="$lA $lC $lE $lM $lO $lP $lW $lV $lZ"
-hall="$ha $hc $he $hm $ho $hp $hw $hv $hz"
-hALL="$hA $hC $hE $hM $hO $hP $hW $hV $hZ"
+all="$a $c $e $m $o $p $w $v"
+ALL="$A $C $E $M $O $P $W $V"
+lall="$la $lc $le $lm $lo $lp $lw $lv"
+lALL="$lA $lC $lE $lM $lO $lP $lW $lV"
+hall="$ha $hc $he $hm $ho $hp $hw $hv"
+hALL="$hA $hC $hE $hM $hO $hP $hW $hV"
 
 # ===== 0 ===== # general if's
 #exit upon error: http://www.davidpashley.com/articles/writing-robust-shell-scripts.html
