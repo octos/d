@@ -1,7 +1,6 @@
 #!/bin/bash
-ver=140115 # automates Arch setup after partitioning,pacstrap,genfstab,arch-chroot
-# simply: login + wget www.tiny.cc/freshy; chmod +x; freshy
-# pacstrap -i for interactive. base + base-devel > 900MB
+ver=141017 # After you partition+mount (see bottom), fre.sh installs apps etc.
+# Process: `wget www.tiny.cc/fresh; chmod +x; [bottom instructions]; ./fre.sh`
 
 # ===== config =====
 user="kv"
@@ -72,7 +71,7 @@ set -o errexit
 trap 'echo -e "\n${r}Aborted${x}"; exit' INT	 	#so that CTRL-C kills
 
 if [[ $1 == ""  ]]; then
-  echo -e "freshy $ver"
+  echo -e "fre.sh $ver"
   echo "options:
    -install basic install
    -apps    install pacman apps
@@ -220,12 +219,10 @@ echo -e "\n Setup vnStat daemon, for network stats? (Y/n)"
 fi
 exit 1
 
+###########
 # TODO Replace archlinuxfr by makepkg
 # LnF 2011 https://bbs.archlinux.org/viewtopic.php?id=111878
-# ===== Dependencies =====
-# - Arch Linux (pacman)
-# - internet connection
-# - yaourt
+# pacstrap -i for interactive. base + base-devel > 900MB
 # ===== HELP =====
 # name of, and path to the script itself
 # http://stackoverflow.com/questions/192319/in-the-bash-script-how-do-i-know-the-script-file-name
@@ -239,4 +236,29 @@ exit 1
 # http://linuxconfig.org/Bash_scripting_Tutorial
 # 
 # http://stackoverflow.com/questions/7376058/how-to-use-or-within-negative-bash-conditions
+#
+# ===== Dependencies =====
+# - Arch Linux (pacman)
+# - internet connection
+# - yaourt
+# ===== Setup =====
+# cfdisk 
+#    sda1 15GB   /       bootable
+#    sda2 100MB  /boot   bootable 
+#    sda3 12GB   /var    (reiserfs) 
+#    sda4 999GB  /home   (ext4)
+#
+# mkfs.ext4 /dev/sda1 (same ẃ /boot & /home)
+# mkfs.reiserfs /dev/sda3
+#
+# mount /dev/sda1 /mnt
+# mkdir /mnt/home  ==> (same ẃ /var & /boot)
+# mount /dev/sda4 /mnt/home  ==> (same ẃ /var & /boot)
+# (setup internet)
+# pacstrap /mnt base base-devel vim git
+# genfstab -U -p /mnt >> /mnt/etc/fstab
+# arch-chroot /mnt
+#
+# wget tiny.cc/fresh
+#     (https://raw.github.com/octos/d/master/fre.sh)
 ## EOF ##
