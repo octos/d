@@ -82,7 +82,7 @@ static const char *vol1[] = { "amixer", "-M", "-q", "set", "Master", "5dB-",  NU
 static const char *vol2[]  = { "amixer", "-M", "-q", "set", "Master", "5dB+", "unmute", NULL };
 static const char *dunst[] = { "/home/kv/d/dunst-set.sh",  NULL };
 static const char *pomi[] = { "/home/kv/d/toggle.sh", "pomi.sh", NULL };
-static const char *pomi[] = { "/home/kv/d/scrnshot.sh", NULL };
+static const char *shot[] = { "/home/kv/d/scrnshot.sh", NULL };
 static const char *noise[] = { "/home/kv/d/toggle.sh", "play", NULL };
 static const char *redshift[] = { "/home/kv/d/toggle.sh", "redshift",  NULL };
 static const char *bar[] = { "/home/kv/d/xsetroot-set.sh",  NULL };
@@ -139,7 +139,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_Escape,spawn,          {.v = slock } },
 	{ MODKEY|ShiftMask,             XK_Escape,spawn,          {.v = suspend } },
 	{ MODKEY,                       XK_F1,     spawn,         {.v = pomi } },
-	{ MODKEYShiftMask,              XK_F1,     spawn,         {.v = scrnshot } },
+	{ MODKEY|ShiftMask,              XK_F1,     spawn,         {.v = shot } },
 	{ MODKEY,                       XK_F2,     spawn,         {.v = noise } },
 	{ MODKEY|ShiftMask,             XK_F3,     spawn,          SHCMD("import -window root \"$(date +%y%m%d-%H%M%S)\"f.png") },
 	{ MODKEY|ShiftMask,             XK_F4,     spawn,          SHCMD("import -window \"$(xdotool getwindowfocus -f)\" -frame \"$(date +%y%m%d-%H%M%S)\"a.png") },
@@ -162,7 +162,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_x,      spawn,          {.v = mutt } },
 	{ MODKEY,                       XK_z,      spawn,          {.v = htop } },
         { MODKEY,        /* clmk */ XK_semicolon,      spawn,  {.v = interrobang } },
-    	{ MODKEY,                   XK_o,      spawn,          {.i = interrobang } },
+    	{ MODKEY,                   XK_o,      spawn,          {.v = interrobang } },
     	{ MODKEY,                   XK_n,      focusstack,     {.i = +1 } },
 	    { MODKEY,                   XK_e,      focusstack,     {.i = -1 } },
 	    { MODKEY,                   XK_u,      incnmaster,     {.i = +1 } },
