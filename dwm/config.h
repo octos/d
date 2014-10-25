@@ -160,11 +160,11 @@ static Key keys[] = {
 	{ MODKEY,                       XK_c,      spawn,          {.v = irc } },
 	{ MODKEY,                       XK_v,      spawn,          {.v = vim } },
 	{ MODKEY|ShiftMask,             XK_m,      spawn,          {.v = iocane } },
-	{ MODKEY,                       XK_w,      spawn,          {.v = dwb } },
+	{ MODKEY,                       XK_o,      spawn,          {.v = dwb } }, //consistent W o in dwb
 	{ MODKEY,                       XK_x,      spawn,          {.v = mutt } },
 	{ MODKEY,                       XK_z,      spawn,          {.v = htop } },
         { MODKEY,        /* clmk */ XK_semicolon,      spawn,  {.v = interrobang } },
-    	{ MODKEY,                   XK_o,      spawn,          {.v = interrobang } },
+    	{ MODKEY,                   XK_O,      spawn,          {.v = interrobang } },
     	{ MODKEY,                   XK_n,      focusstack,     {.i = +1 } },
 	    { MODKEY,                   XK_e,      focusstack,     {.i = -1 } },
 	    { MODKEY,                   XK_u,      incnmaster,     {.i = +1 } },
@@ -183,6 +183,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,                       XK_q,      killclient,     {0} },
+	{ MODKEY,                       XK_w,      killclient,     {0} }, //Like OS X
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
