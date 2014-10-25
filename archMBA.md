@@ -8,8 +8,8 @@ You don't need to buy a USB-Ethernet adapter!
 
 ## Overview
 
-0. [Create custom .iso](#0. Create custom .iso)
-1. [Boot custom .iso](#1. Boot custom .iso)
+0. [Create custom .iso](#0-create-custom-iso)
+1. [Boot custom .iso](#1-boot-custom-iso)
 2. Install Arch
 3. Post-installation
 
