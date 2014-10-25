@@ -36,7 +36,7 @@ static const Layout layouts[] = {
 };
 
 /* key definitions */
-#define MODKEY Mod1Mask
+#define MODKEY Mod4Mask
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
@@ -91,6 +91,8 @@ static const char *dmenucmd[] = { "dmenu_run", "-fn", font, "-nb", normbgcolor, 
 static const char *interrobang[] = { "interrobang", NULL };
 static Key keys[] = {
 	/* modifier                     key        function        argument */
+	{ 0,             0x1008ff03,     spawn,          {.v = pomi }}, /*MacBookAire MonBrightnessDown */
+	{ 0,             0x1008ff02,     spawn,          {.v = pomi }}, /*MacBookAire MonBrightnessDown */
 	{ MODKEY|ShiftMask,             XK_p,     spawn,          {.v = print }},
 // layouts
 	{ MODKEY|ShiftMask,             XK_F12,   spawn,          {.v = us } }, //universal revert to latn

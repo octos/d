@@ -30,8 +30,8 @@ set encoding=utf-8
 " my own
 syntax on
 "set spell spelllang=fr,pl,en
-set background=dark "for base16 colorscheme"
-colorscheme base16-default
+"set background=dark "for base16 colorscheme"
+"colorscheme base16-default
 " make html with txt2tags. the CR gets rid of 'press ENTER to continue'
 map <F5> :wall!<CR>:!txt2tags --toc -t html %<CR>:!dwbremote -a execute reload<CR><CR> 
 map <F6> :VimroomToggle<CR><CR>

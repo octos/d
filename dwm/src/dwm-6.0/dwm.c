@@ -160,7 +160,6 @@ static Bool applysizehints(Client *c, int *x, int *y, int *w, int *h, Bool inter
 static void arrange(Monitor *m);
 static void arrangemon(Monitor *m);
 static void attach(Client *c);
-static void attachabove(Client *c);
 static void attachstack(Client *c);
 static void buttonpress(XEvent *e);
 static void checkotherwm(void);
@@ -416,19 +415,6 @@ void
 attach(Client *c) {
 	c->next = c->mon->clients;
 	c->mon->clients = c;
-}
-
-void
-attachabove(Client *c) {
-	if(c->mon->sel == NULL || c->mon->sel == c->mon->clients || c->mon->sel->isfloating) {
-		attach(c);
-		return;
-	}
-
-	Client *at;
-	for(at = c->mon->clients; at->next != c->mon->sel; at = at->next);
-	c->next = at->next;
-	at->next = c;
 }
 
 void
@@ -1169,7 +1155,7 @@ manage(Window w, XWindowAttributes *wa) {
 		c->isfloating = c->oldstate = trans != None || c->isfixed;
 	if(c->isfloating)
 		XRaiseWindow(dpy, c->win);
-	attachabove(c);
+	attach(c);
 	attachstack(c);
 	XMoveResizeWindow(dpy, c->win, c->x + 2 * sw, c->y, c->w, c->h); /* some windows require this */
 	setclientstate(c, NormalState);
@@ -1205,7 +1191,7 @@ maprequest(XEvent *e) {
 
 void
 monocle(Monitor *m) {
-	unsigned int n = 0, r = 0;
+	unsigned int n = 0;
 	Client *c;
 
 	for(c = m->clients; c; c = c->next)
@@ -1213,17 +1199,8 @@ monocle(Monitor *m) {
 			n++;
 	if(n > 0) /* override layout symbol */
 		snprintf(m->ltsymbol, sizeof m->ltsymbol, "[%d]", n);
-	for(c = nexttiled(m->clients); c; c = nexttiled(c->next)) {
-		/* remove border when in monocle layout */
-		if(c->bw) {
-			c->oldbw = c->bw;
-			c->bw = 0;
-			r = 1;
-		}
-		resize(c, m->wx, m->wy, m->ww - (2 * c->bw), m->wh - (2 * c->bw), False);
-		if(r)
-			resizeclient(c, m->wx, m->wy, m->ww - (2 * c->bw), m->wh - (2 * c->bw));
-	}
+	for(c = nexttiled(m->clients); c; c = nexttiled(c->next))
+		resize(c, m->wx, m->wy, m->ww - 2 * c->bw, m->wh - 2 * c->bw, False);
 }
 
 void
@@ -1503,7 +1480,7 @@ sendmon(Client *c, Monitor *m) {
 	detachstack(c);
 	c->mon = m;
 	c->tags = m->tagset[m->seltags]; /* assign tags of target monitor */
-	attachabove(c);
+	attach(c);
 	attachstack(c);
 	focus(NULL);
 	arrange(NULL);
@@ -1726,7 +1703,7 @@ textnw(const char *text, unsigned int len) {
 
 void
 tile(Monitor *m) {
-	unsigned int i, n, h, mw, my, ty, r;
+	unsigned int i, n, h, mw, my, ty;
 	Client *c;
 
 	for(n = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), n++);
@@ -1737,36 +1714,17 @@ tile(Monitor *m) {
 		mw = m->nmaster ? m->ww * m->mfact : 0;
 	else
 		mw = m->ww;
-	for(i = my = ty = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), i++, r = 0) {
-		if(n == 1) {
-			if (c->bw) {
-				/* remove border when only one window is on the current tag */
-				c->oldbw = c->bw;
-				c->bw = 0;
-				r = 1;
-			}
-		}
-		else if(!c->bw && c->oldbw) {
-			/* restore border when more than one window is displayed */
-			c->bw = c->oldbw;
-			c->oldbw = 0;
-			r = 1;
-		}
+	for(i = my = ty = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), i++)
 		if(i < m->nmaster) {
 			h = (m->wh - my) / (MIN(n, m->nmaster) - i);
 			resize(c, m->wx, m->wy + my, mw - (2*c->bw), h - (2*c->bw), False);
-			if(r)
-				resizeclient(c, m->wx, m->wy + my, mw - (2*c->bw), h - (2*c->bw));
 			my += HEIGHT(c);
 		}
 		else {
 			h = (m->wh - ty) / (n - i);
 			resize(c, m->wx + mw, m->wy + ty, m->ww - mw - (2*c->bw), h - (2*c->bw), False);
-			if(r)
-				resizeclient(c, m->wx + mw, m->wy + ty, m->ww - mw - (2*c->bw), h - (2*c->bw));
 			ty += HEIGHT(c);
 		}
-	}
 }
 
 void
@@ -1782,12 +1740,6 @@ togglefloating(const Arg *arg) {
 	if(!selmon->sel)
 		return;
 	selmon->sel->isfloating = !selmon->sel->isfloating || selmon->sel->isfixed;
-	if(selmon->sel->isfloating)
-		/* restore border when moving window into floating mode */
-		if(!selmon->sel->bw && selmon->sel->oldbw) {
-			selmon->sel->bw = selmon->sel->oldbw;
-			selmon->sel->oldbw = 0;
-		}
 	if(selmon->sel->isfloating)
 		resize(selmon->sel, selmon->sel->x, selmon->sel->y,
 		       selmon->sel->w, selmon->sel->h, False);
@@ -1948,7 +1900,7 @@ updategeom(void) {
 					m->clients = c->next;
 					detachstack(c);
 					c->mon = mons;
-					attachabove(c);
+					attach(c);
 					attachstack(c);
 				}
 				if(m == selmon)
