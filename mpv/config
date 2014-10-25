@@ -1,12 +1,14 @@
 fs=yes	      #always fullscreen
 softvol=no    #same as dwm
 speed=1.20    #time flies
-af=scaletempo	#pitch correction on !=1x playback
+af=scaletempo #pitch correction on !=1x playback
 
-# Disable on OS X
-vo=xv,x11    #x11 to work under VM
-ao=alsa
+vo=xv,x11,opengl-hq:icc-profile-auto:approx-gamma  #Lin,x11=VBox,OSX
+ao=alsa,coreaudio  #Lin,OSX
 #dvd-device=/dev/sr0   # use: mplayer dvd:// OR dvdnav:// -no-cache --mouse-movement
+
+osd-color='#CCFFFFFF'
+af-add=bs2b  #headphones audio
 
 slang=en,eng
 msg-color=yes
