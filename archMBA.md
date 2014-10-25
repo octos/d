@@ -8,13 +8,12 @@ You don't need to buy a USB-Ethernet adapter!
 
 ## Overview
 
-0. [Create custom .iso](#0-create-custom-iso)
-1. [Boot custom .iso](#1-boot-custom-iso)
-2. Install Arch
-3. Post-installation
+1. [Create custom .iso](#1-create-custom-iso)
+2. [Boot custom .iso](#2-boot-custom-iso)
+3. [Install Arch](#3-install-arch)
+4. [Post-installation](#4-post-installation)
 
-
-### 0. Create custom .iso
+### 1. Create custom .iso
 You need to do this, because the standard .iso does not contain the the broadcom-wl package needed for MacBook Air's Broadcom NNNN Network card to work. Alternatively, can use your phone's tetherig, or a USB-Ethernet adapter to connect to the internet.
 
 #### Boot into Arch
@@ -57,14 +56,14 @@ Now "burn" it to USB:
     
 After ~30 seconds, OS X should tell you that the USB stick is not readable. That's OK.
 
-### 1. Boot the custom .iso
+### 2. Boot custom .iso
 
 Boot your Macbook with the USB stick plugged in while holding the left alt key. Select it and press enter.
 
 Connect to the internet
 
-### 2. Install Arch
-### 3. Post-installation
+### 3. Install Arch
+### 4. Post-installation
 ---
 
 ### Syntax
