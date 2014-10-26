@@ -1,5 +1,5 @@
 # Arch on MacBook Air 2014
-I used a **MacBook Air** [13" A1466 (6,2)](https://en.wikipedia.org/wiki/MacBook_Air#Specifications) Early 2014** , a **USB stick** (64 GB), and the **Internet**.
+I used a **MacBook Air** [13" A1466 (6,2)](https://en.wikipedia.org/wiki/MacBook_Air#Specifications) **Early 2014**, a **USB stick** (64 GB), and the **Internet**.
 
 ##FAQ
 - **Is it difficult?**
@@ -24,7 +24,7 @@ Before you begin, **Update** OS X, **reboot**, and make sure there are no more 
 The standard Arch .iso does not contain the the [broadcom-wl](https://aur.archlinux.org/packages/broadcom-wl) AUR package needed for MacBook Air's Broadcom NNNN Network card to work. Normally you would download it, but without a working network card, you can't. Alternatively, you can connect to the Internet by tethering your phone, or with a USB-Ethernet adapter.
 
 ### Boot into Arch
-To create a custom .iso, you need an Arch machine. You can use either: **another Arch machine**, a **Live USB/Live CD**, or **VirtualBox** (like I did). This is just an intermediate step to achieve our goal of creating a custom Arch .iso with the Broadcom WiFi driver on it.
+To create a custom .iso, you need an Arch machine. You can use either: **another Arch machine**, a **Live USB/Live CD**, or **VirtualBox** like I did. This is just an intermediate step to achieve our goal of creating a custom Arch .iso with the Broadcom WiFi driver on it.
 
 Now, create the custom .iso by running my custom script that will do this for you. 
 
@@ -32,10 +32,10 @@ Then, you need to send it to you OS X machine. You can use:
 
 - Another USB stick
 - Internet (SSH/Upload/Email)
-- Shared folders in VirtualBox (like I did)
+- Shared folders in VirtualBox _(like I did)_
 
 ### Back in OS X
-Find out your FILENAME.iso and rdisk[NUMBER], Convert .iso to .img.dmg, and Rename .img.dmg to .iso
+Find out your FILE.iso and rdisk[NUMBER], Convert .iso to .img.dmg, and Rename .img.dmg to .iso
 
     diskutil list
     hdiutil convert -format UDRW -o FILE.img FILE.iso
@@ -47,7 +47,7 @@ Then, unmount its partitions
 
 Now "burn" it to USB:
     
-    sudo dd if=./Desktop/archlive_shared/FILENAME.img of=/dev/DISK bs=1m
+    sudo dd if=./Desktop/archlive_shared/FILE.img of=/dev/DISK bs=1m
     
 After ~30 seconds, OS X should tell you that the USB stick is not readable. That's OK.
 
