@@ -33,17 +33,14 @@ The standard Arch .iso does not contain the the [broadcom-wl](https://aur.archli
 ### Boot into Arch
 To create a custom Arch .iso with the Broadcom WiFi driver on it, you need an Arch machine. You can use either: **another Arch machine**, a **Live USB/Live CD**, or **VirtualBox** like I did.
 
-    mkdir ~/archlive
-
-Download `broadcom-wl-dkms` from AUR. You will install it manually later (`broadcom-wl` works too, but kernel updates will break it).
-
-    wget https://aur.archlinux.org/packages/br/broadcom-wl-dkms/broadcom-wl-dkms.tar.gz
-
-Generate the custom .iso.
+Add necessary packages (`linux-headers`). Download `broadcom-wl-dkms` from AUR. You will install it manually later (`broadcom-wl` works too, but kernel updates will break it). Generate the custom .iso.
     
     mkdir ~/archlive
     cp -r /usr/share/archiso/configs/releng/ ~/archlive
-    echo -e "vim-minimal\nranger\nlinux-headers" >> ~/archlive/packages.both
+    cd ~/archlive
+    echo -e "vim-minimal\nranger\nlinux-headers" >> packages.both
+    cd ~/archlive/releng/airootfs/etc && mkdir skel && cd skel
+    wget https://aur.archlinux.org/packages/br/broadcom-wl-dkms/broadcom-wl-dkms.tar.gz
     ./build.sh -v
 
 Send the .iso to you OS X machine. You can use:
