@@ -1,13 +1,22 @@
 # Arch on MacBook Air 2014
-I used a **MacBookAir6,2** (Mid 2013/Early 2014), a **USB stick** (64 GB), and **Internet access**.
+I used a **[MacBook Air 13" A1466 (6,2)](https://en.wikipedia.org/wiki/MacBook_Air#Specifications) Early 2014** , a **USB stick** (64 GB), and the **Internet**.
 
-You don't need to buy a USB—Ethernet adapter!
+##FAQ
+- **Is it difficult?**
+  - If follow instructions, no.
+- **How is battery life?**
+  - Good.
+- **Do I have to install rEFIt?**
+  - You don't _have to_.
 
 ## Overview
-1. [Create custom .iso](#1-create-custom-iso) ~2-15 minutes
+Before you begin, **Update** OS X, **reboot**, and make sure there are no more updates. Then, open `Disk Utility` and **resize** your OS X partition to make room for Arch.
+
+1. [Create custom .iso](#1-create-custom-iso) _(only if you don't want to tether your phone or buy an Ethernet adapter)_
 2. [Boot custom .iso](#2-boot-custom-iso)
 3. [Install Arch](#3-install-arch)
 4. [Post-installation](#4-post-installation)
+
 
 ## 1. Create custom .iso
 >If you are lazy, you can [download]() mine and skip to [section 2](#2-boot-custom-iso).
