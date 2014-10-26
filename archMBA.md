@@ -3,11 +3,13 @@ I used a **MacBook Air** [13" A1466 (6,2)](https://en.wikipedia.org/wiki/Mac
 
 ##FAQ
 - **Is it difficult?**
-  - If follow instructions, no.
+  - If you follow instructions, no.
 - **How is battery life?**
   - Good.
-- **Do I have to install rEFIt?**
-  - You don't _have to_.
+- **Why install Arch on a MacBook?**
+  - `dwm`, `pacman`, [16:10](https://en.wikipedia.org/wiki/16:10), and all-day battery life come to mind.
+- **I read somewhere that Apple highly recommends not installing Linux.**
+  - [FUD](https://en.wikipedia.org/wiki/Fear,_uncertainty_and_doubt).
 
 ## Overview
 Before you begin, **Update** OS X, **reboot**, and make sure there are no more updates. Then, open `Disk Utility` and **resize** your OS X partition to make room for Arch.
