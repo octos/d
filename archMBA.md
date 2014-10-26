@@ -1,29 +1,19 @@
 # Arch on MacBook Air 2014
-You don't need to buy a USB—Ethernet adapter!
-
-## Prerequisites
-- MacBook Air (2014)
-- USB stick (64GB)
-- Internet access (in OS X)
+I used a **MacBookAir6,2** (Mid 2013/Early 2014), a **USB stick** (64 GB), and **Internet access**. You don't need to buy a USB—Ethernet adapter!
 
 ## Overview
-
 1. [Create custom .iso](#1-create-custom-iso)
 2. [Boot custom .iso](#2-boot-custom-iso)
 3. [Install Arch](#3-install-arch)
 4. [Post-installation](#4-post-installation)
 
-### 1. Create custom .iso
-You need to do this, because the standard .iso does not contain the the broadcom-wl package needed for MacBook Air's Broadcom NNNN Network card to work. Alternatively, can use your phone's tetherig, or a USB-Ethernet adapter to connect to the internet.
+## 1. Create custom .iso
+You need to do this, because the standard .iso does not contain the the [broadcom-wl](https://aur.archlinux.org/packages/broadcom-wl) package needed for MacBook Air's Broadcom NNNN Network card to work. Alternatively, can use your phone's tetherig, or a USB-Ethernet adapter to connect to the Internet.
 
-#### Boot into Arch
-In order to create a custom .iso, you need an Arch machine. You can use:
+### Boot into Arch
+In order to create a custom .iso, you need an Arch machine. You can use: **Another Arch machine**, a **Live USB/Live CD**, or **VirtualBox** (like I did).
 
-- Another Arch machine
-- Live USB or Live CD
-- Virtualbox (what I used)
-
-Watever is easier for you. This is just an intermediate step to achieve our goal of creating a custom Arch .iso with the Broadcom WiFi driver on it.
+Whatever is easier for you. This is just an intermediate step to achieve our goal of creating a custom Arch .iso with the Broadcom WiFi driver on it.
 
 Now, create the custom .iso by running my custom script that will do this for you. 
 
@@ -33,7 +23,7 @@ Then, you need to send it to you OS X machine. You can use:
 - Internet ()SSH/Dropbox/Email)
 - Shared folder in Virtualbox (what I did)
 
-#### Back in OS X
+### Back in OS X
 Find out your FILENAME.iso and rdisk[NUMBER], Convert .iso to .img.dmg, and Rename .img.dmg to .iso
 
     diskutil list
@@ -50,14 +40,14 @@ Now "burn" it to USB:
     
 After ~30 seconds, OS X should tell you that the USB stick is not readable. That's OK.
 
-### 2. Boot custom .iso
+## 2. Boot custom .iso
 
 Boot your MacBook with the USB stick plugged in while holding the left alt key. Select it and press *enter*.
 
-Connect to the internet
+Connect to the Internet
 
-### 3. Install Arch
-### 4. Post-installation
+## 3. Install Arch
+## 4. Post-installation
 ---
 
 ### Syntax
