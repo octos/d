@@ -31,7 +31,7 @@ Before you begin, **Update** OS X, **reboot**, and make sure there are no more 
 The standard Arch .iso does not contain the the [broadcom-wl](https://aur.archlinux.org/packages/broadcom-wl) AUR package needed for MacBook Air's Broadcom NNNN Network card to work. Normally you would download it, but without a working network card, you can't. Alternatively, you can connect to the Internet by tethering your phone, or with a USB-Ethernet adapter.
 
 ### Boot into Arch
-To create a custom .iso, you need an Arch machine. You can use either: **another Arch machine**, a **Live USB/Live CD**, or **VirtualBox** like I did. This is just an intermediate step to achieve our goal of creating a custom Arch .iso with the Broadcom WiFi driver on it.
+To create a custom Arch .iso with the Broadcom WiFi driver on it, you need an Arch machine. You can use either: **another Arch machine**, a **Live USB/Live CD**, or **VirtualBox** like I did.
 
     mkdir ~/archlive
 
