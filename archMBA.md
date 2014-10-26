@@ -35,8 +35,7 @@ To create a custom Arch .iso with the Broadcom WiFi driver on it, you need an Ar
 
     mkdir ~/archlive
 
-Download `broadcom-wl-dkms` from AUR. You will install them manually later.
-> `broadcom-wl` will work too, but kernel updates will break it.
+Download `broadcom-wl-dkms` from AUR. You will install it manually later (`broadcom-wl` works too, but kernel updates will break it).
 
     wget https://aur.archlinux.org/packages/br/broadcom-wl-dkms/broadcom-wl-dkms.tar.gz
 
