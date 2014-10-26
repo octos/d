@@ -1,5 +1,10 @@
 # Arch on MacBook Air 2014
+How to install Arch Linux side-by-side with OS X on a MacBook Air 2014.
+
 I used a **MacBook Air** [13" A1466 (6,2)](https://en.wikipedia.org/wiki/MacBook_Air#Specifications) **Early 2014**, a **USB stick** (64 GB), and the **Internet**.
+
+##Links
+- https://bbs.archlinux.org/viewtopic.php?pid=1295212
 
 ##FAQ
 - **Is it difficult?**
@@ -19,8 +24,8 @@ Before you begin, **Update** OS X, **reboot**, and make sure there are no more 
 3. [Install Arch](#3-install-arch)
 4. [Post-installation](#4-post-installation)
 
-
-## 1. Create custom .iso
+1. Create custom .iso
+---------------------
 >If you are lazy, you can [download]() mine and skip to [section 2](#2-boot-custom-iso).
 
 The standard Arch .iso does not contain the the [broadcom-wl](https://aur.archlinux.org/packages/broadcom-wl) AUR package needed for MacBook Air's Broadcom NNNN Network card to work. Normally you would download it, but without a working network card, you can't. Alternatively, you can connect to the Internet by tethering your phone, or with a USB-Ethernet adapter.
@@ -28,9 +33,21 @@ The standard Arch .iso does not contain the the [broadcom-wl](https://aur.archli
 ### Boot into Arch
 To create a custom .iso, you need an Arch machine. You can use either: **another Arch machine**, a **Live USB/Live CD**, or **VirtualBox** like I did. This is just an intermediate step to achieve our goal of creating a custom Arch .iso with the Broadcom WiFi driver on it.
 
-Now, create the custom .iso by running my custom script that will do this for you. 
+    mkdir ~/archlive
 
-Then, you need to send it to you OS X machine. You can use:
+Download `broadcom-wl-dkms` from AUR. You will install them manually later.
+> `broadcom-wl` will work too, but kernel updates will break it.
+
+    wget https://aur.archlinux.org/packages/br/broadcom-wl-dkms/broadcom-wl-dkms.tar.gz
+
+Generate the custom .iso.
+    
+    mkdir ~/archlive
+    cp -r /usr/share/archiso/configs/releng/ ~/archlive
+    echo -e "vim-minimal\nranger\nlinux-headers" >> ~/archlive/packages.both
+    ./build.sh -v
+
+Send the .iso to you OS X machine. You can use:
 
 - Another USB stick
 - Internet (SSH/Upload/Email)
@@ -43,24 +60,33 @@ Find out your FILE.iso and rdisk[NUMBER], Convert .iso to .img.dmg, and Rename .
     hdiutil convert -format UDRW -o FILE.img FILE.iso
     mv FILE.img.dmg FILE.img
     
-Then, unmount its partitions
+Then, unmount (don't eject) its partitions, and "burn" the .img to USB:
 
-- Open `Disk Utility`, select its partitions one by one, and unmount them — do not eject.
-
-Now "burn" it to USB:
-    
     sudo dd if=./Desktop/archlive_shared/FILE.img of=/dev/DISK bs=1m
     
 After ~30 seconds, OS X should tell you that the USB stick is not readable. That's OK.
 
-## 2. Boot custom .iso
 
-Plug the USB stick you just formatted into your MacBook, and boot it while holding the left **alt** key. Select it and press **enter**.
+2. Boot custom .iso
+-------------------
+Plug the USB stick you just formatted into your MacBook, and boot it while holding the left **alt**/**option** key. Select it and press **enter**.
 
-Connect to the Internet
+###Connect to the Internet
+Install `broadcom-wl-dkms` from AUR. `broadcom-wl` will work too, but kernel updates will break it.
 
-## 3. Install Arch
-## 4. Post-installation
+Make sure that `b43` and `ssb` modules are not present in the output of `lsmod`
+
+    pacman -U Broad<TAB>
+    sudo pacman -S dkms
+    sudo systemctl enable dkms.service
+
+
+3. Install Arch
+---------------
+
+4. Post-installation
+--------------------
+
 ---
 
 #### Images
