@@ -11,6 +11,8 @@ I used a **MacBook Air** [13" A1466 (6,2)](https://en.wikipedia.org/wiki/Mac
   - If you follow instructions, no.
 - **How is battery life?**
   - Good.
+- **Does everything work?**
+  - The webcam does not.
 - **Why install Arch on a MacBook?**
   - `dwm`, `pacman`, [16:10](https://en.wikipedia.org/wiki/16:10), and all-day battery life come to mind.
 - **I read somewhere that Apple highly recommends not installing Linux.**
