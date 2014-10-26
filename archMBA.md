@@ -1,5 +1,5 @@
 # Arch on MacBook Air 2014
-I used a **[MacBook Air 13" A1466 (6,2)](https://en.wikipedia.org/wiki/MacBook_Air#Specifications) Early 2014** , a **USB stick** (64 GB), and the **Internet**.
+I used a **MacBook Air** [13" A1466 (6,2)](https://en.wikipedia.org/wiki/MacBook_Air#Specifications) Early 2014** , a **USB stick** (64 GB), and the **Internet**.
 
 ##FAQ
 - **Is it difficult?**
@@ -53,7 +53,7 @@ After ~30 seconds, OS X should tell you that the USB stick is not readable. That
 
 ## 2. Boot custom .iso
 
-Plug the USB stick you just formatted into your MacBook, and boot it while holding the left **alt** key. Select it and press *enter*.
+Plug the USB stick you just formatted into your MacBook, and boot it while holding the left **alt** key. Select it and press **enter**.
 
 Connect to the Internet
 
