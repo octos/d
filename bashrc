@@ -9,7 +9,7 @@ export FONT="-*-profont-*-*-*-*-10-*-*-*-*-*-*-*"
 
 # org
 alias df='df -h'
-alias ls='ls --color=auto' #'always' broke scripts
+alias ls='ls -G' #was broken on OS X
 alias grep='grep --color=auto' 
 alias sudo='sudo '
 alias vless='vim -u /usr/share/vim/vim7*/macros/less.vim'
