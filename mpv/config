@@ -12,6 +12,8 @@ osd-color='#CCFFFFFF'
 slang=en,eng
 msg-color=yes
 msg-module=yes
+term-osd-bar=yes                                                 
+term-osd-bar-chars="▃▃▄ "
 
 # NOTES
 # mplayer dvdnav:// -dvd-device ~/dvd.iso (play iso)
