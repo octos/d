@@ -10,7 +10,6 @@ osd-color='#CCFFFFFF'
 #dvd-device=/dev/sr0   # use: mplayer dvd:// OR dvdnav:// -no-cache --mouse-movement
 
 slang=en,eng
-msg-color=yes
 msg-module=yes
 term-osd-bar=yes                                                 
 term-osd-bar-chars="▃▃▄ "
