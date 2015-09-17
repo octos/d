@@ -11,6 +11,7 @@ osd-color='#CCFFFFFF'
 
 slang=en,eng
 msg-module=yes
+no-osc
 osd-msg3='${time-pos} -${playtime-remaining}'
 
 # NOTES
