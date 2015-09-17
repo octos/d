@@ -2,14 +2,16 @@
 export HISTCONTROL="erasedups"
 export HISTSIZE=2048
 export PATH=$PATH:/usr/sbin/:/usr/local/bin:/home/kv/.gem/ruby/1.9.1/bin
-export EDITOR=vim
+export EDITOR=vis
+export VISUAL=vis
+export MAIL=$HOME/var/mail/INBOX
 export BROWSER=dwb
 export PAGER=less
 export FONT="-*-profont-*-*-*-*-10-*-*-*-*-*-*-*"
 
 # org
 alias df='df -h'
-alias ls='ls --color=auto' #'always' broke scripts
+#alias ls='ls --color=auto' #'always' broke scripts
 alias grep='grep --color=auto' 
 alias sudo='sudo '
 alias vless='vim -u /usr/share/vim/vim7*/macros/less.vim'
@@ -20,14 +22,16 @@ alias ejects='eject /dev/sr0; eject /dev/sr1'
 # app
 alias a='ranger'
 alias A='sudo ranger'
-alias m='mplayer'
+alias m='mpv'
 alias p='sxiv' #needs X
-alias y='youtube-viewer'
-alias v='vim'
-alias V='sudo vim'
+alias y='mpsyt /'
+alias v='vis'
+alias V='sudo vis'
 alias x='mutt'
 alias z='htop'
 alias h='history | grep $@'
+alias con='column -s , -t con.csv'
+alias radio='mpv --no-cache --term-osd-bar=no http://radio.2f30.org:8000/live.ogg'
 alias ccc='setxkbmap us -variant colemak; d/xsetroot-set.sh'
 alias qqq='setxkbmap us -variant altgr-intl; d/xsetroot-set.sh'
 alias res='xrandr --output VGA1 --mode 1680x1050'
