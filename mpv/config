@@ -6,19 +6,11 @@ af=scaletempo #pitch correction on !=1x playback
 #vo=opengl #-hq:icc-profile-auto:approx-gamma  #Lin,x11=VBox,OSX
 #ao=coreaudio  #Lin,OSX
 osd-color='#CCFFFFFF'
-#bs2b  #headphones audio
+#bs2b  #headphones audio?
 #dvd-device=/dev/sr0   # use: mplayer dvd:// OR dvdnav:// -no-cache --mouse-movement
 
 slang=en,eng
 msg-module=yes
-<<<<<<< HEAD
-#no-osc
-term-osd-bar=yes
-=======
-no-osc
-term-osd-bar=yes                                                 
->>>>>>> 0131406e9f0d39d40495c7883339756ff4dd1c20
-term-osd-bar-chars="▃▃▄ "
 
 # NOTES
 # mplayer dvdnav:// -dvd-device ~/dvd.iso (play iso)
