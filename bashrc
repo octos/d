@@ -11,7 +11,11 @@ export FONT="-*-profont-*-*-*-*-10-*-*-*-*-*-*-*"
 
 # org
 alias df='df -h'
+<<<<<<< HEAD
 #alias ls='ls --color=auto' #'always' broke scripts
+=======
+alias ls='ls -G' #was broken on OS X
+>>>>>>> 0131406e9f0d39d40495c7883339756ff4dd1c20
 alias grep='grep --color=auto' 
 alias sudo='sudo '
 alias vless='vim -u /usr/share/vim/vim7*/macros/less.vim'
@@ -24,6 +28,7 @@ alias a='ranger'
 alias A='sudo ranger'
 alias m='mpv'
 alias p='sxiv' #needs X
+<<<<<<< HEAD
 alias y='mpsyt /'
 alias v='vis'
 alias V='sudo vis'
@@ -31,6 +36,14 @@ alias x='mutt'
 alias z='htop'
 alias h='history | grep $@'
 alias con='column -s , -t con.csv'
+=======
+alias y='mpsyt'
+alias v='vim'
+alias V='sudo vim'
+alias x='mutt'
+alias z='htop'
+alias h='history | grep $@'
+>>>>>>> 0131406e9f0d39d40495c7883339756ff4dd1c20
 alias radio='mpv --no-cache --term-osd-bar=no http://radio.2f30.org:8000/live.ogg'
 alias ccc='setxkbmap us -variant colemak; d/xsetroot-set.sh'
 alias qqq='setxkbmap us -variant altgr-intl; d/xsetroot-set.sh'

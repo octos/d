@@ -11,8 +11,13 @@ osd-color='#CCFFFFFF'
 
 slang=en,eng
 msg-module=yes
+<<<<<<< HEAD
 #no-osc
 term-osd-bar=yes
+=======
+no-osc
+term-osd-bar=yes                                                 
+>>>>>>> 0131406e9f0d39d40495c7883339756ff4dd1c20
 term-osd-bar-chars="▃▃▄ "
 
 # NOTES
