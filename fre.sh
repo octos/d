@@ -11,7 +11,8 @@ me=$(basename $0)
 a="vim urxvt-perls bash-completion ranger libnotify htop tmux aspell e3 
 atool bzip2 unzip p7zip unrar highlight mediainfo odt2txt
 reflector profont ttf-freefont ttf-liberation ttf-dejavu xorg-xfontsel wmname"
-A="redshift-minimal interrobang-git keynav iocane pacnanny google-translate ttf-dotsies docx2txt xls2txt xlsx2csv xcftools"
+A="redshift-minimal interrobang-git keynav iocane pacnanny google-translate ttf-dotsies
+docx2txt xls2txt xlsx2csv xcftools"
 c="nmon iotop testdisk powertop ncdu colordiff fbgrab arch-install-scripts mdf2iso xdotool"
 C="cdu cmospwd photorecover"
 e="sane txt2tags antiword catdoc libots wyrd calcurse python2-rst2pdf dos2unix"
@@ -21,7 +22,7 @@ M="podget"
 o="irssi bitlbee mutt abook"
 p="fbida fbv optipng imagemagick ghostscript librsvg jasper perl-image-exiftool"
 P="pngquant img2pdf-git"
-w="wget curl axel w3m links lynx elinks surfraw rtorrent transmission-cli newsbeuter
+w="wget curl axel w3m links lynx elinks surfraw rtorrent transmission-cli mps-youtube newsbeuter
 vnstat aircrack-ng tcpdump nmap python-pip"
 W="esniper"
 v="dvdbackup"
