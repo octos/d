@@ -1,5 +1,5 @@
 #!/bin/bash
-ver=190926 # toggles $1 with custom arguments
+ver=150928 # toggles $1 with custom arguments
 sig=$2
 PIDS=`ps cax | grep $1 | grep -o '^[ ]*[0-9]*'`
 if ! [[ $2 =~ '^[0-9]+$' ]]; then #if $2 is not a number
@@ -20,7 +20,7 @@ else
  for PID in $PIDS; do
    echo "killing $1"
    case $1 in #pomi.sh needs to be killed with sig 9
-     pomi.sh) kill -s 6 $PID; notify-send -u low -t 100 "pomi stopped"; ~/d/xsetroot-set.sh;; # SIGABRT (6) to rm .pomodoro
+     pomi.sh) kill -s 6 $PID; notify-send -u low -t 100 "pomi stopped"; ~/d/xsetroot.sh;; # SIGABRT (6) to rm .pomodoro
      *) kill -s $sig $PID;;
    esac
  done
