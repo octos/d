@@ -1,5 +1,6 @@
+#Delete me on OS X; makes X11 (XQuartz) crash. 
 while true; do
-  d/xsetroot-set.sh
+  d/xsetroot.sh
   sleep 30s    # update every 30s
 done &
 
