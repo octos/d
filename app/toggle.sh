@@ -8,9 +8,9 @@ fi
 if [ -z "$PIDS" ]; then
  echo "running $1"
   case $1 in
-    pomi.sh) ~/d/pomi.sh;;
+    pomi.sh) ~/d/app/pomi.sh;;
     #play) play -n synth pinknoise band -n 1200 200 2>/dev/null &;;
-    play) ~/d/noise.sh &;;
+    play) ~/d/app/noise.sh &;;
     redshift) redshift -l 45.425:-75.70 &;;
     unclutter) unclutter -noevents -idle 1 &;;
     *) $1;;
@@ -20,7 +20,7 @@ else
  for PID in $PIDS; do
    echo "killing $1"
    case $1 in #pomi.sh needs to be killed with sig 9
-     pomi.sh) kill -s 6 $PID; notify-send -u low -t 100 "pomi stopped"; ~/d/xsetroot.sh;; # SIGABRT (6) to rm .pomodoro
+     pomi.sh) kill -s 6 $PID; notify-send -u low -t 100 "pomi stopped"; ~/d/app/xsetroot.sh;; # SIGABRT (6) to rm .pomodoro
      *) kill -s $sig $PID;;
    esac
  done
