@@ -1,5 +1,5 @@
 #!/bin/sh
-ver=150928 # pomodoro for dwm. needs toggle.sh,lock.sh,xsetroot.sh
+ver=150928L # pomodoro. Needs dwm,toggle.sh,lock.sh,xsetroot.sh
 # [25,5,25,5,25,5,25,15]
 
 function brek {
