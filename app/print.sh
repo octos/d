@@ -1,5 +1,6 @@
 #!/bin/sh
-ver=130927 # toggles CUPS. User must be allowed to passwordlessly execute systemctl (in visudo).
+ver=150928 # toggles CUPS. 
+#User must be allowed to passwordlessly execute systemctl (in visudo).
 #TODO: if dwb not running, use simpler browser.
 r='\e[0;31m' g='\e[0;32m' x='\e[0m'
 
@@ -13,4 +14,4 @@ else
   echo -e "${r}stopping${x} cups cups-browsed.."
   sudo systemctl stop cups cups-browsed
 fi
-~/d/xsetroot-set.sh
+~/d/xsetroot.sh
