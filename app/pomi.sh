@@ -1,5 +1,5 @@
 #!/bin/sh
-ver=130928 # cli pomodoro technique for dwm. needs toggle.sh, lock.sh, xsetroot-set.sh
+ver=150928 # pomodoro for dwm. needs toggle.sh,lock.sh,xsetroot.sh
 # [25,5,25,5,25,5,25,15]
 
 function brek {
@@ -29,7 +29,7 @@ function zzz {
 # systemctl suspend
   echo -e "zzz"; }
 
-trap 'rm ~/.pomodoro; ~/d/xsetroot-set.sh' EXIT TERM
+trap 'rm ~/.pomodoro; ~/d/xsetroot.sh' EXIT TERM
 log=~/.pomodoro
 dt=`date +%H%M`
 
@@ -48,7 +48,7 @@ while true; do
             if [[ $wrk = "1" ]]; then soon "Brk"; fi #notify 1m before brk
                 echo -ne "$wrk\r"
                 echo -ne "$a-$wrk`for (( x = 1; x <= $wrk; x += 1)); do echo -n "\\\\";done` " > $log #"\\\\" each '\' is elegantly 2m
-                ~/d/xsetroot-set.sh
+                ~/d/xsetroot.sh
                 wrk=$((wrk-1)) 
 	        	sleep 1m
              done
@@ -59,7 +59,7 @@ while true; do
 	        for b in {1..$brk} ; do
                 echo -ne "$brk\r"
                 echo -ne "$a-$brk`for (( x = 1; x <= $brk; x += 1)); do echo -n "z";done` " > $log
-                ~/d/xsetroot-set.sh
+                ~/d/xsetroot.sh
                 brk=$((brk-1)) 
 	    	    sleep 1m
             done
@@ -77,7 +77,7 @@ while true; do
             if [[ $wrk = "1" ]]; then soon "LongBrk"; fi #notify 1m before brk
                 echo -ne "$wrk\r"
                 echo -ne "$(($a+1))-$wrk`for (( x = 1; x <= $wrk; x += 1)); do echo -n "\\\\";done` " > $log
-                ~/d/xsetroot-set.sh
+                ~/d/xsetroot.sh
                 wrk=$((wrk-1)) 
 	        	sleep 1m
              done
@@ -88,7 +88,7 @@ while true; do
             for g in {1..$brk} ; do
                 echo -ne "$brk\r"
                 echo -ne "l`for (( x = 1; x <= $brk; x += 1)); do echo -n "o";done`ng " > $log
-                ~/d/xsetroot-set.sh
+                ~/d/xsetroot.sh
                 brk=$((brk-1)) 
 	    	    sleep 1m
             done
