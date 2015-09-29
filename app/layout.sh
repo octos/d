@@ -1,13 +1,7 @@
 #!/bin/bash
-# select from all keyboard layouts supported by Unicode. Executed by dwm
+ver=150928 # set unicode kbd layout. Executed by dwm
 
-#
-#cans
-#latn
-#cyrl
-##xsux
-
-sel=`head -7 ~/d/layout.sh | tail -4 | sed 's/#//'| dmenu -i -fn $FONT -sb "#660000" -p "setxkbdmap:"`
+sel=`head -7 ~/d/app/layout.sh | tail -4 | sed 's/#//'| dmenu -i -fn $FONT -sb "#660000" -p "setxkbdmap:"`
 kbdsimple=$(setxkbmap -print | grep symbols) 
 
 case $sel in
@@ -15,9 +9,9 @@ case $sel in
     latn) kbd="us altgr-intl" ;;
     clmk) kbd="colemak" ;;
     cyrl) kbd="ru phonetic" ;;
-    !) leafpad d/layout.sh ;;
+    !) $EDITOR d/app/layout.sh ;;
     *) kbd="$sel" ;;
 esac
 setxkbmap $kbd
-~/d/xsetroot-set.sh
+~/d/xsetroot.sh
 notify-send $sel -t 10
