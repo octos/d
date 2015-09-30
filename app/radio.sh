@@ -5,5 +5,6 @@ case $1 in
   sdf) s="http://anonradio.net:8000/anonradio" ;;
   country|94) s="http://ckklfm-mp3.akacast.akamaistream.net/7/541/102120/v1/astral.akacast.akamaistream.net/ckklfm-mp3" ;;
   kexp|903) s="http://live-aacplus-64.kexp.org/kexp64.aac" ;;
+  eo) s="http://listen.radionomy.com/muzaikoinfo.m3u" ;;
   *) less $0 | sed '1d' ;; esac
-mpv -no-cache --really-quiet $s
+mpv -no-cache -really-quiet $s
