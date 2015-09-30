@@ -1,5 +1,7 @@
 #!/bin/bash
+#v.150930X kill $1 if it's running
 sig=$2
+if [[ $1 == "" ]]; then echo "usage: $0 program_to_kill"; exit; fi
 PIDS=`ps cax | grep $1 | grep -o '^[ ]*[0-9]*'`
 if [[ $2 == "" ]]; then
     sig=15; fi
