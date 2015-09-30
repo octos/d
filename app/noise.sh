@@ -1,4 +1,4 @@
 #!/bin/sh
-ver=150928L # plays background noise.
-#Executed by pomi.sh, can be toggled through toggle.sh
-play -n synth pinknoise band -n 1200 200 2>/dev/null &
+#v.150930X plays background noise. Need sox
+#Exec with pomi.sh, toggle wtih toggle.sh or killall play
+play -qn synth pinknoise band -n 1200 200 &
