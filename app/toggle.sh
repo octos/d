@@ -1,12 +1,12 @@
 #!/bin/sh
-#v.151004X toggles $1 (with optional custom SIG)
+#v.151004X toggles $1 (optional custom SIG)
 sig=$2
 case $1 in
   *pomi.sh) sig=6;; #pomi.sh must be killed with sig 9
   *noise.sh|noise) realnm=play;;
   -e) $EDITOR $0; exit;;
   -l) ps cax; exit;;
-  ""|-*) echo "Usage: $0 [-e] \"program [ARGUMENT]\" SIG"; exit;;
+  ""|-*) echo "Usage: $0 [-el] \"program [ARGUMENT]\" SIG"; exit;;
   *) realnm=$1;;
 esac
 
