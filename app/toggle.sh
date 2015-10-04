@@ -1,5 +1,5 @@
-#!/bin/bash
-#v.151004X toggles $1 (optional custom SIG)
+#!/bin/sh
+#v.151004X toggles $1 (with optional custom SIG)
 sig=$2
 case $1 in
   *noise.sh|noise) realname=play;;
