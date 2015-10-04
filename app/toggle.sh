@@ -1,5 +1,6 @@
 #!/bin/sh
 #v.151004X toggles $1 (optional custom SIG)
+#http://mywiki.wooledge.org/ProcessManagement
 sig=$2
 case $1 in
   *pomi.sh|pomi) sig=6;; #pomi.sh must be killed with sig 9
