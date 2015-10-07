@@ -1,5 +1,5 @@
 #!/bin/bash
-ver=141022 # After you partition+mount (see bottom), fre.sh installs apps etc.
+ver=141022 # installs apps after you partition+mount (see bottom)
 # Process: `wget www.tiny.cc/fresh; chmod +x; [bottom instructions]; ./fre.sh`
 
 # ===== config =====
