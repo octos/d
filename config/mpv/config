@@ -1,0 +1,23 @@
+# vim: syntax=config
+fs=yes	      #always fullscreen
+softvol=no    #same as dwm
+af=scaletempo #pitch correction on !=1x playback
+
+vo=opengl:dumb-mode=yes #lower energy impact (OS X)
+#ao=coreaudio  #Lin,OSX
+osd-color='#CCFFFFFF'
+#bs2b  #headphones audio?
+#dvd-device=/dev/sr0   # use: mplayer dvd:// OR dvdnav:// -no-cache --mouse-movement
+
+slang=en,eng
+msg-module=yes
+no-osc
+osd-msg3='${time-pos} -${playtime-remaining}'
+
+# NOTES
+# mplayer dvdnav:// -dvd-device ~/dvd.iso (play iso)
+# mplayer -ss 10 (start at 10s, skip TED intros)
+
+#start=1            #always start at Nsec
+#endpos=13          #end Nsec after start
+#loop=0             #loop to infinity (0)
