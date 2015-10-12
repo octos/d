@@ -1,14 +1,19 @@
 #!/bin/sh
-ver=150928 # creates symlinks from ~ to dotfiles in ~/d
+ver=150928 # creates symlinks from ~ to dotfiles in ~/c/d
 
-dir=~/c/d                    # dotfiles dir.
-olddir=~/c/d_old             # old dotfiles backup dir
+dir=~/c/d                 # dotfiles dir.
+olddir=~/c/d_old          # old dotfiles backup dir
 files="bashrc bash_profile iocanerc mailcap muttrc muttrc_aliases sxiv tmux.conf Xdefaults xinitrc vimrc
 config mpv themes vim"    # list of files/folders to symlink in homedir
 
-if [[ $1 == "-i" ]]; then cd $dir/app
-    for f in `ls *.sh`; do echo "$f # `sed -n '2p' $f`"; done | column -t -s '#'; exit
-fi
+if [[ $1 == "-i" ]]; then cd $dir; echo "----- system ------"
+    for f in `ls *.sh`; do echo "$f#`sed -n '2p' $f`"; done | column -t -s '#'
+cd app; echo "------ app/ (some work in concert ẇ wm and should be elsewhere ------"
+    for f in `ls *.sh`; do echo "$f#`sed -n '2p' $f`"; done | column -t -s '#'
+fi; exit
+
+#- Add .vifm/*
+#- rm xinitrc if on OS X
 
 killall -q chromium #because it makes .config/ busy
 echo "mkdir: $olddir (old dotfiles will go there)"; mkdir -p $olddir
