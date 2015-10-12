@@ -1,5 +1,5 @@
 #!/bin/bash
-# updates xsetroot, is executed by .xinitrc and dwm
+#v.150928L updates xsetroot, executed by .xinitrc and dwm
 mute=`amixer get Master | tail -1 | awk '{print $NF}'`
 vol=`amixer get -M Master | tail -1 | sed 's/.*\[\([0-9]*%\)\].*/\1/' | sed 's/%//'`
 cups=$(systemctl status cups cups-browsed | grep -c inactive)
@@ -29,4 +29,4 @@ case $kbd in
         *) kbd="kbd? " ;;
 esac
 
-xsetroot -name "$(echo "$cups""$pomi""$kbd""$sound"; date +"%y%m%d %R")" #; date -u +"(%H)")"
+xsetroot -name "$(echo "$cups""$pomi""$kbd""$sound"; date +"%y%m%d %R")"

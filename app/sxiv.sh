@@ -1,4 +1,5 @@
 #!/bin/sh
+#NOTMINE
 # Compatible with ranger 1.6.*
 #
 # This script searches image files in a directory, opens them all with sxiv and

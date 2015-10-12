@@ -1,5 +1,5 @@
 #!/bin/sh
-ver=150928 # toggles CUPS. 
+#v.150928  toggles CUPS. 
 #User must be allowed to passwordlessly execute systemctl (in visudo).
 #TODO: if dwb not running, use simpler browser.
 r='\e[0;31m' g='\e[0;32m' x='\e[0m'

@@ -1,5 +1,5 @@
 #!/bin/sh
-ver=130109 # color picker by kv. Execute from dwm.
+#v.130109  color picker by kv. Execute from dwm.
 #picked=`xoris -N | sed 's/#//'`
 picked=`printf "%02X%02X%02X\n" $(stint)`
 luma=$(echo $((0x$picked)) )

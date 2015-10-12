@@ -1,5 +1,6 @@
 #!/bin/bash
-# thanks Github/UliArmy. Needs: google-translate, dmenu, xsel, $FONT in .bashrc
+#NOTMINE thanks Github/UliArmy. 
+#Needs: google-translate, dmenu, xsel, $FONT in .bashrc
 
 if [ -f $HOME/.dmenurc ]; then
 	. $HOME/.dmenurc
