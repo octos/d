@@ -1,5 +1,5 @@
 #!/bin/bash
-#v.150930X kill $1 if it's running
+#v.151202X kill $1 if it's running
 
 [ -z "$1" ] && cat $0 && echo "Usage: $0 program_to_kill" && exit
 sig=$2
