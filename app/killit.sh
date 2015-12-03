@@ -4,7 +4,7 @@
 [ -z "$1" ] && cat $0 && echo "Usage: $0 program_to_kill" && exit
 sig=$2
 
-PIDS=`ps cax | grep $1 | grep -o '^[ ]*[0-9]*'`
+PIDS=`ps cax | grep -i $1 | grep -o '^[ ]*[0-9]*'`
 if [[ $2 == "" ]]; then
     sig=15; fi
 if [ -z "$PIDS" ]; then
