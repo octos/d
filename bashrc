@@ -12,19 +12,17 @@ export FONT="-*-profont-*-*-*-*-10-*-*-*-*-*-*-*"
 alias df='df -h'
 alias ls='ls -G' #was broken on OS X
 alias grep='grep --color=auto' 
-alias sudo='sudo '
 alias vless='vim -u /usr/share/vim/vim7*/macros/less.vim'
-alias xidel='./xidel --user-agent="Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:25.0) Gecko/20100101 Firefox/25.0"'
-alias curl='curl -A "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:25.0) Gecko/20100101 Firefox/25.0"'
-alias ejects='eject /dev/sr0; eject /dev/sr1'
+alias wget='wget -U "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:42.0) Gecko/20100101 Firefox/42.0"'
+alias curl='curl -A "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:42.0) Gecko/20100101 Firefox/42.0"'
 
 # app
-alias a='ranger'
-alias A='sudo ranger'
+alias a='vifm .'
+alias A='sudo vifm .'
 alias m='mpv'
 alias p='sxiv' #needs X
-alias v='vis'
-alias V='sudo vis'
+alias v='$EDITOR'
+alias V='sudo $EDITOR'
 alias x='mutt'
 alias y='mpsyt /'
 alias z='htop'
@@ -41,14 +39,12 @@ alias en='./jjj.sh -en' #$@ | fmt -t -w $(($(tput cols)+0)) --goal=$(($(tput col
 alias fr='./jjj.sh -fr' #$@ | fmt -t -w $(($(tput cols)+0)) --goal=$(($(tput cols)+0)) | sed "s/   /  /g" | less -RFXE
 alias anti='~/d/killifrunning.sh antidote; sudo iptables -A OUTPUT -m owner --gid-owner ni -j DROP; cd .wine/drive_c/Program\ Files/Druide/Antidote\ 7/Programmes32/; sg ni "wine antido32.exe" & sleep 5; exit'
 
-# pkg
+# Arch
 alias R='sudo pacman -R'
 alias S='sudo pacman -S --color=always --needed --noconfirm'
 alias s='yaourt --noconfirm'
 alias U='sudo reflector -l 8 -p http -f 5 --connection-timeout 3 --save /etc/pacman.d/mirrorlist; sudo pacman --color=always --noconfirm -Syyu'
 alias u='yaourt --sucre --needed'
-
-# sys
 alias Q='sed -i '/Q/d' .bash_history; systemctl hibernate'
 alias W='sed -i '/W/d' .bash_history; systemctl suspend'
 alias Z='sed -i '/Z/d' .bash_history; systemctl reboot'
