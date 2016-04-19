@@ -12,3 +12,47 @@ push:
     git add file.ext  # Adds a new file to the repo
     git commit -m "comment"
     git push origin master
+
+#OS X - homebrew
+- vifm
+- youtube-dl
+- mpv
+- ffmpeg —with-faac
+- imagemagick
+- gcc
+- Caskroom/cask/xquartz
+- Caskroom/cask/imageoptim
+- redshift
+- aria2
+- go
+- sox
+- brew install Caskroom/cask/nosleep
+- gifsicle
+- hugo
+- mediainfo
+- unrar
+- brew install Caskroom/cask/gnucash
+- flac
+- id3ed
+- brew install homebrew/x11/gimp
+- brew install homebrew/games/myman
+- xmlstarlet
+- html-xml-utils
+- wget
+- gpg
+- macvim
+- fzf
+- mpd (To have launchd start mpd at login:
+  mkdir -p ~/Library/LaunchAgents
+  ln -sfv /usr/local/opt/mpd/*.plist ~/Library/LaunchAgents
+Then to load mpd now:
+  launchctl load ~/Library/LaunchAgents/homebrew.mxcl.mpd.plist
+Or, if you don't want/need launchctl, you can just run:
+  mpd)
+- ncmpcpp
+- ttyrec
+- brew install https://raw.githubusercontent.com/icholy/ttygif/master/ttygif.rb
+- XPDF (for PDF2TEXT)
+- brew install Caskroom/cask/alarm-clock
+- blueutil
+- pzip
