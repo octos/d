@@ -16,8 +16,8 @@ push:
 #OS X - homebrew
 - vifm
 - youtube-dl
-- mpv
-- ffmpeg —with-faac
+- mpv --with-bundle
+- ffmpeg --with-faac
 - imagemagick
 - gcc
 - Caskroom/cask/xquartz
