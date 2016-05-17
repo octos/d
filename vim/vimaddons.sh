@@ -1,9 +1,13 @@
 #!/bin/sh
 # installs vim plugins
 # http://www.bestofvim.com/
+# http://vimawesome.com/
+
+# pathogen
+mkdir -p ~/.vim/autoload ~/.vim/bundle && \
+curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 
 # plugins
-mkdir -p ~/.vim/bundle
 cd ~/.vim/bundle
 git clone https://github.com/plasticboy/vim-markdown.git #vim-markdown
 git clone https://github.com/mikewest/vimroom.git        #writing prose
